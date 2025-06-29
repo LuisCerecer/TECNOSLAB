@@ -113,22 +113,6 @@ function App() {
         image: 'https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=600',
         description: 'Proyectos ejecutados con precisión'
       }
-    },
-    {
-      name: 'FAQ',
-      path: '/faq',
-      items: [
-        { name: 'Preguntas Comunes', hash: '#preguntas-comunes' },
-        { name: 'Garantías', hash: '#garantias' },
-        { name: 'Mantenimiento', hash: '#mantenimiento' },
-        { name: 'Soporte', hash: '#soporte' }
-      ],
-      title: 'FAQ',
-      featured: {
-        title: 'Garantías',
-        image: 'https://images.pexels.com/photos/7376/startup-photos.jpg?auto=compress&cs=tinysrgb&w=600',
-        description: 'Respuestas a las preguntas más frecuentes'
-      }
     }
   ];
 
