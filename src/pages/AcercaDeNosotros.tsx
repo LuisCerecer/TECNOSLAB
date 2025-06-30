@@ -35,7 +35,7 @@ function AcercaDeNosotros() {
         <div className="max-w-5xl mx-auto">
           <h1 className="text-4xl font-bold text-gray-800 mb-8 text-center">Acerca de nosotros</h1>
           <p className="text-xl text-gray-700 mb-16 text-center leading-relaxed">
-            En Tecnoslab, nos especializamos en la instalación y mantenimiento de pisos continuos 
+            En Tecnoslab, nos especializamos en pisos continuos 
             de alta planicidad para aplicaciones industriales exigentes. Nuestra experiencia y tecnología 
             nos posicionan como líderes en el mercado mexicano.
           </p>
