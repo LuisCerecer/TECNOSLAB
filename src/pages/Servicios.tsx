@@ -90,13 +90,6 @@ function Servicios() {
             </h2>
             <div className="bg-white p-8 shadow-xl rounded-xl">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-                <div className="flex justify-center">
-                  <img 
-                    src="https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=800" 
-                    alt="Medición de Planicidad - Tráfico Definido" 
-                    className="w-full h-auto object-cover rounded-lg shadow-md"
-                  />
-                </div>
                 <div>
                   <p className="text-gray-700 mb-6 text-lg leading-relaxed">
                     Medición especializada para sistemas automatizados y pasillos VNA (Very Narrow Aisle) 
@@ -117,6 +110,13 @@ function Servicios() {
                     garantizando operación segura y eficiente.
                   </p>
                 </div>
+                <div className="flex justify-center">
+                  <img 
+                    src="https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                    alt="Medición de Planicidad - Tráfico Definido" 
+                    className="w-full h-auto object-cover rounded-lg shadow-md"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -126,48 +126,35 @@ function Servicios() {
               Diseño e Ingeniería de Pisos Industriales
             </h2>
             <div className="bg-white p-8 shadow-xl rounded-xl">
-              <p className="text-gray-700 mb-8 text-lg leading-relaxed">
-                Desarrollo de soluciones integrales de ingeniería para pisos industriales, desde el análisis 
-                inicial hasta la especificación técnica completa del proyecto.
-              </p>
-              
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                <div className="bg-gray-50 p-6 rounded-lg">
-                  <h3 className="text-lg font-semibold mb-3 text-blue-700">Análisis Estructural</h3>
-                  <ul className="list-disc list-inside space-y-1 text-gray-700 text-sm">
-                    <li>Estudio de cargas y solicitaciones</li>
-                    <li>Análisis del suelo y cimentación</li>
-                    <li>Cálculo de espesores óptimos</li>
-                    <li>Diseño de sistemas de refuerzo</li>
-                  </ul>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div>
+                  <p className="text-gray-700 mb-6 text-lg leading-relaxed">
+                    Desarrollo de soluciones integrales de ingeniería para pisos industriales, desde el análisis 
+                    inicial hasta la especificación técnica completa del proyecto.
+                  </p>
+                  <div className="bg-purple-50 p-5 rounded-lg mb-6">
+                    <h3 className="text-lg font-semibold mb-3 text-purple-800">Servicios de Ingeniería</h3>
+                    <ul className="list-disc list-inside space-y-2 text-gray-700">
+                      <li>Análisis estructural y cálculo de cargas</li>
+                      <li>Estudio de suelos y cimentaciones</li>
+                      <li>Diseño de sistemas de refuerzo</li>
+                      <li>Especificaciones técnicas detalladas</li>
+                      <li>Planos de construcción y detalles</li>
+                    </ul>
+                  </div>
+                  <p className="text-gray-700 text-lg leading-relaxed">
+                    Soluciones personalizadas que consideran cargas operativas, condiciones ambientales 
+                    y requisitos específicos de cada aplicación industrial.
+                  </p>
                 </div>
-                
-                <div className="bg-gray-50 p-6 rounded-lg">
-                  <h3 className="text-lg font-semibold mb-3 text-blue-700">Especificaciones Técnicas</h3>
-                  <ul className="list-disc list-inside space-y-1 text-gray-700 text-sm">
-                    <li>Selección de materiales</li>
-                    <li>Diseño de juntas y sistemas</li>
-                    <li>Especificación de tolerancias</li>
-                    <li>Procedimientos de instalación</li>
-                  </ul>
-                </div>
-                
-                <div className="bg-gray-50 p-6 rounded-lg">
-                  <h3 className="text-lg font-semibold mb-3 text-blue-700">Documentación</h3>
-                  <ul className="list-disc list-inside space-y-1 text-gray-700 text-sm">
-                    <li>Planos técnicos detallados</li>
-                    <li>Especificaciones para licitación</li>
-                    <li>Programas de control de calidad</li>
-                    <li>Manuales de mantenimiento</li>
-                  </ul>
+                <div className="flex justify-center">
+                  <img 
+                    src="https://images.pexels.com/photos/7376/startup-photos.jpg?auto=compress&cs=tinysrgb&w=800" 
+                    alt="Diseño e Ingeniería de Pisos Industriales" 
+                    className="w-full h-auto object-cover rounded-lg shadow-md"
+                  />
                 </div>
               </div>
-              
-              <img 
-                src="https://images.pexels.com/photos/7376/startup-photos.jpg?auto=compress&cs=tinysrgb&w=1200" 
-                alt="Diseño e Ingeniería de Pisos Industriales" 
-                className="w-full h-64 object-cover rounded-lg shadow-md"
-              />
             </div>
           </div>
 
@@ -184,14 +171,13 @@ function Servicios() {
                   </p>
                   <div className="bg-orange-50 p-5 rounded-lg mb-6">
                     <h3 className="text-lg font-semibold mb-3 text-orange-800">Proceso de Desbaste</h3>
-                    <ol className="list-decimal list-inside space-y-2 text-gray-700">
+                    <ul className="list-disc list-inside space-y-2 text-gray-700">
                       <li>Mapeo detallado de irregularidades</li>
-                      <li>Marcado de áreas a corregir</li>
                       <li>Desbaste controlado con equipo especializado</li>
                       <li>Verificación continua de tolerancias</li>
                       <li>Limpieza y preparación final</li>
-                      <li>Medición de verificación</li>
-                    </ol>
+                      <li>Medición de verificación final</li>
+                    </ul>
                   </div>
                   <p className="text-gray-700 text-lg leading-relaxed">
                     Ideal para pisos existentes que requieren alcanzar especificaciones de planicidad 
@@ -215,20 +201,13 @@ function Servicios() {
             </h2>
             <div className="bg-white p-8 shadow-xl rounded-xl">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-                <div className="flex justify-center">
-                  <img 
-                    src="https://images.pexels.com/photos/1668928/pexels-photo-1668928.jpeg?auto=compress&cs=tinysrgb&w=800" 
-                    alt="Corrección de Planicidad por Recubrimientos" 
-                    className="w-full h-auto object-cover rounded-lg shadow-md"
-                  />
-                </div>
                 <div>
                   <p className="text-gray-700 mb-6 text-lg leading-relaxed">
                     Aplicación de recubrimientos especializados para corregir irregularidades superficiales 
                     y lograr las tolerancias de planicidad requeridas.
                   </p>
-                  <div className="bg-purple-50 p-5 rounded-lg mb-6">
-                    <h3 className="text-lg font-semibold mb-3 text-purple-800">Tipos de Recubrimientos</h3>
+                  <div className="bg-indigo-50 p-5 rounded-lg mb-6">
+                    <h3 className="text-lg font-semibold mb-3 text-indigo-800">Tipos de Recubrimientos</h3>
                     <ul className="list-disc list-inside space-y-2 text-gray-700">
                       <li>Morteros autonivelantes de alta resistencia</li>
                       <li>Sistemas epoxi de nivelación</li>
@@ -242,6 +221,13 @@ function Servicios() {
                     las propiedades superficiales del piso como resistencia química y durabilidad.
                   </p>
                 </div>
+                <div className="flex justify-center">
+                  <img 
+                    src="https://images.pexels.com/photos/1668928/pexels-photo-1668928.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                    alt="Corrección de Planicidad por Recubrimientos" 
+                    className="w-full h-auto object-cover rounded-lg shadow-md"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -251,62 +237,34 @@ function Servicios() {
               Reparación de Juntas
             </h2>
             <div className="bg-white p-8 shadow-xl rounded-xl">
-              <p className="text-gray-700 mb-8 text-lg leading-relaxed">
-                Servicio especializado de reparación y mantenimiento de sistemas de juntas en pisos industriales, 
-                garantizando su funcionamiento óptimo y prolongando la vida útil del piso.
-              </p>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                <div className="bg-red-50 p-6 rounded-lg">
-                  <h3 className="text-lg font-semibold mb-3 text-red-800">Problemas Comunes en Juntas</h3>
-                  <ul className="list-disc list-inside space-y-2 text-gray-700">
-                    <li>Deterioro del material sellante</li>
-                    <li>Despostillamientos en bordes</li>
-                    <li>Infiltración de humedad y contaminantes</li>
-                    <li>Pérdida de adherencia del sellador</li>
-                    <li>Movimientos estructurales excesivos</li>
-                  </ul>
-                </div>
-                
-                <div className="bg-green-50 p-6 rounded-lg">
-                  <h3 className="text-lg font-semibold mb-3 text-green-800">Soluciones de Reparación</h3>
-                  <ul className="list-disc list-inside space-y-2 text-gray-700">
-                    <li>Remoción y reemplazo de selladores</li>
-                    <li>Reparación de bordes con resinas epoxi</li>
-                    <li>Instalación de sistemas armados</li>
-                    <li>Sellado con materiales poliuretano</li>
-                    <li>Refuerzo estructural de juntas críticas</li>
-                  </ul>
-                </div>
-              </div>
-              
-              <div className="flex flex-col md:flex-row gap-6 items-center">
-                <div className="md:w-1/2">
-                  <h3 className="text-lg font-semibold mb-3">Tipos de Juntas que Reparamos</h3>
-                  <div className="space-y-3">
-                    <div className="border-l-4 border-blue-500 pl-4">
-                      <h4 className="font-semibold text-sm">Juntas de Contracción</h4>
-                      <p className="text-gray-700 text-sm">Control de fisuramiento por retracción del concreto</p>
-                    </div>
-                    <div className="border-l-4 border-green-500 pl-4">
-                      <h4 className="font-semibold text-sm">Juntas de Construcción</h4>
-                      <p className="text-gray-700 text-sm">Unión entre diferentes vaciados de concreto</p>
-                    </div>
-                    <div className="border-l-4 border-purple-500 pl-4">
-                      <h4 className="font-semibold text-sm">Juntas de Aislamiento</h4>
-                      <p className="text-gray-700 text-sm">Separación de elementos estructurales</p>
-                    </div>
-                    <div className="border-l-4 border-orange-500 pl-4">
-                      <h4 className="font-semibold text-sm">Juntas Armadas</h4>
-                      <p className="text-gray-700 text-sm">Sistemas de alta resistencia para tráfico pesado</p>
-                    </div>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div>
+                  <p className="text-gray-700 mb-6 text-lg leading-relaxed">
+                    Servicio especializado de reparación y mantenimiento de sistemas de juntas en pisos industriales, 
+                    garantizando su funcionamiento óptimo y prolongando la vida útil del piso.
+                  </p>
+                  <div className="bg-red-50 p-5 rounded-lg mb-6">
+                    <h3 className="text-lg font-semibold mb-3 text-red-800">Servicios de Reparación</h3>
+                    <ul className="list-disc list-inside space-y-2 text-gray-700">
+                      <li>Remoción y reemplazo de selladores</li>
+                      <li>Reparación de bordes con resinas epoxi</li>
+                      <li>Instalación de sistemas armados</li>
+                      <li>Sellado con materiales poliuretano</li>
+                      <li>Refuerzo estructural de juntas críticas</li>
+                    </ul>
                   </div>
+                  <p className="text-gray-700 text-lg leading-relaxed">
+                    Atendemos todos los tipos de juntas: contracción, construcción, aislamiento 
+                    y juntas armadas, utilizando materiales de la más alta calidad.
+                  </p>
                 </div>
-                <img 
-                  src="https://images.pexels.com/photos/236705/pexels-photo-236705.jpeg?auto=compress&cs=tinysrgb&w=800" 
-                  alt="Reparación de Juntas" 
-                  className="md:w-1/2 rounded-lg shadow-md"
-                />
+                <div className="flex justify-center">
+                  <img 
+                    src="https://images.pexels.com/photos/236705/pexels-photo-236705.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                    alt="Reparación de Juntas" 
+                    className="w-full h-auto object-cover rounded-lg shadow-md"
+                  />
+                </div>
               </div>
             </div>
           </div>
