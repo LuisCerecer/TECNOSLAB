@@ -96,8 +96,7 @@ function Productos() {
             </h2>
             <div className="bg-white p-8 shadow-xl rounded-xl">
               <p className="text-gray-700 mb-6 text-lg leading-relaxed">
-                Sistema avanzado de control y monitoreo para garantizar la calidad y durabilidad
-                de los pisos industriales durante todo su ciclo de vida.
+                Sistema de reparación de piso industrial a base de cementos de fraguado rápido
               </p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 <div className="bg-gray-100 p-6 rounded-lg">
