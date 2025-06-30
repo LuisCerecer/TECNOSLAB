@@ -36,8 +36,7 @@ function Productos() {
             </h2>
             <div className="bg-white p-8 shadow-xl rounded-xl">
               <p className="text-gray-700 mb-6 text-lg leading-relaxed">
-                Sistema especializado para pisos de alta planicidad con tecnología alemana,
-                ideal para almacenes automatizados y centros de distribución.
+                Sistema de reparación de piso industrial a base de óxido de magnesio
               </p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 <div className="bg-gray-100 p-6 rounded-lg">
