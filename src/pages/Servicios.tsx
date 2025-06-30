@@ -3,25 +3,33 @@ import { useLocation } from 'react-router-dom';
 
 function Servicios() {
   const location = useLocation();
-  const instalacionRef = useRef<HTMLDivElement>(null);
-  const mantenimientoRef = useRef<HTMLDivElement>(null);
-  const reparacionRef = useRef<HTMLDivElement>(null);
-  const consultoriaRef = useRef<HTMLDivElement>(null);
+  const traficoAleatorioRef = useRef<HTMLDivElement>(null);
+  const traficoDefinidoRef = useRef<HTMLDivElement>(null);
+  const disenoIngenieriaRef = useRef<HTMLDivElement>(null);
+  const correccionDesbasteRef = useRef<HTMLDivElement>(null);
+  const correccionRecubrimientosRef = useRef<HTMLDivElement>(null);
+  const reparacionJuntasRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (location.hash) {
       switch (location.hash) {
-        case '#instalacion':
-          instalacionRef.current?.scrollIntoView({ behavior: 'smooth' });
+        case '#trafico-aleatorio':
+          traficoAleatorioRef.current?.scrollIntoView({ behavior: 'smooth' });
           break;
-        case '#mantenimiento':
-          mantenimientoRef.current?.scrollIntoView({ behavior: 'smooth' });
+        case '#trafico-definido':
+          traficoDefinidoRef.current?.scrollIntoView({ behavior: 'smooth' });
           break;
-        case '#reparacion':
-          reparacionRef.current?.scrollIntoView({ behavior: 'smooth' });
+        case '#diseno-ingenieria':
+          disenoIngenieriaRef.current?.scrollIntoView({ behavior: 'smooth' });
           break;
-        case '#consultoria':
-          consultoriaRef.current?.scrollIntoView({ behavior: 'smooth' });
+        case '#correccion-desbaste':
+          correccionDesbasteRef.current?.scrollIntoView({ behavior: 'smooth' });
+          break;
+        case '#correccion-recubrimientos':
+          correccionRecubrimientosRef.current?.scrollIntoView({ behavior: 'smooth' });
+          break;
+        case '#reparacion-juntas':
+          reparacionJuntasRef.current?.scrollIntoView({ behavior: 'smooth' });
           break;
         default:
           break;
@@ -32,273 +40,274 @@ function Servicios() {
   return (
     <div className="pt-36 min-h-screen bg-gray-50">
       <div className="container mx-auto px-6">
-        <h1 className="text-3xl font-bold text-gray-800 mb-5">Servicios</h1>
-        <p className="text-lg text-gray-700 mb-10">
-          Ofrecemos servicios integrales para la instalación, mantenimiento y reparación de 
-          pisos industriales, garantizando la máxima calidad y durabilidad con la más 
-          avanzada tecnología disponible en el mercado.
-        </p>
+        <div className="max-w-5xl mx-auto">
+          <h1 className="text-4xl font-bold text-gray-800 mb-8 text-center">Servicios</h1>
+          <p className="text-xl text-gray-700 mb-16 text-center leading-relaxed">
+            Ofrecemos servicios especializados de medición, diseño, corrección y reparación para pisos industriales, 
+            utilizando la más avanzada tecnología y estándares internacionales para garantizar la máxima precisión y calidad.
+          </p>
 
-        <div ref={instalacionRef} id="instalacion" className="mb-16">
-          <h2 className="text-2xl font-bold text-gray-800 mb-5 border-l-3 border-blue-700 pl-3">
-            Instalación
-          </h2>
-          <div className="bg-white p-6 shadow-lg rounded-lg">
-            <p className="text-gray-700 mb-5">
-              Nuestra especialidad es la instalación de pisos continuos de alta planicidad, 
-              cumpliendo con los estándares internacionales más exigentes.
-            </p>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-              <img 
-                src="https://images.pexels.com/photos/210137/pexels-photo-210137.jpeg?auto=compress&cs=tinysrgb&w=800" 
-                alt="Instalación de Pisos" 
-                className="w-full h-51 object-cover rounded-lg shadow-md"
-              />
-              <div>
-                <h3 className="text-lg font-semibold mb-3">Proceso de Instalación</h3>
-                <ol className="list-decimal list-inside space-y-1 text-gray-700">
-                  <li>Evaluación y preparación del terreno</li>
-                  <li>Colocación de armado y refuerzos</li>
-                  <li>Vertido y nivelación del concreto</li>
-                  <li>Alisado y acabado de precisión</li>
-                  <li>Curado controlado</li>
-                  <li>Corte de juntas</li>
-                  <li>Sellado y protección final</li>
-                </ol>
-              </div>
-            </div>
-            
-            <div className="bg-blue-50 p-5 rounded-lg">
-              <h3 className="text-lg font-semibold mb-2 text-blue-800">Tipos de Instalación</h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                <div className="bg-white p-3 rounded shadow">
-                  <h4 className="font-semibold mb-1 text-sm">Pisos Superplanos</h4>
-                  <p className="text-gray-700 text-sm">Para almacenes automatizados y centros de distribución con estanterías de gran altura.</p>
+          <div ref={traficoAleatorioRef} id="trafico-aleatorio" className="mb-20">
+            <h2 className="text-3xl font-bold text-gray-800 mb-8 border-l-4 border-blue-700 pl-4">
+              Medición de Planicidad - Tráfico Aleatorio
+            </h2>
+            <div className="bg-white p-8 shadow-xl rounded-xl">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div>
+                  <p className="text-gray-700 mb-6 text-lg leading-relaxed">
+                    Servicio especializado de medición de planicidad para pisos industriales con patrones de tráfico 
+                    aleatorio, cumpliendo con estándares internacionales TR34 y ASTM F2678.
+                  </p>
+                  <div className="bg-blue-50 p-5 rounded-lg mb-6">
+                    <h3 className="text-lg font-semibold mb-3 text-blue-800">Características del Servicio</h3>
+                    <ul className="list-disc list-inside space-y-2 text-gray-700">
+                      <li>Medición con equipos láser de alta precisión</li>
+                      <li>Análisis estadístico completo de irregularidades</li>
+                      <li>Certificación según normas TR34 FM1, FM2, FM3</li>
+                      <li>Reporte técnico detallado con mapas de calor</li>
+                      <li>Recomendaciones específicas de corrección</li>
+                    </ul>
+                  </div>
+                  <p className="text-gray-700 text-lg leading-relaxed">
+                    Ideal para almacenes, centros de distribución y áreas industriales con movimiento 
+                    de montacargas en múltiples direcciones.
+                  </p>
                 </div>
-                <div className="bg-white p-3 rounded shadow">
-                  <h4 className="font-semibold mb-1 text-sm">Pisos Industriales Estándar</h4>
-                  <p className="text-gray-700 text-sm">Para fábricas, talleres y áreas de producción con tráfico pesado.</p>
-                </div>
-                <div className="bg-white p-3 rounded shadow">
-                  <h4 className="font-semibold mb-1 text-sm">Pisos Decorativos</h4>
-                  <p className="text-gray-700 text-sm">Para áreas comerciales y showrooms con requisitos estéticos.</p>
+                <div className="flex justify-center">
+                  <img 
+                    src="https://images.pexels.com/photos/2760241/pexels-photo-2760241.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                    alt="Medición de Planicidad - Tráfico Aleatorio" 
+                    className="w-full h-auto object-cover rounded-lg shadow-md"
+                  />
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div ref={mantenimientoRef} id="mantenimiento" className="mb-16">
-          <h2 className="text-2xl font-bold text-gray-800 mb-5 border-l-3 border-blue-700 pl-3">
-            Mantenimiento
-          </h2>
-          <div className="bg-white p-6 shadow-lg rounded-lg">
-            <p className="text-gray-700 mb-5">
-              Un mantenimiento adecuado es esencial para prolongar la vida útil de los pisos 
-              industriales y mantener sus propiedades intactas a lo largo del tiempo.
-            </p>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 mb-6">
-              <div className="border border-gray-200 p-5 rounded-lg">
-                <h3 className="text-lg font-semibold mb-3">Mantenimiento Preventivo</h3>
-                <p className="text-gray-700 mb-3">
-                  Programa regular de inspecciones y tratamientos para prevenir problemas antes de que ocurran.
-                </p>
-                <ul className="list-disc list-inside text-gray-700">
-                  <li>Limpieza especializada</li>
-                  <li>Renovación de selladores</li>
-                  <li>Inspección de juntas</li>
-                  <li>Tratamiento anti-polvo</li>
-                </ul>
+          <div ref={traficoDefinidoRef} id="trafico-definido" className="mb-20">
+            <h2 className="text-3xl font-bold text-gray-800 mb-8 border-l-4 border-blue-700 pl-4">
+              Medición de Planicidad - Tráfico Definido
+            </h2>
+            <div className="bg-white p-8 shadow-xl rounded-xl">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div className="flex justify-center">
+                  <img 
+                    src="https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                    alt="Medición de Planicidad - Tráfico Definido" 
+                    className="w-full h-auto object-cover rounded-lg shadow-md"
+                  />
+                </div>
+                <div>
+                  <p className="text-gray-700 mb-6 text-lg leading-relaxed">
+                    Medición especializada para sistemas automatizados y pasillos VNA (Very Narrow Aisle) 
+                    donde el tráfico sigue patrones específicos y predefinidos.
+                  </p>
+                  <div className="bg-green-50 p-5 rounded-lg mb-6">
+                    <h3 className="text-lg font-semibold mb-3 text-green-800">Aplicaciones Específicas</h3>
+                    <ul className="list-disc list-inside space-y-2 text-gray-700">
+                      <li>Sistemas automatizados de almacenamiento</li>
+                      <li>Pasillos VNA para estanterías de gran altura</li>
+                      <li>Líneas de producción automatizadas</li>
+                      <li>Sistemas robóticos de picking</li>
+                      <li>AGV (Automated Guided Vehicles) paths</li>
+                    </ul>
+                  </div>
+                  <p className="text-gray-700 text-lg leading-relaxed">
+                    Cumple con las más estrictas tolerancias requeridas por sistemas automatizados, 
+                    garantizando operación segura y eficiente.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div ref={disenoIngenieriaRef} id="diseno-ingenieria" className="mb-20">
+            <h2 className="text-3xl font-bold text-gray-800 mb-8 border-l-4 border-blue-700 pl-4">
+              Diseño e Ingeniería de Pisos Industriales
+            </h2>
+            <div className="bg-white p-8 shadow-xl rounded-xl">
+              <p className="text-gray-700 mb-8 text-lg leading-relaxed">
+                Desarrollo de soluciones integrales de ingeniería para pisos industriales, desde el análisis 
+                inicial hasta la especificación técnica completa del proyecto.
+              </p>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div className="bg-gray-50 p-6 rounded-lg">
+                  <h3 className="text-lg font-semibold mb-3 text-blue-700">Análisis Estructural</h3>
+                  <ul className="list-disc list-inside space-y-1 text-gray-700 text-sm">
+                    <li>Estudio de cargas y solicitaciones</li>
+                    <li>Análisis del suelo y cimentación</li>
+                    <li>Cálculo de espesores óptimos</li>
+                    <li>Diseño de sistemas de refuerzo</li>
+                  </ul>
+                </div>
+                
+                <div className="bg-gray-50 p-6 rounded-lg">
+                  <h3 className="text-lg font-semibold mb-3 text-blue-700">Especificaciones Técnicas</h3>
+                  <ul className="list-disc list-inside space-y-1 text-gray-700 text-sm">
+                    <li>Selección de materiales</li>
+                    <li>Diseño de juntas y sistemas</li>
+                    <li>Especificación de tolerancias</li>
+                    <li>Procedimientos de instalación</li>
+                  </ul>
+                </div>
+                
+                <div className="bg-gray-50 p-6 rounded-lg">
+                  <h3 className="text-lg font-semibold mb-3 text-blue-700">Documentación</h3>
+                  <ul className="list-disc list-inside space-y-1 text-gray-700 text-sm">
+                    <li>Planos técnicos detallados</li>
+                    <li>Especificaciones para licitación</li>
+                    <li>Programas de control de calidad</li>
+                    <li>Manuales de mantenimiento</li>
+                  </ul>
+                </div>
               </div>
               
-              <div className="border border-gray-200 p-5 rounded-lg">
-                <h3 className="text-lg font-semibold mb-3">Mantenimiento Correctivo</h3>
-                <p className="text-gray-700 mb-3">
-                  Soluciones rápidas y efectivas para problemas detectados en inspecciones o reportados por el cliente.
-                </p>
-                <ul className="list-disc list-inside text-gray-700">
-                  <li>Reparación de grietas</li>
-                  <li>Restauración de juntas</li>
-                  <li>Nivelación de áreas irregulares</li>
-                  <li>Corrección de desgastes</li>
-                </ul>
+              <img 
+                src="https://images.pexels.com/photos/7376/startup-photos.jpg?auto=compress&cs=tinysrgb&w=1200" 
+                alt="Diseño e Ingeniería de Pisos Industriales" 
+                className="w-full h-64 object-cover rounded-lg shadow-md"
+              />
+            </div>
+          </div>
+
+          <div ref={correccionDesbasteRef} id="correccion-desbaste" className="mb-20">
+            <h2 className="text-3xl font-bold text-gray-800 mb-8 border-l-4 border-blue-700 pl-4">
+              Corrección de Planicidad por Desbaste
+            </h2>
+            <div className="bg-white p-8 shadow-xl rounded-xl">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div>
+                  <p className="text-gray-700 mb-6 text-lg leading-relaxed">
+                    Técnica especializada de corrección de irregularidades mediante desbaste controlado 
+                    de concreto para lograr las tolerancias de planicidad requeridas.
+                  </p>
+                  <div className="bg-orange-50 p-5 rounded-lg mb-6">
+                    <h3 className="text-lg font-semibold mb-3 text-orange-800">Proceso de Desbaste</h3>
+                    <ol className="list-decimal list-inside space-y-2 text-gray-700">
+                      <li>Mapeo detallado de irregularidades</li>
+                      <li>Marcado de áreas a corregir</li>
+                      <li>Desbaste controlado con equipo especializado</li>
+                      <li>Verificación continua de tolerancias</li>
+                      <li>Limpieza y preparación final</li>
+                      <li>Medición de verificación</li>
+                    </ol>
+                  </div>
+                  <p className="text-gray-700 text-lg leading-relaxed">
+                    Ideal para pisos existentes que requieren alcanzar especificaciones de planicidad 
+                    para sistemas automatizados sin rehacer completamente el piso.
+                  </p>
+                </div>
+                <div className="flex justify-center">
+                  <img 
+                    src="https://images.pexels.com/photos/210137/pexels-photo-210137.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                    alt="Corrección de Planicidad por Desbaste" 
+                    className="w-full h-auto object-cover rounded-lg shadow-md"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div ref={correccionRecubrimientosRef} id="correccion-recubrimientos" className="mb-20">
+            <h2 className="text-3xl font-bold text-gray-800 mb-8 border-l-4 border-blue-700 pl-4">
+              Corrección de Planicidad por Recubrimientos
+            </h2>
+            <div className="bg-white p-8 shadow-xl rounded-xl">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div className="flex justify-center">
+                  <img 
+                    src="https://images.pexels.com/photos/1668928/pexels-photo-1668928.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                    alt="Corrección de Planicidad por Recubrimientos" 
+                    className="w-full h-auto object-cover rounded-lg shadow-md"
+                  />
+                </div>
+                <div>
+                  <p className="text-gray-700 mb-6 text-lg leading-relaxed">
+                    Aplicación de recubrimientos especializados para corregir irregularidades superficiales 
+                    y lograr las tolerancias de planicidad requeridas.
+                  </p>
+                  <div className="bg-purple-50 p-5 rounded-lg mb-6">
+                    <h3 className="text-lg font-semibold mb-3 text-purple-800">Tipos de Recubrimientos</h3>
+                    <ul className="list-disc list-inside space-y-2 text-gray-700">
+                      <li>Morteros autonivelantes de alta resistencia</li>
+                      <li>Sistemas epoxi de nivelación</li>
+                      <li>Recubrimientos poliuretano cemento</li>
+                      <li>Sistemas híbridos para casos especiales</li>
+                      <li>Recubrimientos con agregados especiales</li>
+                    </ul>
+                  </div>
+                  <p className="text-gray-700 text-lg leading-relaxed">
+                    Solución versátil que permite corregir irregularidades mientras se mejoran 
+                    las propiedades superficiales del piso como resistencia química y durabilidad.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div ref={reparacionJuntasRef} id="reparacion-juntas" className="mb-20">
+            <h2 className="text-3xl font-bold text-gray-800 mb-8 border-l-4 border-blue-700 pl-4">
+              Reparación de Juntas
+            </h2>
+            <div className="bg-white p-8 shadow-xl rounded-xl">
+              <p className="text-gray-700 mb-8 text-lg leading-relaxed">
+                Servicio especializado de reparación y mantenimiento de sistemas de juntas en pisos industriales, 
+                garantizando su funcionamiento óptimo y prolongando la vida útil del piso.
+              </p>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div className="bg-red-50 p-6 rounded-lg">
+                  <h3 className="text-lg font-semibold mb-3 text-red-800">Problemas Comunes en Juntas</h3>
+                  <ul className="list-disc list-inside space-y-2 text-gray-700">
+                    <li>Deterioro del material sellante</li>
+                    <li>Despostillamientos en bordes</li>
+                    <li>Infiltración de humedad y contaminantes</li>
+                    <li>Pérdida de adherencia del sellador</li>
+                    <li>Movimientos estructurales excesivos</li>
+                  </ul>
+                </div>
+                
+                <div className="bg-green-50 p-6 rounded-lg">
+                  <h3 className="text-lg font-semibold mb-3 text-green-800">Soluciones de Reparación</h3>
+                  <ul className="list-disc list-inside space-y-2 text-gray-700">
+                    <li>Remoción y reemplazo de selladores</li>
+                    <li>Reparación de bordes con resinas epoxi</li>
+                    <li>Instalación de sistemas armados</li>
+                    <li>Sellado con materiales poliuretano</li>
+                    <li>Refuerzo estructural de juntas críticas</li>
+                  </ul>
+                </div>
               </div>
               
-              <div className="border border-gray-200 p-5 rounded-lg">
-                <h3 className="text-lg font-semibold mb-3">Planes de Mantenimiento</h3>
-                <p className="text-gray-700 mb-3">
-                  Programas personalizados según las necesidades específicas de cada cliente.
-                </p>
-                <ul className="list-disc list-inside text-gray-700">
-                  <li>Plan Básico: trimestral</li>
-                  <li>Plan Estándar: bimestral</li>
-                  <li>Plan Premium: mensual</li>
-                  <li>Soluciones a medida</li>
-                </ul>
-              </div>
-            </div>
-            
-            <img 
-              src="https://images.pexels.com/photos/236705/pexels-photo-236705.jpeg?auto=compress&cs=tinysrgb&w=1200" 
-              alt="Mantenimiento de Pisos" 
-              className="w-full h-51 object-cover rounded-lg"
-            />
-          </div>
-        </div>
-
-        <div ref={reparacionRef} id="reparacion" className="mb-16">
-          <h2 className="text-2xl font-bold text-gray-800 mb-5 border-l-3 border-blue-700 pl-3">
-            Reparación
-          </h2>
-          <div className="bg-white p-6 shadow-lg rounded-lg">
-            <p className="text-gray-700 mb-5">
-              Contamos con soluciones efectivas para la reparación de pisos industriales dañados 
-              por uso intensivo, impactos o problemas estructurales.
-            </p>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-              <div>
-                <h3 className="text-lg font-semibold mb-3">Problemas Comunes</h3>
-                <ul className="space-y-2">
-                  <li className="flex items-start">
-                    <span className="bg-blue-100 text-blue-800 p-1 rounded-full mr-2 mt-1 text-xs">✓</span>
-                    <div>
-                      <h4 className="font-semibold text-sm">Grietas</h4>
-                      <p className="text-gray-700">Reparación con inyección de resinas epoxi de alta resistencia.</p>
+              <div className="flex flex-col md:flex-row gap-6 items-center">
+                <div className="md:w-1/2">
+                  <h3 className="text-lg font-semibold mb-3">Tipos de Juntas que Reparamos</h3>
+                  <div className="space-y-3">
+                    <div className="border-l-4 border-blue-500 pl-4">
+                      <h4 className="font-semibold text-sm">Juntas de Contracción</h4>
+                      <p className="text-gray-700 text-sm">Control de fisuramiento por retracción del concreto</p>
                     </div>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="bg-blue-100 text-blue-800 p-1 rounded-full mr-2 mt-1 text-xs">✓</span>
-                    <div>
-                      <h4 className="font-semibold text-sm">Desportilladuras</h4>
-                      <p className="text-gray-700">Reparación con morteros especiales de alta resistencia.</p>
+                    <div className="border-l-4 border-green-500 pl-4">
+                      <h4 className="font-semibold text-sm">Juntas de Construcción</h4>
+                      <p className="text-gray-700 text-sm">Unión entre diferentes vaciados de concreto</p>
                     </div>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="bg-blue-100 text-blue-800 p-1 rounded-full mr-2 mt-1 text-xs">✓</span>
-                    <div>
-                      <h4 className="font-semibold text-sm">Delaminación</h4>
-                      <p className="text-gray-700">Remoción del material suelto y aplicación de nuevo recubrimiento adherente.</p>
+                    <div className="border-l-4 border-purple-500 pl-4">
+                      <h4 className="font-semibold text-sm">Juntas de Aislamiento</h4>
+                      <p className="text-gray-700 text-sm">Separación de elementos estructurales</p>
                     </div>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="bg-blue-100 text-blue-800 p-1 rounded-full mr-2 mt-1 text-xs">✓</span>
-                    <div>
-                      <h4 className="font-semibold text-sm">Juntas dañadas</h4>
-                      <p className="text-gray-700">Reconstrucción y sellado con materiales elásticos de larga duración.</p>
+                    <div className="border-l-4 border-orange-500 pl-4">
+                      <h4 className="font-semibold text-sm">Juntas Armadas</h4>
+                      <p className="text-gray-700 text-sm">Sistemas de alta resistencia para tráfico pesado</p>
                     </div>
-                  </li>
-                </ul>
+                  </div>
+                </div>
+                <img 
+                  src="https://images.pexels.com/photos/236705/pexels-photo-236705.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                  alt="Reparación de Juntas" 
+                  className="md:w-1/2 rounded-lg shadow-md"
+                />
               </div>
-              <img 
-                src="https://images.pexels.com/photos/1668928/pexels-photo-1668928.jpeg?auto=compress&cs=tinysrgb&w=800" 
-                alt="Reparación de Pisos" 
-                className="w-full h-full object-cover rounded-lg shadow-md"
-              />
-            </div>
-            
-            <div className="bg-yellow-50 p-5 rounded-lg">
-              <h3 className="text-lg font-semibold mb-2 text-yellow-800">Ventajas de Nuestras Reparaciones</h3>
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
-                <div className="bg-white p-3 rounded shadow">
-                  <h4 className="font-semibold text-center mb-1 text-sm">Rapidez</h4>
-                  <p className="text-gray-700 text-sm text-center">Mínima interrupción de operaciones</p>
-                </div>
-                <div className="bg-white p-3 rounded shadow">
-                  <h4 className="font-semibold text-center mb-1 text-sm">Durabilidad</h4>
-                  <p className="text-gray-700 text-sm text-center">Materiales de alta resistencia</p>
-                </div>
-                <div className="bg-white p-3 rounded shadow">
-                  <h4 className="font-semibold text-center mb-1 text-sm">Estética</h4>
-                  <p className="text-gray-700 text-sm text-center">Acabado integrado con el piso existente</p>
-                </div>
-                <div className="bg-white p-3 rounded shadow">
-                  <h4 className="font-semibold text-center mb-1 text-sm">Garantía</h4>
-                  <p className="text-gray-700 text-sm text-center">Respaldo de calidad en cada reparación</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div ref={consultoriaRef} id="consultoria" className="mb-16">
-          <h2 className="text-2xl font-bold text-gray-800 mb-5 border-l-3 border-blue-700 pl-3">
-            Consultoría
-          </h2>
-          <div className="bg-white p-6 shadow-lg rounded-lg">
-            <p className="text-gray-700 mb-5">
-              Nuestro equipo de expertos ofrece servicios de consultoría para ayudarte a 
-              seleccionar la mejor solución para tu proyecto, considerando todos los factores 
-              relevantes para garantizar resultados óptimos.
-            </p>
-            
-            <div className="bg-gradient-to-r from-blue-50 to-blue-100 p-5 rounded-lg mb-6">
-              <h3 className="text-lg font-semibold mb-3 text-blue-800">Servicios de Consultoría</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <div className="bg-white p-4 rounded-lg shadow">
-                  <h4 className="font-semibold mb-2 text-sm">Evaluación y Diagnóstico</h4>
-                  <p className="text-gray-700 text-sm">
-                    Análisis detallado del estado actual de pisos existentes o evaluación 
-                    de requisitos para nuevas instalaciones.
-                  </p>
-                </div>
-                <div className="bg-white p-4 rounded-lg shadow">
-                  <h4 className="font-semibold mb-2 text-sm">Especificaciones Técnicas</h4>
-                  <p className="text-gray-700 text-sm">
-                    Desarrollo de especificaciones detalladas para licitaciones o 
-                    contratación directa de servicios.
-                  </p>
-                </div>
-                <div className="bg-white p-4 rounded-lg shadow">
-                  <h4 className="font-semibold mb-2 text-sm">Supervisión de Obra</h4>
-                  <p className="text-gray-700 text-sm">
-                    Verificación de que la instalación cumpla con los estándares 
-                    y especificaciones acordadas.
-                  </p>
-                </div>
-                <div className="bg-white p-4 rounded-lg shadow">
-                  <h4 className="font-semibold mb-2 text-sm">Optimización de Diseño</h4>
-                  <p className="text-gray-700 text-sm">
-                    Recomendaciones para mejorar el diseño, reducir costos y 
-                    maximizar la vida útil del piso.
-                  </p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="flex flex-col md:flex-row gap-6 items-center">
-              <div className="md:w-1/2">
-                <h3 className="text-lg font-semibold mb-3">¿Por qué elegirnos como consultores?</h3>
-                <ul className="space-y-2 text-gray-700">
-                  <li className="flex items-center">
-                    <span className="text-blue-600 mr-1">✓</span>
-                    Más de 15 años de experiencia especializada
-                  </li>
-                  <li className="flex items-center">
-                    <span className="text-blue-600 mr-1">✓</span>
-                    Conocimiento profundo de estándares internacionales
-                  </li>
-                  <li className="flex items-center">
-                    <span className="text-blue-600 mr-1">✓</span>
-                    Equipo de ingenieros certificados
-                  </li>
-                  <li className="flex items-center">
-                    <span className="text-blue-600 mr-1">✓</span>
-                    Enfoque imparcial orientado a resultados
-                  </li>
-                  <li className="flex items-center">
-                    <span className="text-blue-600 mr-1">✓</span>
-                    Soporte técnico continuo durante todo el proyecto
-                  </li>
-                </ul>
-              </div>
-              <img 
-                src="https://images.pexels.com/photos/7376/startup-photos.jpg?auto=compress&cs=tinysrgb&w=800" 
-                alt="Consultoría de Pisos Industriales" 
-                className="md:w-1/2 rounded-lg shadow-lg"
-              />
             </div>
           </div>
         </div>

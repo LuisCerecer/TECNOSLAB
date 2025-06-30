@@ -88,10 +88,12 @@ function App() {
       name: 'Servicios',
       path: '/servicios',
       items: [
-        { name: 'Instalación', hash: '#instalacion' },
-        { name: 'Mantenimiento', hash: '#mantenimiento' },
-        { name: 'Reparación', hash: '#reparacion' },
-        { name: 'Consultoría', hash: '#consultoria' }
+        { name: 'Medición de Planicidad - Tráfico Aleatorio', hash: '#trafico-aleatorio' },
+        { name: 'Medición de Planicidad - Tráfico Definido', hash: '#trafico-definido' },
+        { name: 'Diseño e Ingeniería de Pisos Industriales', hash: '#diseno-ingenieria' },
+        { name: 'Corrección de Planicidad por Desbaste', hash: '#correccion-desbaste' },
+        { name: 'Corrección de Planicidad por Recubrimientos', hash: '#correccion-recubrimientos' },
+        { name: 'Reparación de Juntas', hash: '#reparacion-juntas' }
       ],
       title: 'Servicios',
       featured: {
@@ -310,7 +312,7 @@ function App() {
           <Link to="/" className="h-16" onClick={handleLogoClick}>
             <img 
               src="/Tecnosbal logo.png" 
-              alt="Tecnoslab" 
+              alt="TECNOSLAB" 
               className="h-full object-contain" 
             />
           </Link>
@@ -343,12 +345,12 @@ function App() {
             <div className="h-16">
               <img 
                 src="/Tecnosbal logo.png" 
-                alt="Tecnoslab" 
+                alt="TECNOSLAB" 
                 className="h-full object-contain"
               />
             </div>
             <div className="text-right">
-              <p>© {new Date().getFullYear()} Tecnoslab</p>
+              <p>© {new Date().getFullYear()} TECNOSLAB</p>
               <p>Pisos Continuos de Alta Planicidad</p>
             </div>
           </div>
