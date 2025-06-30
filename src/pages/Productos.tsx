@@ -41,42 +41,42 @@ function Productos() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 <div className="bg-gray-100 p-6 rounded-lg">
                   <h3 className="text-lg font-semibold mb-3">Características Principales</h3>
-                  <ul className="space-y-2.5 text-gray-700 text-base leading-relaxed">
-                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-base">
+                  <ul className="space-y-2.5 text-gray-700 text-lg leading-relaxed">
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-lg">
                       Alta resistencia al desgaste y a productos químicos
                     </li>
-                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-base">
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-lg">
                       Aplicación rápida y curado en poco tiempo
                     </li>
-                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-base">
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-lg">
                       Superficie lisa y nivelada para operaciones exigentes
                     </li>
                   </ul>
                 </div>
                 <div className="bg-gray-100 p-6 rounded-lg">
                   <h3 className="text-lg font-semibold mb-3">Aplicaciones</h3>
-                  <ul className="space-y-2.5 text-gray-700 text-base leading-relaxed">
-                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-green-600 before:font-bold before:text-base">
+                  <ul className="space-y-2.5 text-gray-700 text-lg leading-relaxed">
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-green-600 before:font-bold before:text-lg">
                       Naves industriales y centros logísticos
                     </li>
-                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-green-600 before:font-bold before:text-base">
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-green-600 before:font-bold before:text-lg">
                       Almacenes automatizados y de alta precisión
                     </li>
-                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-green-600 before:font-bold before:text-base">
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-green-600 before:font-bold before:text-lg">
                       Áreas de tránsito frecuente de maquinaria pesada
                     </li>
                   </ul>
                 </div>
                 <div className="bg-gray-100 p-6 rounded-lg">
                   <h3 className="text-lg font-semibold mb-3">Beneficios</h3>
-                  <ul className="space-y-2.5 text-gray-700 text-base leading-relaxed">
-                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-orange-600 before:font-bold before:text-base">
+                  <ul className="space-y-2.5 text-gray-700 text-lg leading-relaxed">
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-orange-600 before:font-bold before:text-lg">
                       Reducción de costos de mantenimiento
                     </li>
-                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-orange-600 before:font-bold before:text-base">
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-orange-600 before:font-bold before:text-lg">
                       Mayor eficiencia y seguridad operativa
                     </li>
-                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-orange-600 before:font-bold before:text-base">
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-orange-600 before:font-bold before:text-lg">
                       Prolonga la vida útil del piso industrial
                     </li>
                   </ul>
@@ -101,42 +101,42 @@ function Productos() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 <div className="bg-gray-100 p-6 rounded-lg">
                   <h3 className="text-lg font-semibold mb-3">Características Principales</h3>
-                  <ul className="space-y-2.5 text-gray-700 text-base leading-relaxed">
-                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-base">
+                  <ul className="space-y-2.5 text-gray-700 text-lg leading-relaxed">
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-lg">
                       Endurecimiento acelerado, alcanza resistencias de carga en pocas horas
                     </li>
-                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-base">
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-lg">
                       Alta adherencia a diversos sustratos
                     </li>
-                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-base">
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-lg">
                       Resistencia temprana y durabilidad alta
                     </li>
                   </ul>
                 </div>
                 <div className="bg-gray-100 p-6 rounded-lg">
                   <h3 className="text-lg font-semibold mb-3">Aplicaciones</h3>
-                  <ul className="space-y-2.5 text-gray-700 text-base leading-relaxed">
-                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-base">
+                  <ul className="space-y-2.5 text-gray-700 text-lg leading-relaxed">
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-lg">
                       Reparación de grietas, fisuras y zonas deterioradas en pisos industriales
                     </li>
-                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-base">
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-lg">
                       Restauración rápida en muelles de carga, hangares y áreas de tráfico pesado
                     </li>
-                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-base">
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-lg">
                       Intervenciones críticas con tiempo limitado, como maquinaria en funcionamiento continuo
                     </li>
                   </ul>
                 </div>
                 <div className="bg-gray-100 p-6 rounded-lg">
                   <h3 className="text-lg font-semibold mb-3">Beneficios</h3>
-                  <ul className="space-y-2.5 text-gray-700 text-base leading-relaxed">
-                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-base">
+                  <ul className="space-y-2.5 text-gray-700 text-lg leading-relaxed">
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-lg">
                       Reducción significativa de tiempos de inactividad al recuperar tráfico en horas
                     </li>
-                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-base">
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-lg">
                       Ahorro en costos de mano de obra y logística por su rápida aplicación
                     </li>
-                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-base">
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-lg">
                       Mantiene alta resistencia y prolonga la vida útil del pavimento, reduciendo el mantenimiento frecuente
                     </li>
                   </ul>
