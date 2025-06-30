@@ -101,21 +101,45 @@ function Productos() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 <div className="bg-gray-100 p-6 rounded-lg">
                   <h3 className="text-lg font-semibold mb-3">Características Principales</h3>
-                  <p className="text-gray-700">
-                    Monitoreo continuo y control de calidad avanzado para máxima precisión.
-                  </p>
+                  <ul className="space-y-2.5 text-gray-700 text-sm leading-relaxed">
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-base">
+                      Endurecimiento acelerado, alcanza resistencias de carga en pocas horas
+                    </li>
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-base">
+                      Alta adherencia a diversos sustratos
+                    </li>
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-base">
+                      Resistencia temprana y durabilidad alta
+                    </li>
+                  </ul>
                 </div>
                 <div className="bg-gray-100 p-6 rounded-lg">
                   <h3 className="text-lg font-semibold mb-3">Aplicaciones</h3>
-                  <p className="text-gray-700">
-                    Sistemas de sensores para detección temprana y prevención de problemas.
-                  </p>
+                  <ul className="space-y-2.5 text-gray-700 text-sm leading-relaxed">
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-base">
+                      Reparación de grietas, fisuras y zonas deterioradas en pisos industriales
+                    </li>
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-base">
+                      Restauración rápida en muelles de carga, hangares y áreas de tráfico pesado
+                    </li>
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-base">
+                      Intervenciones críticas con tiempo limitado, como maquinaria en funcionamiento continuo
+                    </li>
+                  </ul>
                 </div>
                 <div className="bg-gray-100 p-6 rounded-lg">
                   <h3 className="text-lg font-semibold mb-3">Beneficios</h3>
-                  <p className="text-gray-700">
-                    Herramientas de análisis para asegurar cumplimiento de especificaciones.
-                  </p>
+                  <ul className="space-y-2.5 text-gray-700 text-sm leading-relaxed">
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-base">
+                      Reducción significativa de tiempos de inactividad al recuperar tráfico en horas
+                    </li>
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-base">
+                      Ahorro en costos de mano de obra y logística por su rápida aplicación
+                    </li>
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-base">
+                      Mantiene alta resistencia y prolonga la vida útil del pavimento, reduciendo el mantenimiento frecuente
+                    </li>
+                  </ul>
                 </div>
               </div>
               <img 
