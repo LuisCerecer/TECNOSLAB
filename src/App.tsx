@@ -60,7 +60,9 @@ function App() {
       path: '/acerca-de-nosotros',
       items: [
         { name: 'Historia', hash: '#historia' },
-        { name: 'Misión, Visión y Valores', hash: '#mision-vision-valores' }
+        { name: 'Misión', hash: '#mision' },
+        { name: 'Visión', hash: '#vision' },
+        { name: 'Valores', hash: '#valores' }
       ],
       title: 'Acerca de nosotros',
       featured: {
