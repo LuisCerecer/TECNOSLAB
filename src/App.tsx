@@ -76,7 +76,6 @@ function App() {
       }, 100 * index);
     });
   }, [location.pathname]);
-  };
 
   // Navigation items data
   const navItems = [
