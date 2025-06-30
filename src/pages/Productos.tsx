@@ -26,9 +26,7 @@ function Productos() {
       <div className="container mx-auto px-6">
         <h1 className="text-3xl font-bold text-gray-800 mb-5">Productos</h1>
         <p className="text-lg text-gray-700 mb-10">
-          En Tecnoslab ofrecemos una amplia gama de productos de la más alta calidad para 
-          la instalación y mantenimiento de pisos industriales, garantizando durabilidad y 
-          rendimiento excepcional.
+          Ofrecemos una amplia gama de servicios especializados para pisos industriales que van desde la ingeniería hasta la certificación de planicidad. A través de nuestra alianza con CoGri GESPaP, contamos con la tecnología más avanzada del mercado para la medición de planicidad en pisos para sistemas robóticos y pasillos VNA.
         </p>
 
         <div ref={tecnoMGRef} id="tecnomg" className="mb-16">
