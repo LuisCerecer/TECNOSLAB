@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -43,6 +43,9 @@ const ContactForm: React.FC = () => {
   const [newsletterRecaptchaToken, setNewsletterRecaptchaToken] = useState<string | null>(null);
   const [isNewsletterSubmitting, setIsNewsletterSubmitting] = useState(false);
   const [calendarLoaded, setCalendarLoaded] = useState(false);
+  
+  // Ref for Cal.com embed container
+  const calEmbedContainerRef = useRef<HTMLDivElement>(null);
 
   const handleInputChange = (field: keyof FormData, value: string) => {
     setFormData(prev => ({
@@ -148,92 +151,94 @@ const ContactForm: React.FC = () => {
 
   // Initialize Cal.com embed when videoCall tab becomes active
   React.useEffect(() => {
-    if (activeTab !== 'videoCall') {
+    if (activeTab !== 'videoCall' || !calEmbedContainerRef.current) {
       return;
     }
 
     // Reset loading state
     setCalendarLoaded(false);
 
-    // Small delay to ensure DOM is ready
-    const timer = setTimeout(() => {
-      const targetElement = document.getElementById('cal-embed-container');
-      if (!targetElement) {
-        console.error('Cal embed container not found');
-        return;
-      }
+    const targetElement = calEmbedContainerRef.current;
 
-      // Clear any existing content
-      targetElement.innerHTML = '';
+    // Clear any existing content
+    targetElement.innerHTML = '';
 
-      // Create the Cal.com inline embed directly
-      const calDiv = document.createElement('div');
-      calDiv.id = 'my-cal-inline';
-      calDiv.style.width = '100%';
-      calDiv.style.height = '700px';
-      calDiv.style.overflow = 'auto';
-      targetElement.appendChild(calDiv);
+    // Create the Cal.com inline embed directly
+    const calDiv = document.createElement('div');
+    calDiv.id = 'my-cal-inline';
+    calDiv.style.width = '100%';
+    calDiv.style.height = '700px';
+    calDiv.style.overflow = 'auto';
+    targetElement.appendChild(calDiv);
 
-      // Initialize Cal.com
-      const script = document.createElement('script');
-      script.innerHTML = `
-        (function (C, A, L) { 
-          let p = function (a, ar) { a.q.push(ar); }; 
-          let d = C.document; 
-          C.Cal = C.Cal || function () { 
-            let cal = C.Cal; 
-            let ar = arguments; 
-            if (!cal.loaded) { 
-              cal.ns = {}; 
-              cal.q = cal.q || []; 
-              d.head.appendChild(d.createElement("script")).src = A; 
-              cal.loaded = true; 
-            } 
-            if (ar[0] === L) { 
-              const api = function () { p(api, arguments); }; 
-              const namespace = ar[1]; 
-              api.q = api.q || []; 
-              if(typeof namespace === "string"){
-                cal.ns[namespace] = cal.ns[namespace] || api;
-                p(cal.ns[namespace], ar);
-                p(cal, ["initNamespace", namespace]);
-              } else p(cal, ar); 
-              return;
-            } 
-            p(cal, ar); 
-          }; 
-        })(window, "https://app.cal.com/embed/embed.js", "init");
-        
-        Cal("init", "30min", {origin:"https://app.cal.com"});
-
-        Cal.ns["30min"]("inline", {
-          elementOrSelector: "#my-cal-inline",
-          calLink: "testing-luis-c/30min",
-          config: {
-            layout: "month_view"
-          }
-        });
-
-        Cal.ns["30min"]("ui", {
-          cssVarsPerTheme: {
-            light: { "cal-brand": "#1D4ED8" },
-            dark: { "cal-brand": "#1D4ED8" }
-          },
-          hideEventTypeDetails: false,
-          layout: "month_view"
-        });
-      `;
+    // Initialize Cal.com
+    const script = document.createElement('script');
+    script.innerHTML = `
+      (function (C, A, L) { 
+        let p = function (a, ar) { a.q.push(ar); }; 
+        let d = C.document; 
+        C.Cal = C.Cal || function () { 
+          let cal = C.Cal; 
+          let ar = arguments; 
+          if (!cal.loaded) { 
+            cal.ns = {}; 
+            cal.q = cal.q || []; 
+            d.head.appendChild(d.createElement("script")).src = A; 
+            cal.loaded = true; 
+          } 
+          if (ar[0] === L) { 
+            const api = function () { p(api, arguments); }; 
+            const namespace = ar[1]; 
+            api.q = api.q || []; 
+            if(typeof namespace === "string"){
+              cal.ns[namespace] = cal.ns[namespace] || api;
+              p(cal.ns[namespace], ar);
+              p(cal, ["initNamespace", namespace]);
+            } else p(cal, ar); 
+            return;
+          } 
+          p(cal, ar); 
+        }; 
+      })(window, "https://app.cal.com/embed/embed.js", "init");
       
-      document.head.appendChild(script);
+      Cal("init", "30min", {origin:"https://app.cal.com"});
 
-      // Set loaded after a short delay to account for Cal.com initialization
-      setTimeout(() => {
-        setCalendarLoaded(true);
-      }, 2000);
-    }, 100);
+      Cal.ns["30min"]("inline", {
+        elementOrSelector: "#my-cal-inline",
+        calLink: "testing-luis-c/30min",
+        config: {
+          layout: "month_view"
+        }
+      });
 
+      Cal.ns["30min"]("ui", {
+        cssVarsPerTheme: {
+          light: { "cal-brand": "#1D4ED8" },
+          dark: { "cal-brand": "#1D4ED8" }
+        },
+        hideEventTypeDetails: false,
+        layout: "month_view"
+      });
+    `;
+    
+    document.head.appendChild(script);
+
+    // Set loaded after a short delay to account for Cal.com initialization
+    const loadingTimer = setTimeout(() => {
+      setCalendarLoaded(true);
+    }, 2000);
+
+    // Cleanup function
     return () => {
-      clearTimeout(timer);
+      clearTimeout(loadingTimer);
+      if (targetElement) {
+        targetElement.innerHTML = '';
+      }
+      // Remove the script if it exists
+      const existingScript = document.querySelector('script[src="https://app.cal.com/embed/embed.js"]');
+      if (existingScript) {
+        existingScript.remove();
+      }
     };
   }, [activeTab]);
 
@@ -547,7 +552,7 @@ const ContactForm: React.FC = () => {
                     </div>
                   )}
                   
-                  <div id="cal-embed-container" className={!calendarLoaded ? 'hidden' : 'block'}></div>
+                  <div ref={calEmbedContainerRef} className={!calendarLoaded ? 'hidden' : 'block'}></div>
                 </div>
                 
                 <div className="bg-blue-50 p-4 rounded-lg">
