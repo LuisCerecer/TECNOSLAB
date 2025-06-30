@@ -54,24 +54,18 @@ function NuestraInformacion() {
               
               <div className="flex items-start">
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                  <span className="text-blue-700 text-xl">🌐</span>
+                  <span className="text-blue-700 text-xl">🔗</span>
                 </div>
                 <div>
-                  <h3 className="font-semibold mb-1">Redes Sociales</h3>
-                  <div className="flex space-x-4 mt-2">
-                    <a href="#" className="text-gray-600 hover:text-blue-700">
-                      <span className="text-2xl">📱</span>
-                    </a>
-                    <a href="#" className="text-gray-600 hover:text-blue-700">
-                      <span className="text-2xl">👥</span>
-                    </a>
-                    <a href="#" className="text-gray-600 hover:text-blue-700">
-                      <span className="text-2xl">📸</span>
-                    </a>
-                    <a href="#" className="text-gray-600 hover:text-blue-700">
-                      <span className="text-2xl">🔗</span>
-                    </a>
-                  </div>
+                  <h3 className="font-semibold mb-1">LinkedIn</h3>
+                  <a 
+                    href="https://linkedin.com/in/martincerecer/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-800 underline transition-colors"
+                  >
+                    linkedin.com/in/martincerecer/
+                  </a>
                 </div>
               </div>
             </div>
