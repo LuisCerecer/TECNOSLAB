@@ -18,6 +18,9 @@ function Proyectos() {
         default:
           break;
       }
+    } else {
+      // Scroll to top if no hash is present
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }, [location]);
 

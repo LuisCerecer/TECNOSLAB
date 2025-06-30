@@ -78,6 +78,13 @@ const NavMenu: React.FC<NavMenuProps> = ({ navItems }) => {
     setActiveDropdown(null);
   };
 
+  // Handle main navigation item click to ensure scroll to top
+  const handleMainNavClick = () => {
+    // Small delay to ensure navigation completes before scrolling
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100);
+  };
   return (
     <nav 
       className="relative" 
@@ -93,6 +100,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ navItems }) => {
           >
             <Link 
               to={item.path}
+              onClick={handleMainNavClick}
               className="text-gray-700 hover:text-blue-700 font-medium transition-colors duration-300 relative nav-link text-lg"
             >
               {item.name}
