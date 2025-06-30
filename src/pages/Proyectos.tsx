@@ -40,7 +40,7 @@ function Proyectos() {
                   <p className="text-gray-700 mb-6 text-lg leading-relaxed">
                     Proyecto de medición y certificación de planicidad para las instalaciones de BOSCH en Ciudad Juárez, utilizando tecnología de última generación para garantizar el cumplimiento de los estándares más exigentes.
                   </p>
-                  <div className="bg-blue-50 p-5 rounded-lg mb-6">
+                  <div className="bg-white p-5 rounded-lg mb-6 border border-gray-200">
                     <h3 className="text-lg font-semibold mb-3 text-blue-800">Especificaciones del Proyecto</h3>
                     <ul className="list-disc list-inside space-y-2 text-gray-700">
                       <li>Medición precisa con tecnología láser 3D</li>
@@ -83,7 +83,7 @@ function Proyectos() {
                   <p className="text-gray-700 mb-6 text-lg leading-relaxed">
                     Proyecto integral de instalación de pisos industriales de alta planicidad para CYS en Querétaro, diseñado para soportar operaciones logísticas intensivas y sistemas automatizados.
                   </p>
-                  <div className="bg-blue-50 p-5 rounded-lg mb-6">
+                  <div className="bg-white p-5 rounded-lg mb-6 border border-gray-200">
                     <h3 className="text-lg font-semibold mb-3 text-blue-800">Características del Proyecto</h3>
                     <ul className="list-disc list-inside space-y-2 text-gray-700">
                       <li>Instalación de 18,500 m² de piso superplano</li>
