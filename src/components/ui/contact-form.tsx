@@ -23,14 +23,7 @@ interface FormData {
 type ActiveTab = 'form' | 'contactInfo' | 'videoCall' | 'newsletter';
 
 const ContactForm: React.FC = () => {
-    // Add type declarations for Cal.com
-  declare global {
-    interface Window {
-      Cal: any;
-    }
-  }
-  
-    const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<FormData>({
     nombre: '',
     empresa: '',
     email: '',
@@ -38,7 +31,7 @@ const ContactForm: React.FC = () => {
     mensaje: ''
   });
   const [showSuccess, setShowSuccess] = useState(false);
-    const [activeTab, setActiveTab] = useState<ActiveTab>('form');
+  const [activeTab, setActiveTab] = useState<ActiveTab>('form');
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [newsletterData, setNewsletterData] = useState({
@@ -49,6 +42,7 @@ const ContactForm: React.FC = () => {
   const [newsletterSuccess, setNewsletterSuccess] = useState(false);
   const [newsletterRecaptchaToken, setNewsletterRecaptchaToken] = useState<string | null>(null);
   const [isNewsletterSubmitting, setIsNewsletterSubmitting] = useState(false);
+  const [calLoaded, setCalLoaded] = useState(false);
 
   const handleInputChange = (field: keyof FormData, value: string) => {
     setFormData(prev => ({
@@ -69,9 +63,6 @@ const ContactForm: React.FC = () => {
     
     const submitData = async () => {
       try {
-        // Verify reCAPTCHA token on the server side would go here
-        // For now, we'll proceed with the form submission
-        
         const submissionData: ContactSubmission = {
           type: 'general',
           name: formData.nombre,
@@ -148,64 +139,126 @@ const ContactForm: React.FC = () => {
     submitNewsletterData();
   };
 
-    const tiposProyecto = [
+  const tiposProyecto = [
     { value: 'ingenieria', label: 'Ingeniería de piso' },
     { value: 'medicion', label: 'Medición del piso' },
     { value: 'reparacion', label: 'Reparación del piso' },
     { value: 'otra', label: 'Otra consulta' }
   ];
 
-  // Load Cal.com embed script when videoCall tab is active
+  // Load Cal.com embed immediately when component mounts
   React.useEffect(() => {
-    if (activeTab === 'videoCall') {
-      // Initialize Cal.com embed with the exact code provided
-      const initializeCal = () => {
-        (function (C, A, L) { 
-          let p = function (a, ar) { a.q.push(ar); }; 
-          let d = C.document; 
-          C.Cal = C.Cal || function () { 
-            let cal = C.Cal; 
-            let ar = arguments; 
-            if (!cal.loaded) { 
-              cal.ns = {}; 
-              cal.q = cal.q || []; 
-              d.head.appendChild(d.createElement("script")).src = A; 
-              cal.loaded = true; 
-            } 
-            if (ar[0] === L) { 
-              const api = function () { p(api, arguments); }; 
-              const namespace = ar[1]; 
-              api.q = api.q || []; 
-              if(typeof namespace === "string"){
-                cal.ns[namespace] = cal.ns[namespace] || api;
-                p(cal.ns[namespace], ar);
-                p(cal, ["initNamespace", namespace]);
-              } else p(cal, ar); 
-              return;
-            } 
-            p(cal, ar); 
-          }; 
-        })(window, "https://app.cal.com/embed/embed.js", "init");
+    const loadCalEmbed = () => {
+      // First, add the Cal.com script to the document head if it doesn't exist
+      if (!document.querySelector('script[src*="cal.com/embed"]')) {
+        const script = document.createElement('script');
+        script.src = 'https://app.cal.com/embed/embed.js';
+        script.async = true;
+        document.head.appendChild(script);
         
-        window.Cal("init", "30min", {origin:"https://app.cal.com"});
+        script.onload = () => {
+          setTimeout(() => {
+            initializeCal();
+          }, 100);
+        };
+      } else {
+        // Script already exists, just initialize
+        setTimeout(() => {
+          initializeCal();
+        }, 100);
+      }
+    };
 
-        window.Cal.ns["30min"]("inline", {
-          elementOrSelector:"#my-cal-inline-30min",
-          config: {"layout":"month_view"},
-          calLink: "testing-luis-c/30min",
-        });
+    const initializeCal = () => {
+      try {
+        // Initialize Cal.com with your exact configuration
+        if (window.Cal) {
+          window.Cal("init", "30min", {origin:"https://app.cal.com"});
 
-        window.Cal.ns["30min"]("ui", {
-          "cssVarsPerTheme":{"light":{"cal-brand":"#292929"},"dark":{"cal-brand":"#fafafa"}},
-          "hideEventTypeDetails":false,
-          "layout":"month_view"
-        });
-      };
-      
-      // Small delay to ensure the DOM element is ready
-      setTimeout(initializeCal, 100);
+          window.Cal.ns = window.Cal.ns || {};
+          window.Cal.ns["30min"] = window.Cal.ns["30min"] || function() {
+            const api = function() { 
+              api.q = api.q || [];
+              api.q.push(arguments); 
+            };
+            api.q = api.q || [];
+            return api;
+          }();
+
+          window.Cal.ns["30min"]("inline", {
+            elementOrSelector:"#my-cal-inline-30min",
+            config: {"layout":"month_view"},
+            calLink: "testing-luis-c/30min",
+          });
+
+          window.Cal.ns["30min"]("ui", {
+            "cssVarsPerTheme":{"light":{"cal-brand":"#292929"},"dark":{"cal-brand":"#fafafa"}},
+            "hideEventTypeDetails":false,
+            "layout":"month_view"
+          });
+
+          setCalLoaded(true);
+        } else {
+          // Fallback: use the global initialization method
+          (function (C, A, L) { 
+            let p = function (a, ar) { a.q.push(ar); }; 
+            let d = C.document; 
+            C.Cal = C.Cal || function () { 
+              let cal = C.Cal; 
+              let ar = arguments; 
+              if (!cal.loaded) { 
+                cal.ns = {}; 
+                cal.q = cal.q || []; 
+                d.head.appendChild(d.createElement("script")).src = A; 
+                cal.loaded = true; 
+              } 
+              if (ar[0] === L) { 
+                const api = function () { p(api, arguments); }; 
+                const namespace = ar[1]; 
+                api.q = api.q || []; 
+                if(typeof namespace === "string"){
+                  cal.ns[namespace] = cal.ns[namespace] || api;
+                  p(cal.ns[namespace], ar);
+                  p(cal, ["initNamespace", namespace]);
+                } else p(cal, ar); 
+                return;
+              } 
+              p(cal, ar); 
+            }; 
+          })(window, "https://app.cal.com/embed/embed.js", "init");
+
+          window.Cal("init", "30min", {origin:"https://app.cal.com"});
+
+          window.Cal.ns["30min"]("inline", {
+            elementOrSelector:"#my-cal-inline-30min",
+            config: {"layout":"month_view"},
+            calLink: "testing-luis-c/30min",
+          });
+
+          window.Cal.ns["30min"]("ui", {
+            "cssVarsPerTheme":{"light":{"cal-brand":"#292929"},"dark":{"cal-brand":"#fafafa"}},
+            "hideEventTypeDetails":false,
+            "layout":"month_view"
+          });
+
+          setCalLoaded(true);
+        }
+      } catch (error) {
+        console.error('Error initializing Cal.com:', error);
+        // Retry after a short delay
+        setTimeout(() => {
+          initializeCal();
+        }, 1000);
+      }
+    };
+
+    // Add type declarations for Cal.com
+    if (!window.Cal) {
+      loadCalEmbed();
+    } else {
+      initializeCal();
     }
-  }, [activeTab]);
+  }, []);
 
   const contactInfo = {
     correo: 'martincerecer@tecnoslab.com',
@@ -337,15 +390,15 @@ const ContactForm: React.FC = () => {
 
                 <div className="space-y-2">
                   <Label htmlFor="mensaje" className="text-base font-medium text-gray-700">
-                      Mensaje
-                    </Label>
-                    <Textarea
-                      id="mensaje"
-                      value={formData.mensaje}
-                      onChange={(e) => handleInputChange('mensaje', e.target.value)}
-                      className="w-full min-h-[120px] text-base"
-                      placeholder="Escribe tu mensaje aquí..."
-                    />
+                    Mensaje
+                  </Label>
+                  <Textarea
+                    id="mensaje"
+                    value={formData.mensaje}
+                    onChange={(e) => handleInputChange('mensaje', e.target.value)}
+                    className="w-full min-h-[120px] text-base"
+                    placeholder="Escribe tu mensaje aquí..."
+                  />
                 </div>
 
                 <div className="flex justify-center">
@@ -409,16 +462,16 @@ const ContactForm: React.FC = () => {
 
                 <div className="space-y-2">
                   <Label htmlFor="newsletter-email" className="text-base font-medium text-gray-700">
-                      Email *
-                    </Label>
-                    <Input
-                      id="newsletter-email"
-                      type="email"
-                      value={newsletterData.email}
-                      onChange={(e) => setNewsletterData(prev => ({ ...prev, email: e.target.value }))}
-                      className="w-full h-10 text-base"
-                      required
-                    />
+                    Email *
+                  </Label>
+                  <Input
+                    id="newsletter-email"
+                    type="email"
+                    value={newsletterData.email}
+                    onChange={(e) => setNewsletterData(prev => ({ ...prev, email: e.target.value }))}
+                    className="w-full h-10 text-base"
+                    required
+                  />
                 </div>
 
                 <div className="flex justify-center">
@@ -486,24 +539,52 @@ const ContactForm: React.FC = () => {
               </motion.div>
             )}
 
-                        {activeTab === 'videoCall' && (
+            {activeTab === 'videoCall' && (
               <motion.div
                 key="videoCall"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3 }}
-                className="space-y-6 h-[600px]"
+                className="space-y-6"
               >
-                {/* Cal.com Embed */}
-                <div className="w-full h-full">
-                  <div style={{width:"100%", height:"100%", overflow:"scroll"}} id="my-cal-inline-30min"></div>
+                <div className="text-center mb-6">
+                  <p className="text-gray-600 text-lg">
+                    Selecciona una fecha y hora que te convenga. Nuestro horario es de 11:00 a 18:00 (GMT-6).
+                  </p>
+                </div>
+                
+                {/* Cal.com Embed Container */}
+                <div className="w-full min-h-[600px] border border-gray-200 rounded-lg overflow-hidden bg-white shadow-sm">
+                  {!calLoaded && (
+                    <div className="flex items-center justify-center h-[600px]">
+                      <div className="text-center">
+                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+                        <p className="text-gray-600">Cargando calendario...</p>
+                      </div>
+                    </div>
+                  )}
+                  <div 
+                    id="my-cal-inline-30min" 
+                    style={{
+                      width: "100%", 
+                      height: calLoaded ? "600px" : "0px", 
+                      overflow: "scroll",
+                      transition: "height 0.3s ease"
+                    }}
+                  ></div>
+                </div>
+                
+                <div className="text-center text-sm text-gray-500 mt-4">
+                  <p>
+                    Al agendar una cita, recibirás un enlace de videollamada por correo electrónico.
+                  </p>
                 </div>
               </motion.div>
             )}
           </AnimatePresence>
 
-                    {/* Success Animation */}
+          {/* Success Animation */}
           {showSuccess && (
             <div className="absolute inset-0 bg-blue-50 bg-opacity-95 flex flex-col items-center justify-center rounded-lg z-10">
               <motion.div
@@ -543,5 +624,11 @@ const ContactForm: React.FC = () => {
     </div>
   );
 };
+
+declare global {
+  interface Window {
+    Cal: any;
+  }
+}
 
 export default ContactForm;
