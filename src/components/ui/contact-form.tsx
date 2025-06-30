@@ -354,12 +354,12 @@ const ContactForm: React.FC = () => {
                 
                 <div className="bg-blue-50 p-4 rounded-lg mt-4">
                   <div className="text-center text-sm text-gray-600">
-                    <p className="font-medium mb-2">🎯 ¿Qué incluye tu videollamada?</p>
+                    <p className="font-medium mb-2"></p>
                     <ul className="text-left max-w-md mx-auto space-y-1">
-                      <li>• Consulta personalizada sobre tu proyecto</li>
-                      <li>• Recomendaciones técnicas específicas</li>
-                      <li>• Estimación preliminar de costos</li>
-                      <li>• Enlace de Zoom enviado por email</li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
                     </ul>
                   </div>
                 </div>
