@@ -60,7 +60,7 @@ function Productos() {
                 </div>
               </div>
               <img 
-                src="https://images.pexels.com/photos/2760241/pexels-photo-2760241.jpeg?auto=compress&cs=tinysrgb&w=1200" 
+                src="https://res.cloudinary.com/dy089iwsg/image/upload/v1751255497/MG_fqrsrb.png" 
                 alt="TecnoMG Sistema" 
                 className="w-full h-64 object-cover rounded-lg shadow-md"
               />
@@ -97,7 +97,7 @@ function Productos() {
                 </div>
               </div>
               <img 
-                src="https://images.pexels.com/photos/1668928/pexels-photo-1668928.jpeg?auto=compress&cs=tinysrgb&w=1200" 
+                src="https://res.cloudinary.com/dy089iwsg/image/upload/v1751255686/CM_uxmuqt.png" 
                 alt="TecnoCM Sistema" 
                 className="w-full h-64 object-cover rounded-lg shadow-md"
               />
