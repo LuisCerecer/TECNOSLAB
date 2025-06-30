@@ -96,11 +96,15 @@ function Productos() {
                   </p>
                 </div>
               </div>
-              <img 
-                src="https://res.cloudinary.com/dy089iwsg/image/upload/v1751255686/CM_uxmuqt.png" 
-                alt="TecnoCM Sistema" 
-                className="w-full h-64 object-cover rounded-lg shadow-md"
-              />
+              <div className="flex justify-center">
+                <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 max-w-lg w-full">
+                  <img 
+                    src="https://res.cloudinary.com/dy089iwsg/image/upload/v1751255686/CM_uxmuqt.png" 
+                    alt="TecnoCM Sistema" 
+                    className="w-full h-auto object-contain"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
