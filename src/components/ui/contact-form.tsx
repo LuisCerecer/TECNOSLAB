@@ -146,8 +146,13 @@ const ContactForm: React.FC = () => {
     { value: 'otra', label: 'Otra consulta' }
   ];
 
-  // Load Cal.com embed immediately when component mounts
+  // Load Cal.com embed only when videoCall tab is active
   React.useEffect(() => {
+    // Only initialize Cal.com when the videoCall tab is active
+    if (activeTab !== 'videoCall') {
+      return;
+    }
+
     const loadCalEmbed = () => {
       // First, add the Cal.com script to the document head if it doesn't exist
       if (!document.querySelector('script[src*="cal.com/embed"]')) {
@@ -171,6 +176,16 @@ const ContactForm: React.FC = () => {
 
     const initializeCal = () => {
       try {
+        // Check if the DOM element exists before initializing
+        const calElement = document.getElementById('my-cal-inline-30min');
+        if (!calElement) {
+          console.log('Cal.com element not found, retrying...');
+          setTimeout(() => {
+            initializeCal();
+          }, 500);
+          return;
+        }
+
         // Initialize Cal.com with your exact configuration
         if (window.Cal) {
           window.Cal("init", "30min", {origin:"https://app.cal.com"});
@@ -252,13 +267,19 @@ const ContactForm: React.FC = () => {
       }
     };
 
+    // Reset calLoaded state when switching to videoCall tab
+    setCalLoaded(false);
+
     // Add type declarations for Cal.com
     if (!window.Cal) {
       loadCalEmbed();
     } else {
-      initializeCal();
+      // Small delay to ensure DOM element is rendered
+      setTimeout(() => {
+        initializeCal();
+      }, 100);
     }
-  }, []);
+  }, [activeTab]); // Add activeTab as dependency
 
   const contactInfo = {
     correo: 'martincerecer@tecnoslab.com',
