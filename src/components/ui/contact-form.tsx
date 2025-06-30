@@ -42,7 +42,7 @@ const ContactForm: React.FC = () => {
   const [newsletterSuccess, setNewsletterSuccess] = useState(false);
   const [newsletterRecaptchaToken, setNewsletterRecaptchaToken] = useState<string | null>(null);
   const [isNewsletterSubmitting, setIsNewsletterSubmitting] = useState(false);
-  const [calLoaded, setCalLoaded] = useState(false);
+  const [calendarLoaded, setCalendarLoaded] = useState(false);
 
   const handleInputChange = (field: keyof FormData, value: string) => {
     setFormData(prev => ({
@@ -146,140 +146,96 @@ const ContactForm: React.FC = () => {
     { value: 'otra', label: 'Otra consulta' }
   ];
 
-  // Load Cal.com embed only when videoCall tab is active
+  // Initialize Cal.com embed when videoCall tab becomes active
   React.useEffect(() => {
-    // Only initialize Cal.com when the videoCall tab is active
     if (activeTab !== 'videoCall') {
       return;
     }
 
-    const loadCalEmbed = () => {
-      // First, add the Cal.com script to the document head if it doesn't exist
-      if (!document.querySelector('script[src*="cal.com/embed"]')) {
-        const script = document.createElement('script');
-        script.src = 'https://app.cal.com/embed/embed.js';
-        script.async = true;
-        document.head.appendChild(script);
+    // Reset loading state
+    setCalendarLoaded(false);
+
+    // Small delay to ensure DOM is ready
+    const timer = setTimeout(() => {
+      const targetElement = document.getElementById('cal-embed-container');
+      if (!targetElement) {
+        console.error('Cal embed container not found');
+        return;
+      }
+
+      // Clear any existing content
+      targetElement.innerHTML = '';
+
+      // Create the Cal.com inline embed directly
+      const calDiv = document.createElement('div');
+      calDiv.id = 'my-cal-inline';
+      calDiv.style.width = '100%';
+      calDiv.style.height = '700px';
+      calDiv.style.overflow = 'auto';
+      targetElement.appendChild(calDiv);
+
+      // Initialize Cal.com
+      const script = document.createElement('script');
+      script.innerHTML = `
+        (function (C, A, L) { 
+          let p = function (a, ar) { a.q.push(ar); }; 
+          let d = C.document; 
+          C.Cal = C.Cal || function () { 
+            let cal = C.Cal; 
+            let ar = arguments; 
+            if (!cal.loaded) { 
+              cal.ns = {}; 
+              cal.q = cal.q || []; 
+              d.head.appendChild(d.createElement("script")).src = A; 
+              cal.loaded = true; 
+            } 
+            if (ar[0] === L) { 
+              const api = function () { p(api, arguments); }; 
+              const namespace = ar[1]; 
+              api.q = api.q || []; 
+              if(typeof namespace === "string"){
+                cal.ns[namespace] = cal.ns[namespace] || api;
+                p(cal.ns[namespace], ar);
+                p(cal, ["initNamespace", namespace]);
+              } else p(cal, ar); 
+              return;
+            } 
+            p(cal, ar); 
+          }; 
+        })(window, "https://app.cal.com/embed/embed.js", "init");
         
-        script.onload = () => {
-          setTimeout(() => {
-            initializeCal();
-          }, 100);
-        };
-      } else {
-        // Script already exists, just initialize
-        setTimeout(() => {
-          initializeCal();
-        }, 100);
-      }
-    };
+        Cal("init", "30min", {origin:"https://app.cal.com"});
 
-    const initializeCal = () => {
-      try {
-        // Check if the DOM element exists before initializing
-        const calElement = document.getElementById('my-cal-inline-30min');
-        if (!calElement) {
-          console.log('Cal.com element not found, retrying...');
-          setTimeout(() => {
-            initializeCal();
-          }, 500);
-          return;
-        }
+        Cal.ns["30min"]("inline", {
+          elementOrSelector: "#my-cal-inline",
+          calLink: "testing-luis-c/30min",
+          config: {
+            layout: "month_view"
+          }
+        });
 
-        // Initialize Cal.com with your exact configuration
-        if (window.Cal) {
-          window.Cal("init", "30min", {origin:"https://app.cal.com"});
+        Cal.ns["30min"]("ui", {
+          cssVarsPerTheme: {
+            light: { "cal-brand": "#1D4ED8" },
+            dark: { "cal-brand": "#1D4ED8" }
+          },
+          hideEventTypeDetails: false,
+          layout: "month_view"
+        });
+      `;
+      
+      document.head.appendChild(script);
 
-          window.Cal.ns = window.Cal.ns || {};
-          window.Cal.ns["30min"] = window.Cal.ns["30min"] || function() {
-            const api = function() { 
-              api.q = api.q || [];
-              api.q.push(arguments); 
-            };
-            api.q = api.q || [];
-            return api;
-          }();
-
-          window.Cal.ns["30min"]("inline", {
-            elementOrSelector:"#my-cal-inline-30min",
-            config: {"layout":"month_view"},
-            calLink: "testing-luis-c/30min",
-          });
-
-          window.Cal.ns["30min"]("ui", {
-            "cssVarsPerTheme":{"light":{"cal-brand":"#292929"},"dark":{"cal-brand":"#fafafa"}},
-            "hideEventTypeDetails":false,
-            "layout":"month_view"
-          });
-
-          setCalLoaded(true);
-        } else {
-          // Fallback: use the global initialization method
-          (function (C, A, L) { 
-            let p = function (a, ar) { a.q.push(ar); }; 
-            let d = C.document; 
-            C.Cal = C.Cal || function () { 
-              let cal = C.Cal; 
-              let ar = arguments; 
-              if (!cal.loaded) { 
-                cal.ns = {}; 
-                cal.q = cal.q || []; 
-                d.head.appendChild(d.createElement("script")).src = A; 
-                cal.loaded = true; 
-              } 
-              if (ar[0] === L) { 
-                const api = function () { p(api, arguments); }; 
-                const namespace = ar[1]; 
-                api.q = api.q || []; 
-                if(typeof namespace === "string"){
-                  cal.ns[namespace] = cal.ns[namespace] || api;
-                  p(cal.ns[namespace], ar);
-                  p(cal, ["initNamespace", namespace]);
-                } else p(cal, ar); 
-                return;
-              } 
-              p(cal, ar); 
-            }; 
-          })(window, "https://app.cal.com/embed/embed.js", "init");
-
-          window.Cal("init", "30min", {origin:"https://app.cal.com"});
-
-          window.Cal.ns["30min"]("inline", {
-            elementOrSelector:"#my-cal-inline-30min",
-            config: {"layout":"month_view"},
-            calLink: "testing-luis-c/30min",
-          });
-
-          window.Cal.ns["30min"]("ui", {
-            "cssVarsPerTheme":{"light":{"cal-brand":"#292929"},"dark":{"cal-brand":"#fafafa"}},
-            "hideEventTypeDetails":false,
-            "layout":"month_view"
-          });
-
-          setCalLoaded(true);
-        }
-      } catch (error) {
-        console.error('Error initializing Cal.com:', error);
-        // Retry after a short delay
-        setTimeout(() => {
-          initializeCal();
-        }, 1000);
-      }
-    };
-
-    // Reset calLoaded state when switching to videoCall tab
-    setCalLoaded(false);
-
-    // Add type declarations for Cal.com
-    if (!window.Cal) {
-      loadCalEmbed();
-    } else {
-      // Small delay to ensure DOM element is rendered
+      // Set loaded after a short delay to account for Cal.com initialization
       setTimeout(() => {
-        initializeCal();
-      }, 100);
-    }
-  }, [activeTab]); // Add activeTab as dependency
+        setCalendarLoaded(true);
+      }, 2000);
+    }, 100);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [activeTab]);
 
   const contactInfo = {
     correo: 'martincerecer@tecnoslab.com',
@@ -570,36 +526,40 @@ const ContactForm: React.FC = () => {
                 className="space-y-6"
               >
                 <div className="text-center mb-6">
-                  <p className="text-gray-600 text-lg">
-                    Selecciona una fecha y hora que te convenga. Nuestro horario es de 11:00 a 18:00 (GMT-6).
+                  <p className="text-gray-600 text-lg mb-4">
+                    Selecciona una fecha y hora que te convenga para nuestra videollamada.
+                  </p>
+                  <p className="text-gray-500 text-base">
+                    📅 Disponible: Lunes a Viernes<br />
+                    🕒 Horario: 11:00 AM - 6:00 PM (GMT-6)
                   </p>
                 </div>
                 
                 {/* Cal.com Embed Container */}
-                <div className="w-full min-h-[600px] border border-gray-200 rounded-lg overflow-hidden bg-white shadow-sm">
-                  {!calLoaded && (
-                    <div className="flex items-center justify-center h-[600px]">
+                <div className="w-full border border-gray-200 rounded-lg overflow-hidden bg-white shadow-sm">
+                  {!calendarLoaded && (
+                    <div className="flex items-center justify-center h-[500px]">
                       <div className="text-center">
                         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-                        <p className="text-gray-600">Cargando calendario...</p>
+                        <p className="text-gray-600 text-lg">Cargando calendario...</p>
+                        <p className="text-gray-500 text-sm mt-2">Esto puede tomar unos segundos</p>
                       </div>
                     </div>
                   )}
-                  <div 
-                    id="my-cal-inline-30min" 
-                    style={{
-                      width: "100%", 
-                      height: calLoaded ? "600px" : "0px", 
-                      overflow: "scroll",
-                      transition: "height 0.3s ease"
-                    }}
-                  ></div>
+                  
+                  <div id="cal-embed-container" className={!calendarLoaded ? 'hidden' : 'block'}></div>
                 </div>
                 
-                <div className="text-center text-sm text-gray-500 mt-4">
-                  <p>
-                    Al agendar una cita, recibirás un enlace de videollamada por correo electrónico.
-                  </p>
+                <div className="bg-blue-50 p-4 rounded-lg">
+                  <div className="text-center text-sm text-gray-600">
+                    <p className="font-medium mb-2">🎯 ¿Qué incluye tu videollamada?</p>
+                    <ul className="text-left max-w-md mx-auto space-y-1">
+                      <li>• Consulta personalizada sobre tu proyecto</li>
+                      <li>• Recomendaciones técnicas específicas</li>
+                      <li>• Estimación preliminar de costos</li>
+                      <li>• Enlace de Zoom enviado por email</li>
+                    </ul>
+                  </div>
                 </div>
               </motion.div>
             )}
@@ -646,6 +606,7 @@ const ContactForm: React.FC = () => {
   );
 };
 
+// Global type declaration for Cal.com
 declare global {
   interface Window {
     Cal: any;
