@@ -27,9 +27,7 @@ function Proyectos() {
         <div className="max-w-5xl mx-auto">
           <h1 className="text-4xl font-bold text-gray-800 mb-8 text-center">Proyectos</h1>
           <p className="text-xl text-gray-700 mb-16 text-center leading-relaxed">
-            Descubre nuestras especializaciones a través de los proyectos más destacados que hemos 
-            realizado para clientes de diversos sectores. Cada proyecto demuestra nuestro 
-            compromiso con la excelencia y la precisión.
+            Descubre nuestras especializaciones a través de los proyectos más destacados que hemos realizado para clientes de diversos sectores. Cada proyecto demuestra nuestro compromiso con la excelencia y la precisión.
           </p>
 
           <div ref={boschRef} id="bosch" className="mb-20">
@@ -40,8 +38,7 @@ function Proyectos() {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                 <div>
                   <p className="text-gray-700 mb-6 text-lg leading-relaxed">
-                    Proyecto de medición y certificación de planicidad para las instalaciones de BOSCH en Ciudad Juárez, 
-                    utilizando tecnología de última generación para garantizar el cumplimiento de los estándares más exigentes.
+                    Proyecto de medición y certificación de planicidad para las instalaciones de BOSCH en Ciudad Juárez, utilizando tecnología de última generación para garantizar el cumplimiento de los estándares más exigentes.
                   </p>
                   <div className="bg-blue-50 p-5 rounded-lg mb-6">
                     <h3 className="text-lg font-semibold mb-3 text-blue-800">Especificaciones del Proyecto</h3>
@@ -55,15 +52,14 @@ function Proyectos() {
                     </ul>
                   </div>
                   <p className="text-gray-700 text-lg leading-relaxed">
-                    El proyecto incluyó la medición completa de las áreas de producción y almacenamiento, 
-                    garantizando las condiciones óptimas para los sistemas automatizados de BOSCH.
+                    El proyecto incluyó la medición completa de las áreas de producción y almacenamiento, garantizando las condiciones óptimas para los sistemas automatizados de BOSCH.
                   </p>
                 </div>
                 <div className="flex justify-center">
                   <img 
-                    src="https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                    src="https://images.pexels.com/photos/3862132/pexels-photo-3862132.jpeg?auto=compress&cs=tinysrgb&w=800" 
                     alt="BOSCH Ciudad Juárez" 
-                    className="w-full h-auto object-cover rounded-lg shadow-md"
+                    className="w-full h-auto object-cover rounded-lg shadow-md max-w-md"
                   />
                 </div>
               </div>
