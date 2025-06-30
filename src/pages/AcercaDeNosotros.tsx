@@ -102,9 +102,7 @@ function AcercaDeNosotros() {
                 de altas especificaciones, estableciendo nuevos estándares de calidad y servicio en la industria.
               </p>
               <p className="text-gray-700 text-lg leading-relaxed">
-                Aspiramos a expandir nuestra presencia a nivel internacional, llevando la excelencia técnica 
-                y la innovación mexicana a mercados globales, mientras contribuimos al desarrollo de la 
-                industria logística automatizada.
+                Aspiramos ampliar nuestra presencia en el mercado mexicano, impulsando la excelencia técnica y la innovación para contribuir al desarrollo de la industria logística automatizada.
               </p>
             </div>
           </div>
