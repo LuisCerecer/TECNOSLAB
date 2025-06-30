@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-import { CheckCircle, Target, Settings } from 'lucide-react';
 
 function Productos() {
   const location = useLocation();
@@ -42,54 +41,45 @@ function Productos() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 <div className="bg-gray-100 p-6 rounded-lg">
                   <h3 className="text-lg font-semibold mb-3">Características Principales</h3>
-                  <div className="space-y-3">
-                    <div className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-700 text-sm leading-relaxed">Alta resistencia al desgaste y a productos químicos</span>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-700 text-sm leading-relaxed">Aplicación rápida y curado en poco tiempo</span>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-700 text-sm leading-relaxed">Superficie lisa y nivelada para operaciones exigentes</span>
-                    </div>
-                  </div>
+                  <ul className="space-y-2.5 text-gray-700 text-sm leading-relaxed">
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-base">
+                      Alta resistencia al desgaste y a productos químicos
+                    </li>
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-base">
+                      Aplicación rápida y curado en poco tiempo
+                    </li>
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-base">
+                      Superficie lisa y nivelada para operaciones exigentes
+                    </li>
+                  </ul>
                 </div>
                 <div className="bg-gray-100 p-6 rounded-lg">
                   <h3 className="text-lg font-semibold mb-3">Aplicaciones</h3>
-                  <div className="space-y-3">
-                    <div className="flex items-start gap-3">
-                      <Target className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-700 text-sm leading-relaxed">Naves industriales y centros logísticos</span>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <Target className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-700 text-sm leading-relaxed">Almacenes automatizados y de alta precisión</span>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <Target className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-700 text-sm leading-relaxed">Áreas de tránsito frecuente de maquinaria pesada</span>
-                    </div>
-                  </div>
+                  <ul className="space-y-2.5 text-gray-700 text-sm leading-relaxed">
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-green-600 before:font-bold before:text-base">
+                      Naves industriales y centros logísticos
+                    </li>
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-green-600 before:font-bold before:text-base">
+                      Almacenes automatizados y de alta precisión
+                    </li>
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-green-600 before:font-bold before:text-base">
+                      Áreas de tránsito frecuente de maquinaria pesada
+                    </li>
+                  </ul>
                 </div>
                 <div className="bg-gray-100 p-6 rounded-lg">
                   <h3 className="text-lg font-semibold mb-3">Beneficios</h3>
-                  <div className="space-y-3">
-                    <div className="flex items-start gap-3">
-                      <Settings className="w-5 h-5 text-orange-600 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-700 text-sm leading-relaxed">Reducción de costos de mantenimiento</span>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <Settings className="w-5 h-5 text-orange-600 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-700 text-sm leading-relaxed">Mayor eficiencia y seguridad operativa</span>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <Settings className="w-5 h-5 text-orange-600 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-700 text-sm leading-relaxed">Prolonga la vida útil del piso industrial</span>
-                    </div>
-                  </div>
+                  <ul className="space-y-2.5 text-gray-700 text-sm leading-relaxed">
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-orange-600 before:font-bold before:text-base">
+                      Reducción de costos de mantenimiento
+                    </li>
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-orange-600 before:font-bold before:text-base">
+                      Mayor eficiencia y seguridad operativa
+                    </li>
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-orange-600 before:font-bold before:text-base">
+                      Prolonga la vida útil del piso industrial
+                    </li>
+                  </ul>
                 </div>
               </div>
               <img 
