@@ -327,11 +327,10 @@ const ContactForm: React.FC = () => {
               >
                 <div className="text-center mb-6">
                   <p className="text-gray-600 text-lg mb-4">
-                    Selecciona una fecha y hora que te convenga para nuestra videollamada.
+                   
                   </p>
                   <p className="text-gray-500 text-base">
-                    📅 Disponible: Lunes a Viernes<br />
-                    🕒 Horario: 11:00 AM - 6:00 PM (GMT-6)
+                    
                   </p>
                 </div>
                 
