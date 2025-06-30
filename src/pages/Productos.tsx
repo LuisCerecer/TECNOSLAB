@@ -8,16 +8,31 @@ function Productos() {
 
   useEffect(() => {
     if (location.hash) {
-      switch (location.hash) {
-        case '#tecnomg':
-          tecnoMGRef.current?.scrollIntoView({ behavior: 'smooth' });
-          break;
-        case '#tecnocm':
-          tecnoCMRef.current?.scrollIntoView({ behavior: 'smooth' });
-          break;
-        default:
-          break;
-      }
+      // Small delay to ensure page has loaded
+      setTimeout(() => {
+        let targetElement: HTMLElement | null = null;
+        
+        switch (location.hash) {
+          case '#tecnomg':
+            targetElement = tecnoMGRef.current;
+            break;
+          case '#tecnocm':
+            targetElement = tecnoCMRef.current;
+            break;
+          default:
+            break;
+        }
+        
+        if (targetElement) {
+          // Calculate offset to position title at top (accounting for fixed header)
+          const headerHeight = 144; // pt-36 = 144px
+          const elementTop = targetElement.offsetTop - headerHeight;
+          window.scrollTo({ 
+            top: Math.max(0, elementTop), 
+            behavior: 'smooth' 
+          });
+        }
+      }, 100);
     } else {
       // Scroll to top if no hash is present
       window.scrollTo({ top: 0, behavior: 'smooth' });

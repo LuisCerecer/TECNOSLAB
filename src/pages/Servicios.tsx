@@ -12,28 +12,43 @@ function Servicios() {
 
   useEffect(() => {
     if (location.hash) {
-      switch (location.hash) {
-        case '#trafico-aleatorio':
-          traficoAleatorioRef.current?.scrollIntoView({ behavior: 'smooth' });
-          break;
-        case '#trafico-definido':
-          traficoDefinidoRef.current?.scrollIntoView({ behavior: 'smooth' });
-          break;
-        case '#diseno-ingenieria':
-          disenoIngenieriaRef.current?.scrollIntoView({ behavior: 'smooth' });
-          break;
-        case '#correccion-desbaste':
-          correccionDesbasteRef.current?.scrollIntoView({ behavior: 'smooth' });
-          break;
-        case '#correccion-recubrimientos':
-          correccionRecubrimientosRef.current?.scrollIntoView({ behavior: 'smooth' });
-          break;
-        case '#reparacion-juntas':
-          reparacionJuntasRef.current?.scrollIntoView({ behavior: 'smooth' });
-          break;
-        default:
-          break;
-      }
+      // Small delay to ensure page has loaded
+      setTimeout(() => {
+        let targetElement: HTMLElement | null = null;
+        
+        switch (location.hash) {
+          case '#trafico-aleatorio':
+            targetElement = traficoAleatorioRef.current;
+            break;
+          case '#trafico-definido':
+            targetElement = traficoDefinidoRef.current;
+            break;
+          case '#diseno-ingenieria':
+            targetElement = disenoIngenieriaRef.current;
+            break;
+          case '#correccion-desbaste':
+            targetElement = correccionDesbasteRef.current;
+            break;
+          case '#correccion-recubrimientos':
+            targetElement = correccionRecubrimientosRef.current;
+            break;
+          case '#reparacion-juntas':
+            targetElement = reparacionJuntasRef.current;
+            break;
+          default:
+            break;
+        }
+        
+        if (targetElement) {
+          // Calculate offset to position title at top (accounting for fixed header)
+          const headerHeight = 144; // pt-36 = 144px
+          const elementTop = targetElement.offsetTop - headerHeight;
+          window.scrollTo({ 
+            top: Math.max(0, elementTop), 
+            behavior: 'smooth' 
+          });
+        }
+      }, 100);
     } else {
       // Scroll to top if no hash is present
       window.scrollTo({ top: 0, behavior: 'smooth' });
