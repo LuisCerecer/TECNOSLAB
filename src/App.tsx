@@ -106,13 +106,12 @@ function App() {
       name: 'Proyectos',
       path: '/proyectos',
       items: [
-        { name: 'Mediciones', hash: '#mediciones' },
-        { name: 'Desvastes', hash: '#desvastes' },
-        { name: 'Centros de logística', hash: '#logisticos' },
+        { name: 'BOSCH Ciudad Juárez', hash: '#bosch' },
+        { name: 'CYS Querétaro', hash: '#cys' }
       ],
       title: 'Proyectos',
       featured: {
-        title: 'Centro Logistico',
+        title: 'BOSCH Ciudad Juárez',
         image: 'https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=600',
         description: 'Proyectos ejecutados con precisión'
       }
@@ -227,57 +226,21 @@ function App() {
           <div className="grid grid-cols-2 gap-6">
             {[
               {
-                title: "Proyecto Bosh",
+                title: "BOSCH Ciudad Juárez",
                 image: "https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=1200",
-                section: "mediciones"
+                section: "bosch"
               },
               {
-                title: "Super Repuestos",
+                title: "CYS Querétaro",
                 image: "https://images.pexels.com/photos/236705/pexels-photo-236705.jpeg?auto=compress&cs=tinysrgb&w=1200",
-                section: "logisticos"
-              },
-              {
-                title: "Medición Lego",
-                image: "https://images.pexels.com/photos/2760241/pexels-photo-2760241.jpeg?auto=compress&cs=tinysrgb&w=1200",
-                section: "desvastes"
-              },
-              {
-                title: "Centro de Distribución",
-                image: "https://images.pexels.com/photos/1668928/pexels-photo-1668928.jpeg?auto=compress&cs=tinysrgb&w=1200",
-                section: "logisticos"
+                section: "cys"
               }
             ].map((project, index) => (
               <motion.div 
                 key={index} 
                 className="project-card overflow-hidden shadow-lg cursor-pointer transform transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] h-[320px] relative"
                 onClick={() => {
-                  // Direct navigation for Proyecto Bosh, Super Repuestos, and Centro de Distribución
-                  if (project.title === "Proyecto Bosh" || project.title === "Super Repuestos" || project.title === "Centro de Distribución") {
-                    navigate(`/proyectos#${project.section}`);
-                  } else {
-                    // Add a techy fade transition for Medición Lego
-                    const overlay = document.createElement('div');
-                    overlay.className = 'fixed inset-0 bg-blue-900 z-50 opacity-0 transition-opacity duration-500';
-                    overlay.style.background = 'linear-gradient(45deg, #1e3a8a, #3b82f6, #1e3a8a)';
-                    document.body.appendChild(overlay);
-                    
-                    // Trigger the fade in
-                    setTimeout(() => {
-                      overlay.style.opacity = '0.95';
-                    }, 10);
-                    
-                    // Navigate after animation
-                    setTimeout(() => {
-                      navigate(`/proyectos#${project.section}`);
-                      // Remove overlay after navigation
-                      setTimeout(() => {
-                        overlay.style.opacity = '0';
-                        setTimeout(() => {
-                          document.body.removeChild(overlay);
-                        }, 500);
-                      }, 100);
-                    }, 600);
-                  }
+                  navigate(`/proyectos#${project.section}`);
                 }}
                 whileHover={{ 
                   scale: 1.02,
