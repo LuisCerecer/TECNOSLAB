@@ -62,7 +62,7 @@ function Productos() {
               <img 
                 src="https://res.cloudinary.com/dy089iwsg/image/upload/v1751255497/MG_fqrsrb.png" 
                 alt="TecnoMG Sistema" 
-                className="w-full h-64 object-cover rounded-lg shadow-md"
+                className="w-full h-80 object-cover rounded-lg shadow-md"
               />
             </div>
           </div>
@@ -99,7 +99,7 @@ function Productos() {
               <img 
                 src="https://res.cloudinary.com/dy089iwsg/image/upload/v1751255686/CM_uxmuqt.png" 
                 alt="TecnoCM Sistema" 
-                className="w-full h-64 object-cover rounded-lg shadow-md"
+                className="w-full h-80 object-cover rounded-lg shadow-md"
               />
             </div>
           </div>
