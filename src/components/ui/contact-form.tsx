@@ -34,16 +34,6 @@ const ContactForm: React.FC = () => {
     email: ''
   });
   const [newsletterSuccess, setNewsletterSuccess] = useState(false);
-  const [appointmentData, setAppointmentData] = useState({
-    nombre: '',
-    empresa: '',
-    email: '',
-    telefono: '',
-    fecha: '',
-    hora: '',
-    mensaje: ''
-  });
-  const [appointmentSuccess, setAppointmentSuccess] = useState(false);
 
   const handleInputChange = (field: keyof FormData, value: string) => {
     setFormData(prev => ({
@@ -80,33 +70,11 @@ const ContactForm: React.FC = () => {
     }, 3000);
   };
 
-  const handleAppointmentSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setAppointmentSuccess(true);
-    setTimeout(() => {
-      setAppointmentSuccess(false);
-      setAppointmentData({
-        nombre: '',
-        empresa: '',
-        email: '',
-        telefono: '',
-        fecha: '',
-        hora: '',
-        mensaje: ''
-      });
-    }, 3000);
-  };
-
   const tiposProyecto = [
     { value: 'ingenieria', label: 'Ingeniería de piso' },
     { value: 'medicion', label: 'Medición del piso' },
     { value: 'reparacion', label: 'Reparación del piso' },
     { value: 'otra', label: 'Otra consulta' }
-  ];
-
-  const timeSlots = [
-    '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', 
-    '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30'
   ];
 
   const contactInfo = {
@@ -367,155 +335,35 @@ const ContactForm: React.FC = () => {
                   </p>
                 </div>
                 
-                <form
-                  onSubmit={handleAppointmentSubmit}
-                  className="space-y-6"
-                  name="appointment-booking"
-                  method="POST"
-                  data-netlify="true"
-                  data-netlify-recaptcha="true"
-                >
-                  <input type="hidden" name="form-name" value="appointment-booking" />
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="appointment-nombre" className="text-base font-medium text-gray-700">
-                        Nombre *
-                      </Label>
-                      <Input
-                        id="appointment-nombre"
-                        name="nombre"
-                        type="text"
-                        value={appointmentData.nombre}
-                        onChange={(e) => setAppointmentData(prev => ({ ...prev, nombre: e.target.value }))}
-                        className="w-full h-10 text-base"
-                        required
-                      />
-                    </div>
+                {/* Cal inline embed code begins */}
+                <div style={{width:"100%",height:"600px",overflow:"scroll"}} id="my-cal-inline-30min"></div>
+                <script type="text/javascript" dangerouslySetInnerHTML={{
+                  __html: `
+                    (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+                    Cal("init", "30min", {origin:"https://app.cal.com"});
 
-                    <div className="space-y-2">
-                      <Label htmlFor="appointment-empresa" className="text-base font-medium text-gray-700">
-                        Empresa *
-                      </Label>
-                      <Input
-                        id="appointment-empresa"
-                        name="empresa"
-                        type="text"
-                        value={appointmentData.empresa}
-                        onChange={(e) => setAppointmentData(prev => ({ ...prev, empresa: e.target.value }))}
-                        className="w-full h-10 text-base"
-                        required
-                      />
-                    </div>
+                    Cal.ns["30min"]("inline", {
+                      elementOrSelector:"#my-cal-inline-30min",
+                      config: {"layout":"month_view"},
+                      calLink: "testing-luis-c/30min",
+                    });
+
+                    Cal.ns["30min"]("ui", {"cssVarsPerTheme":{"light":{"cal-brand":"#292929"},"dark":{"cal-brand":"#fafafa"}},"hideEventTypeDetails":false,"layout":"month_view"});
+                  `
+                }} />
+                {/* Cal inline embed code ends */}
+                
+                <div className="bg-blue-50 p-4 rounded-lg mt-4">
+                  <div className="text-center text-sm text-gray-600">
+                    <p className="font-medium mb-2">🎯 ¿Qué incluye tu videollamada?</p>
+                    <ul className="text-left max-w-md mx-auto space-y-1">
+                      <li>• Consulta personalizada sobre tu proyecto</li>
+                      <li>• Recomendaciones técnicas específicas</li>
+                      <li>• Estimación preliminar de costos</li>
+                      <li>• Enlace de Zoom enviado por email</li>
+                    </ul>
                   </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="appointment-email" className="text-base font-medium text-gray-700">
-                        Email *
-                      </Label>
-                      <Input
-                        id="appointment-email"
-                        name="email"
-                        type="email"
-                        value={appointmentData.email}
-                        onChange={(e) => setAppointmentData(prev => ({ ...prev, email: e.target.value }))}
-                        className="w-full h-10 text-base"
-                        required
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="appointment-telefono" className="text-base font-medium text-gray-700">
-                        Teléfono *
-                      </Label>
-                      <Input
-                        id="appointment-telefono"
-                        name="telefono"
-                        type="tel"
-                        value={appointmentData.telefono}
-                        onChange={(e) => setAppointmentData(prev => ({ ...prev, telefono: e.target.value }))}
-                        className="w-full h-10 text-base"
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="appointment-fecha" className="text-base font-medium text-gray-700">
-                        Fecha Preferida *
-                      </Label>
-                      <Input
-                        id="appointment-fecha"
-                        name="fecha"
-                        type="date"
-                        value={appointmentData.fecha}
-                        onChange={(e) => setAppointmentData(prev => ({ ...prev, fecha: e.target.value }))}
-                        className="w-full h-10 text-base"
-                        min={new Date().toISOString().split('T')[0]}
-                        required
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="appointment-hora" className="text-base font-medium text-gray-700">
-                        Hora Preferida *
-                      </Label>
-                      <select
-                        id="appointment-hora"
-                        name="hora"
-                        value={appointmentData.hora}
-                        onChange={(e) => setAppointmentData(prev => ({ ...prev, hora: e.target.value }))}
-                        className="w-full h-10 text-base px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                        required
-                      >
-                        <option value="">Selecciona una hora</option>
-                        {timeSlots.map((time) => (
-                          <option key={time} value={time}>
-                            {time}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="appointment-mensaje" className="text-base font-medium text-gray-700">
-                      Mensaje (opcional)
-                    </Label>
-                    <Textarea
-                      id="appointment-mensaje"
-                      name="mensaje"
-                      value={appointmentData.mensaje}
-                      onChange={(e) => setAppointmentData(prev => ({ ...prev, mensaje: e.target.value }))}
-                      className="w-full min-h-[100px] text-base"
-                      placeholder="Cuéntanos sobre tu proyecto o consulta..."
-                    />
-                  </div>
-
-                  <div className="bg-blue-50 p-4 rounded-lg">
-                    <div className="text-center text-sm text-gray-600">
-                      <p className="font-medium mb-2">🎯 ¿Qué incluye tu videollamada?</p>
-                      <ul className="text-left max-w-md mx-auto space-y-1">
-                        <li>• Consulta personalizada sobre tu proyecto</li>
-                        <li>• Recomendaciones técnicas específicas</li>
-                        <li>• Estimación preliminar de costos</li>
-                        <li>• Enlace de Zoom enviado por email</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div data-netlify-recaptcha="true"></div>
-
-                  <Button
-                    type="submit"
-                    className="w-full bg-blue-600 text-white hover:bg-blue-700 h-11 text-lg"
-                    size="lg"
-                  >
-                    Agendar Videollamada
-                  </Button>
-                </form>
+                </div>
               </motion.div>
             )}
 
@@ -602,23 +450,6 @@ const ContactForm: React.FC = () => {
             </div>
           )}
 
-          {/* Appointment Success Animation */}
-          {appointmentSuccess && (
-            <div className="absolute inset-0 bg-blue-50 bg-opacity-95 flex flex-col items-center justify-center rounded-lg z-10">
-              <motion.div
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
-                className="flex flex-col items-center"
-              >
-                <div className="w-22 h-22 mb-6 rounded-full bg-blue-100 border-2 border-blue-300 flex items-center justify-center shadow-lg">
-                  <CheckCircle className="w-13 h-13 text-blue-600" />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-700 mb-3">¡Cita Agendada!</h3>
-                <p className="text-gray-600 text-center max-w-lg text-base">Hemos recibido tu solicitud de videollamada. Te enviaremos el enlace de Zoom por correo electrónico.</p>
-              </motion.div>
-            </div>
-          )}
         </CardContent>
       </Card>
     </div>
