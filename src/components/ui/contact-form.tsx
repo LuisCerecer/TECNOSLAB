@@ -270,8 +270,6 @@ const ContactForm: React.FC = () => {
     numero: '+52 33 1726 4826',
     redesSociales: [
       { name: 'LinkedIn', url: 'https://www.linkedin.com/in/martincerecer/', icon: <Globe className="w-5 h-5" /> },
-      { name: 'Facebook', url: 'https://facebook.com/tecnoslab', icon: <Globe className="w-5 h-5" /> },
-      { name: 'Instagram', url: 'https://instagram.com/tecnoslab', icon: <Globe className="w-5 h-5" /> },
     ]
   };
 
