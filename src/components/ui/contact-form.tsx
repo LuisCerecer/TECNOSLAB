@@ -1,5 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
-import ReCAPTCHA from 'react-google-recaptcha';
+import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -8,9 +7,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Textarea } from '@/components/ui/textarea';
 import { Phone, Mail, CheckCircle, MapPin, Globe } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { submitContactForm, ContactSubmission } from '@/lib/supabase';
-
-const RECAPTCHA_SITE_KEY = '6Lc7UHIrAAAAAM8gcBjNJMejkGO4eDO3TjgT2F2h';
 
 interface FormData {
   nombre: string;
@@ -32,20 +28,12 @@ const ContactForm: React.FC = () => {
   });
   const [showSuccess, setShowSuccess] = useState(false);
   const [activeTab, setActiveTab] = useState<ActiveTab>('form');
-  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [newsletterData, setNewsletterData] = useState({
     nombre: '',
     empresa: '',
     email: ''
   });
   const [newsletterSuccess, setNewsletterSuccess] = useState(false);
-  const [newsletterRecaptchaToken, setNewsletterRecaptchaToken] = useState<string | null>(null);
-  const [isNewsletterSubmitting, setIsNewsletterSubmitting] = useState(false);
-  const [calendarLoaded, setCalendarLoaded] = useState(false);
-  
-  // Ref for Cal.com embed container
-  const calEmbedContainerRef = useRef<HTMLDivElement>(null);
 
   const handleInputChange = (field: keyof FormData, value: string) => {
     setFormData(prev => ({
@@ -56,90 +44,30 @@ const ContactForm: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!recaptchaToken) {
-      alert('Por favor, completa la verificación reCAPTCHA');
-      return;
-    }
-    
-    setIsSubmitting(true);
-    
-    const submitData = async () => {
-      try {
-        const submissionData: ContactSubmission = {
-          type: 'general',
-          name: formData.nombre,
-          email: formData.email,
-          company: formData.empresa,
-          project_type: formData.tipoProyecto,
-          message: formData.mensaje
-        };
-
-        await submitContactForm(submissionData);
-        
-        setShowSuccess(true);
-        setRecaptchaToken(null);
-        setTimeout(() => {
-          setShowSuccess(false);
-          setFormData({
-            nombre: '',
-            empresa: '',
-            email: '',
-            tipoProyecto: '',
-            mensaje: ''
-          });
-        }, 3000);
-      } catch (error) {
-        console.error('Error submitting form:', error);
-        alert('Error al enviar el formulario. Por favor, inténtalo de nuevo.');
-      } finally {
-        setIsSubmitting(false);
-      }
-    };
-
-    submitData();
+    setShowSuccess(true);
+    setTimeout(() => {
+      setShowSuccess(false);
+      setFormData({
+        nombre: '',
+        empresa: '',
+        email: '',
+        tipoProyecto: '',
+        mensaje: ''
+      });
+    }, 3000);
   };
 
   const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!newsletterRecaptchaToken) {
-      alert('Por favor, completa la verificación reCAPTCHA');
-      return;
-    }
-    
-    setIsNewsletterSubmitting(true);
-    
-    const submitNewsletterData = async () => {
-      try {
-        const submissionData: ContactSubmission = {
-          type: 'newsletter',
-          name: newsletterData.nombre,
-          email: newsletterData.email,
-          company: newsletterData.empresa
-        };
-
-        await submitContactForm(submissionData);
-        
-        setNewsletterSuccess(true);
-        setNewsletterRecaptchaToken(null);
-        setTimeout(() => {
-          setNewsletterSuccess(false);
-          setNewsletterData({
-            nombre: '',
-            empresa: '',
-            email: ''
-          });
-        }, 3000);
-      } catch (error) {
-        console.error('Error submitting newsletter:', error);
-        alert('Error al suscribirse. Por favor, inténtalo de nuevo.');
-      } finally {
-        setIsNewsletterSubmitting(false);
-      }
-    };
-
-    submitNewsletterData();
+    setNewsletterSuccess(true);
+    setTimeout(() => {
+      setNewsletterSuccess(false);
+      setNewsletterData({
+        nombre: '',
+        empresa: '',
+        email: ''
+      });
+    }, 3000);
   };
 
   const tiposProyecto = [
@@ -148,99 +76,6 @@ const ContactForm: React.FC = () => {
     { value: 'reparacion', label: 'Reparación del piso' },
     { value: 'otra', label: 'Otra consulta' }
   ];
-
-  // Initialize Cal.com embed when videoCall tab becomes active
-  useEffect(() => {
-    if (activeTab !== 'videoCall' || !calEmbedContainerRef.current) {
-      return;
-    }
-
-    // Reset loading state
-    setCalendarLoaded(false);
-
-    const targetElement = calEmbedContainerRef.current;
-
-    // Clear any existing content
-    targetElement.innerHTML = '';
-
-    // Create the Cal.com inline embed directly
-    const calDiv = document.createElement('div');
-    calDiv.id = 'my-cal-inline-30min';
-    calDiv.style.width = '100%';
-    calDiv.style.height = '600px';
-    calDiv.style.overflow = 'scroll';
-    targetElement.appendChild(calDiv);
-
-    // Initialize Cal.com
-    const script = document.createElement('script');
-    script.innerHTML = `
-      (function (C, A, L) { 
-        let p = function (a, ar) { a.q.push(ar); }; 
-        let d = C.document; 
-        C.Cal = C.Cal || function () { 
-          let cal = C.Cal; 
-          let ar = arguments; 
-          if (!cal.loaded) { 
-            cal.ns = {}; 
-            cal.q = cal.q || []; 
-            d.head.appendChild(d.createElement("script")).src = A; 
-            cal.loaded = true; 
-          } 
-          if (ar[0] === L) { 
-            const api = function () { p(api, arguments); }; 
-            const namespace = ar[1]; 
-            api.q = api.q || []; 
-            if(typeof namespace === "string"){
-              cal.ns[namespace] = cal.ns[namespace] || api;
-              p(cal.ns[namespace], ar);
-              p(cal, ["initNamespace", namespace]);
-            } else p(cal, ar); 
-            return;
-          } 
-          p(cal, ar); 
-        }; 
-      })(window, "https://app.cal.com/embed/embed.js", "init");
-      
-      Cal("init", "30min", {origin:"https://app.cal.com"});
-
-      Cal.ns["30min"]("inline", {
-        elementOrSelector: "#my-cal-inline-30min",
-        calLink: "testing-luis-c/30min",
-        config: {
-          layout: "month_view"
-        }
-      });
-
-      Cal.ns["30min"]("ui", {
-        cssVarsPerTheme: {
-          light: { "cal-brand": "#292929" },
-          dark: { "cal-brand": "#fafafa" }
-        },
-        hideEventTypeDetails: false,
-        layout: "month_view"
-      });
-    `;
-    
-    document.head.appendChild(script);
-
-    // Set loaded after a short delay to account for Cal.com initialization
-    const loadingTimer = setTimeout(() => {
-      setCalendarLoaded(true);
-    }, 2000);
-
-    // Cleanup function
-    return () => {
-      clearTimeout(loadingTimer);
-      if (targetElement) {
-        targetElement.innerHTML = '';
-      }
-      // Remove the script if it exists
-      const existingScript = document.querySelector('script[src="https://app.cal.com/embed/embed.js"]');
-      if (existingScript) {
-        existingScript.remove();
-      }
-    };
-  }, [activeTab]);
 
   const contactInfo = {
     correo: 'martincerecer@tecnoslab.com',
@@ -305,7 +140,13 @@ const ContactForm: React.FC = () => {
                 transition={{ duration: 0.3 }}
                 onSubmit={handleSubmit}
                 className="space-y-6"
+                name="contact-general"
+                method="POST"
+                data-netlify="true"
+                data-netlify-recaptcha="true"
               >
+                <input type="hidden" name="form-name" value="contact-general" />
+                
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="nombre" className="text-base font-medium text-gray-700">
@@ -313,6 +154,7 @@ const ContactForm: React.FC = () => {
                     </Label>
                     <Input
                       id="nombre"
+                      name="nombre"
                       type="text"
                       value={formData.nombre}
                       onChange={(e) => handleInputChange('nombre', e.target.value)}
@@ -327,6 +169,7 @@ const ContactForm: React.FC = () => {
                     </Label>
                     <Input
                       id="empresa"
+                      name="empresa"
                       type="text"
                       value={formData.empresa}
                       onChange={(e) => handleInputChange('empresa', e.target.value)}
@@ -343,6 +186,7 @@ const ContactForm: React.FC = () => {
                     </Label>
                     <Input
                       id="email"
+                      name="email"
                       type="email"
                       value={formData.email}
                       onChange={(e) => handleInputChange('email', e.target.value)}
@@ -355,18 +199,19 @@ const ContactForm: React.FC = () => {
                     <Label htmlFor="tipoProyecto" className="text-base font-medium text-gray-700">
                       Tipo de Proyecto
                     </Label>
-                    <Select onValueChange={(value) => handleInputChange('tipoProyecto', value)} value={formData.tipoProyecto}>
-                      <SelectTrigger className="w-full h-10 text-base">
-                        <SelectValue placeholder="Selecciona un tipo de proyecto" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {tiposProyecto.map((tipo) => (
-                          <SelectItem key={tipo.value} value={tipo.value}>
-                            {tipo.label}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
+                    <select
+                      name="tipoProyecto"
+                      value={formData.tipoProyecto}
+                      onChange={(e) => handleInputChange('tipoProyecto', e.target.value)}
+                      className="w-full h-10 text-base px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    >
+                      <option value="">Selecciona un tipo de proyecto</option>
+                      {tiposProyecto.map((tipo) => (
+                        <option key={tipo.value} value={tipo.value}>
+                          {tipo.label}
+                        </option>
+                      ))}
+                    </select>
                   </div>
                 </div>
 
@@ -376,6 +221,7 @@ const ContactForm: React.FC = () => {
                   </Label>
                   <Textarea
                     id="mensaje"
+                    name="mensaje"
                     value={formData.mensaje}
                     onChange={(e) => handleInputChange('mensaje', e.target.value)}
                     className="w-full min-h-[120px] text-base"
@@ -383,21 +229,14 @@ const ContactForm: React.FC = () => {
                   />
                 </div>
 
-                <div className="flex justify-center">
-                  <ReCAPTCHA
-                    sitekey={RECAPTCHA_SITE_KEY}
-                    onChange={(token) => setRecaptchaToken(token)}
-                    onExpired={() => setRecaptchaToken(null)}
-                  />
-                </div>
+                <div data-netlify-recaptcha="true"></div>
 
                 <Button
                   type="submit"
-                  className="w-full bg-blue-600 text-white hover:bg-blue-700 h-11 text-lg disabled:bg-gray-400 disabled:cursor-not-allowed"
+                  className="w-full bg-blue-600 text-white hover:bg-blue-700 h-11 text-lg"
                   size="lg"
-                  disabled={!recaptchaToken || isSubmitting}
                 >
-                  {isSubmitting ? 'Enviando...' : 'Enviar'}
+                  Enviar
                 </Button>
               </motion.form>
             )}
@@ -411,7 +250,13 @@ const ContactForm: React.FC = () => {
                 transition={{ duration: 0.3 }}
                 onSubmit={handleNewsletterSubmit}
                 className="space-y-6"
+                name="newsletter-signup"
+                method="POST"
+                data-netlify="true"
+                data-netlify-recaptcha="true"
               >
+                <input type="hidden" name="form-name" value="newsletter-signup" />
+                
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="newsletter-nombre" className="text-base font-medium text-gray-700">
@@ -419,6 +264,7 @@ const ContactForm: React.FC = () => {
                     </Label>
                     <Input
                       id="newsletter-nombre"
+                      name="nombre"
                       type="text"
                       value={newsletterData.nombre}
                       onChange={(e) => setNewsletterData(prev => ({ ...prev, nombre: e.target.value }))}
@@ -433,6 +279,7 @@ const ContactForm: React.FC = () => {
                     </Label>
                     <Input
                       id="newsletter-empresa"
+                      name="empresa"
                       type="text"
                       value={newsletterData.empresa}
                       onChange={(e) => setNewsletterData(prev => ({ ...prev, empresa: e.target.value }))}
@@ -448,6 +295,7 @@ const ContactForm: React.FC = () => {
                   </Label>
                   <Input
                     id="newsletter-email"
+                    name="email"
                     type="email"
                     value={newsletterData.email}
                     onChange={(e) => setNewsletterData(prev => ({ ...prev, email: e.target.value }))}
@@ -456,23 +304,65 @@ const ContactForm: React.FC = () => {
                   />
                 </div>
 
-                <div className="flex justify-center">
-                  <ReCAPTCHA
-                    sitekey={RECAPTCHA_SITE_KEY}
-                    onChange={(token) => setNewsletterRecaptchaToken(token)}
-                    onExpired={() => setNewsletterRecaptchaToken(null)}
-                  />
-                </div>
+                <div data-netlify-recaptcha="true"></div>
 
                 <Button
                   type="submit"
-                  className="w-full bg-blue-600 text-white hover:bg-blue-700 h-11 text-lg disabled:bg-gray-400 disabled:cursor-not-allowed"
+                  className="w-full bg-blue-600 text-white hover:bg-blue-700 h-11 text-lg"
                   size="lg"
-                  disabled={!newsletterRecaptchaToken || isNewsletterSubmitting}
                 >
-                  {isNewsletterSubmitting ? 'Suscribiendo...' : 'Suscribirme'}
+                  Suscribirme
                 </Button>
               </motion.form>
+            )}
+
+            {activeTab === 'videoCall' && (
+              <motion.div
+                key="videoCall"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+                className="w-full"
+              >
+                <div className="text-center mb-6">
+                  <p className="text-gray-600 text-lg mb-4">
+                    Selecciona una fecha y hora que te convenga para nuestra videollamada.
+                  </p>
+                  <p className="text-gray-500 text-base">
+                    📅 Disponible: Lunes a Viernes<br />
+                    🕒 Horario: 11:00 AM - 6:00 PM (GMT-6)
+                  </p>
+                </div>
+                
+                {/*  Cal inline embed code begins -->
+<div style="width:60%;height:60%;overflow:scroll" id="my-cal-inline-30min"></div>
+<script type="text/javascript">
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init", "30min", {origin:"https://app.cal.com"});
+
+  Cal.ns["30min"]("inline", {
+    elementOrSelector:"#my-cal-inline-30min",
+    config: {"layout":"month_view"},
+    calLink: "testing-luis-c/30min",
+  });
+
+  Cal.ns["30min"]("ui", {"cssVarsPerTheme":{"light":{"cal-brand":"#292929"},"dark":{"cal-brand":"#fafafa"}},"hideEventTypeDetails":false,"layout":"month_view"});
+  </script>
+  {/* Cal inline embed code ends -->
+                
+                <div className="bg-blue-50 p-4 rounded-lg mt-4">
+                  <div className="text-center text-sm text-gray-600">
+                    <p className="font-medium mb-2">🎯 ¿Qué incluye tu videollamada?</p>
+                    <ul className="text-left max-w-md mx-auto space-y-1">
+                      <li>• Consulta personalizada sobre tu proyecto</li>
+                      <li>• Recomendaciones técnicas específicas</li>
+                      <li>• Estimación preliminar de costos</li>
+                      <li>• Enlace de Zoom enviado por email</li>
+                    </ul>
+                  </div>
+                </div>
+              </motion.div>
             )}
 
             {activeTab === 'contactInfo' && (
@@ -520,57 +410,9 @@ const ContactForm: React.FC = () => {
                 </div>
               </motion.div>
             )}
-
-            {activeTab === 'videoCall' && (
-              <motion.div
-                key="videoCall"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3 }}
-                className="space-y-6"
-              >
-                <div className="text-center mb-6">
-                  <p className="text-gray-600 text-lg mb-4">
-                    Selecciona una fecha y hora que te convenga para nuestra videollamada.
-                  </p>
-                  <p className="text-gray-500 text-base">
-                    📅 Disponible: Lunes a Viernes<br />
-                    🕒 Horario: 11:00 AM - 6:00 PM (GMT-6)
-                  </p>
-                </div>
-                
-                {/* Cal.com Embed Container */}
-                <div className="w-full border border-gray-200 rounded-lg overflow-hidden bg-white shadow-sm">
-                  {!calendarLoaded && (
-                    <div className="flex items-center justify-center h-[600px]">
-                      <div className="text-center">
-                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-                        <p className="text-gray-600 text-lg">Cargando calendario...</p>
-                        <p className="text-gray-500 text-sm mt-2">Esto puede tomar unos segundos</p>
-                      </div>
-                    </div>
-                  )}
-                  
-                  <div ref={calEmbedContainerRef} className={!calendarLoaded ? 'hidden' : 'block'}></div>
-                </div>
-                
-                <div className="bg-blue-50 p-4 rounded-lg">
-                  <div className="text-center text-sm text-gray-600">
-                    <p className="font-medium mb-2">🎯 ¿Qué incluye tu videollamada?</p>
-                    <ul className="text-left max-w-md mx-auto space-y-1">
-                      <li>• Consulta personalizada sobre tu proyecto</li>
-                      <li>• Recomendaciones técnicas específicas</li>
-                      <li>• Estimación preliminar de costos</li>
-                      <li>• Enlace de Zoom enviado por email</li>
-                    </ul>
-                  </div>
-                </div>
-              </motion.div>
-            )}
           </AnimatePresence>
 
-          {/* Success Animation */}
+          {/* Success Animation for General Form */}
           {showSuccess && (
             <div className="absolute inset-0 bg-blue-50 bg-opacity-95 flex flex-col items-center justify-center rounded-lg z-10">
               <motion.div
@@ -605,17 +447,11 @@ const ContactForm: React.FC = () => {
               </motion.div>
             </div>
           )}
+
         </CardContent>
       </Card>
     </div>
   );
 };
-
-// Global type declaration for Cal.com
-declare global {
-  interface Window {
-    Cal: any;
-  }
-}
 
 export default ContactForm;
