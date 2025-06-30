@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
+import { CheckCircle, Target, Settings } from 'lucide-react';
 
 function Productos() {
   const location = useLocation();
@@ -41,27 +42,54 @@ function Productos() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 <div className="bg-gray-100 p-6 rounded-lg">
                   <h3 className="text-lg font-semibold mb-3">Características Principales</h3>
-                  <ul className="list-disc list-inside space-y-1 text-gray-700">
-                    <li>Alta resistencia al desgaste y a productos químicos.</li>
-                    <li>Aplicación rápida y curado en poco tiempo.</li>
-                    <li>Superficie lisa y nivelada para operaciones exigentes.</li>
-                  </ul>
+                  <div className="space-y-3">
+                    <div className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                      <span className="text-gray-700 text-sm leading-relaxed">Alta resistencia al desgaste y a productos químicos</span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                      <span className="text-gray-700 text-sm leading-relaxed">Aplicación rápida y curado en poco tiempo</span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                      <span className="text-gray-700 text-sm leading-relaxed">Superficie lisa y nivelada para operaciones exigentes</span>
+                    </div>
+                  </div>
                 </div>
                 <div className="bg-gray-100 p-6 rounded-lg">
                   <h3 className="text-lg font-semibold mb-3">Aplicaciones</h3>
-                  <ul className="list-disc list-inside space-y-1 text-gray-700">
-                    <li>Naves industriales y centros logísticos.</li>
-                    <li>Almacenes automatizados y de alta precisión.</li>
-                    <li>Áreas de tránsito frecuente de maquinaria pesada.</li>
-                  </ul>
+                  <div className="space-y-3">
+                    <div className="flex items-start gap-3">
+                      <Target className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                      <span className="text-gray-700 text-sm leading-relaxed">Naves industriales y centros logísticos</span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Target className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                      <span className="text-gray-700 text-sm leading-relaxed">Almacenes automatizados y de alta precisión</span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Target className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                      <span className="text-gray-700 text-sm leading-relaxed">Áreas de tránsito frecuente de maquinaria pesada</span>
+                    </div>
+                  </div>
                 </div>
                 <div className="bg-gray-100 p-6 rounded-lg">
                   <h3 className="text-lg font-semibold mb-3">Beneficios</h3>
-                  <ul className="list-disc list-inside space-y-1 text-gray-700">
-                    <li>Reducción de costos de mantenimiento.</li>
-                    <li>Mayor eficiencia y seguridad operativa.</li>
-                    <li>Prolonga la vida útil del piso industrial.</li>
-                  </ul>
+                  <div className="space-y-3">
+                    <div className="flex items-start gap-3">
+                      <Settings className="w-5 h-5 text-orange-600 mt-0.5 flex-shrink-0" />
+                      <span className="text-gray-700 text-sm leading-relaxed">Reducción de costos de mantenimiento</span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Settings className="w-5 h-5 text-orange-600 mt-0.5 flex-shrink-0" />
+                      <span className="text-gray-700 text-sm leading-relaxed">Mayor eficiencia y seguridad operativa</span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Settings className="w-5 h-5 text-orange-600 mt-0.5 flex-shrink-0" />
+                      <span className="text-gray-700 text-sm leading-relaxed">Prolonga la vida útil del piso industrial</span>
+                    </div>
+                  </div>
                 </div>
               </div>
               <img 
