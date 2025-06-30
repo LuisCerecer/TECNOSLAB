@@ -68,7 +68,7 @@ function AcercaDeNosotros() {
                 </div>
                 <div>
                   <img 
-                    src="https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=1200" 
+                    src="https://res.cloudinary.com/dy089iwsg/image/upload/v1748985492/Logo_cqr9ul.svg" 
                     alt="Historia de Tecnoslab" 
                     className="w-full h-80 object-cover rounded-xl shadow-lg"
                   />
