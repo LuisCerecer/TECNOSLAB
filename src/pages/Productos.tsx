@@ -41,7 +41,7 @@ function Productos() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 <div className="bg-gray-100 p-6 rounded-lg">
                   <h3 className="text-lg font-semibold mb-3">Características Principales</h3>
-                  <ul className="space-y-2.5 text-gray-700 text-sm leading-relaxed">
+                  <ul className="space-y-2.5 text-gray-700 text-base leading-relaxed">
                     <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-base">
                       Alta resistencia al desgaste y a productos químicos
                     </li>
@@ -55,7 +55,7 @@ function Productos() {
                 </div>
                 <div className="bg-gray-100 p-6 rounded-lg">
                   <h3 className="text-lg font-semibold mb-3">Aplicaciones</h3>
-                  <ul className="space-y-2.5 text-gray-700 text-sm leading-relaxed">
+                  <ul className="space-y-2.5 text-gray-700 text-base leading-relaxed">
                     <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-green-600 before:font-bold before:text-base">
                       Naves industriales y centros logísticos
                     </li>
@@ -69,7 +69,7 @@ function Productos() {
                 </div>
                 <div className="bg-gray-100 p-6 rounded-lg">
                   <h3 className="text-lg font-semibold mb-3">Beneficios</h3>
-                  <ul className="space-y-2.5 text-gray-700 text-sm leading-relaxed">
+                  <ul className="space-y-2.5 text-gray-700 text-base leading-relaxed">
                     <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-orange-600 before:font-bold before:text-base">
                       Reducción de costos de mantenimiento
                     </li>
@@ -101,7 +101,7 @@ function Productos() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 <div className="bg-gray-100 p-6 rounded-lg">
                   <h3 className="text-lg font-semibold mb-3">Características Principales</h3>
-                  <ul className="space-y-2.5 text-gray-700 text-sm leading-relaxed">
+                  <ul className="space-y-2.5 text-gray-700 text-base leading-relaxed">
                     <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-base">
                       Endurecimiento acelerado, alcanza resistencias de carga en pocas horas
                     </li>
@@ -115,7 +115,7 @@ function Productos() {
                 </div>
                 <div className="bg-gray-100 p-6 rounded-lg">
                   <h3 className="text-lg font-semibold mb-3">Aplicaciones</h3>
-                  <ul className="space-y-2.5 text-gray-700 text-sm leading-relaxed">
+                  <ul className="space-y-2.5 text-gray-700 text-base leading-relaxed">
                     <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-base">
                       Reparación de grietas, fisuras y zonas deterioradas en pisos industriales
                     </li>
@@ -129,7 +129,7 @@ function Productos() {
                 </div>
                 <div className="bg-gray-100 p-6 rounded-lg">
                   <h3 className="text-lg font-semibold mb-3">Beneficios</h3>
-                  <ul className="space-y-2.5 text-gray-700 text-sm leading-relaxed">
+                  <ul className="space-y-2.5 text-gray-700 text-base leading-relaxed">
                     <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-base">
                       Reducción significativa de tiempos de inactividad al recuperar tráfico en horas
                     </li>
