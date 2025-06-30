@@ -59,24 +59,28 @@ function Servicios() {
                     aleatorio, cumpliendo con estándares internacionales TR34 y ASTM F2678.
                   </p>
                   <div className="bg-white p-5 rounded-lg border border-gray-200 shadow-md mb-6">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
-                      <div>
-                        <h3 className="text-lg font-semibold mb-3 text-blue-700">Características del Servicio</h3>
-                        <ul className="list-disc list-inside space-y-2 text-gray-700">
-                          <li>Medición con equipos láser de alta precisión</li>
-                          <li>Análisis estadístico completo de irregularidades</li>
-                          <li>Certificación según normas TR34 FM1, FM2, FM3</li>
-                          <li>Reporte técnico detallado con mapas de calor</li>
-                          <li>Recomendaciones específicas de corrección</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <img 
-                          src="https://images.pexels.com/photos/2760241/pexels-photo-2760241.jpeg?auto=compress&cs=tinysrgb&w=400" 
-                          alt="Medición láser de precisión" 
-                          className="w-full h-32 object-cover rounded-lg shadow-sm"
-                        />
-                      </div>
+                    <div>
+                      <h3 className="text-lg font-semibold mb-4 text-blue-700">¿En qué consiste?</h3>
+                      <p className="text-gray-700 mb-4">
+                        Medición precisa de irregularidades superficiales utilizando equipos láser de alta tecnología 
+                        para determinar el cumplimiento con estándares internacionales de planicidad.
+                      </p>
+                      
+                      <h3 className="text-lg font-semibold mb-4 text-blue-700">Casos de Uso / Aplicaciones</h3>
+                      <ul className="list-disc list-inside space-y-1 text-gray-700 mb-4">
+                        <li>Almacenes con tráfico multidireccional</li>
+                        <li>Centros de distribución</li>
+                        <li>Áreas industriales con montacargas convencionales</li>
+                        <li>Espacios de carga y descarga</li>
+                      </ul>
+                      
+                      <h3 className="text-lg font-semibold mb-4 text-blue-700">Beneficios para tu Operación</h3>
+                      <ul className="list-disc list-inside space-y-1 text-gray-700">
+                        <li>Certificación oficial de cumplimiento normativo</li>
+                        <li>Reducción de vibraciones en equipos</li>
+                        <li>Mayor vida útil de montacargas</li>
+                        <li>Optimización de operaciones logísticas</li>
+                      </ul>
                     </div>
                   </div>
                   <p className="text-gray-700 text-lg leading-relaxed">
@@ -107,24 +111,29 @@ function Servicios() {
                     donde el tráfico sigue patrones específicos y predefinidos.
                   </p>
                   <div className="bg-white p-5 rounded-lg border border-gray-200 shadow-md mb-6">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
-                      <div>
-                        <h3 className="text-lg font-semibold mb-3 text-blue-700">Aplicaciones Específicas</h3>
-                        <ul className="list-disc list-inside space-y-2 text-gray-700">
-                          <li>Sistemas automatizados de almacenamiento</li>
-                          <li>Pasillos VNA para estanterías de gran altura</li>
-                          <li>Líneas de producción automatizadas</li>
-                          <li>Sistemas robóticos de picking</li>
-                          <li>AGV (Automated Guided Vehicles) paths</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <img 
-                          src="https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=400" 
-                          alt="Sistemas automatizados" 
-                          className="w-full h-32 object-cover rounded-lg shadow-sm"
-                        />
-                      </div>
+                    <div>
+                      <h3 className="text-lg font-semibold mb-4 text-blue-700">¿En qué consiste?</h3>
+                      <p className="text-gray-700 mb-4">
+                        Medición ultra-precisa en rutas específicas donde operan sistemas automatizados, 
+                        garantizando tolerancias extremadamente estrictas para el funcionamiento óptimo de robots y AGVs.
+                      </p>
+                      
+                      <h3 className="text-lg font-semibold mb-4 text-blue-700">Casos de Uso / Aplicaciones</h3>
+                      <ul className="list-disc list-inside space-y-1 text-gray-700 mb-4">
+                        <li>Sistemas automatizados de almacenamiento</li>
+                        <li>Pasillos VNA para estanterías de gran altura</li>
+                        <li>Líneas de producción automatizadas</li>
+                        <li>Sistemas robóticos de picking</li>
+                        <li>Rutas de AGV (Automated Guided Vehicles)</li>
+                      </ul>
+                      
+                      <h3 className="text-lg font-semibold mb-4 text-blue-700">Beneficios para tu Operación</h3>
+                      <ul className="list-disc list-inside space-y-1 text-gray-700">
+                        <li>Operación segura de sistemas automatizados</li>
+                        <li>Máxima eficiencia en pasillos estrechos</li>
+                        <li>Reducción de errores en picking automatizado</li>
+                        <li>Cumplimiento de especificaciones de fabricantes</li>
+                      </ul>
                     </div>
                   </div>
                   <p className="text-gray-700 text-lg leading-relaxed">
@@ -155,24 +164,29 @@ function Servicios() {
                     inicial hasta la especificación técnica completa del proyecto.
                   </p>
                   <div className="bg-white p-5 rounded-lg border border-gray-200 shadow-md mb-6">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
-                      <div>
-                        <h3 className="text-lg font-semibold mb-3 text-blue-700">Servicios de Ingeniería</h3>
-                        <ul className="list-disc list-inside space-y-2 text-gray-700">
-                          <li>Análisis estructural y cálculo de cargas</li>
-                          <li>Estudio de suelos y cimentaciones</li>
-                          <li>Diseño de sistemas de refuerzo</li>
-                          <li>Especificaciones técnicas detalladas</li>
-                          <li>Planos de construcción y detalles</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <img 
-                          src="https://images.pexels.com/photos/7376/startup-photos.jpg?auto=compress&cs=tinysrgb&w=400" 
-                          alt="Ingeniería y diseño" 
-                          className="w-full h-32 object-cover rounded-lg shadow-sm"
-                        />
-                      </div>
+                    <div>
+                      <h3 className="text-lg font-semibold mb-4 text-blue-700">¿En qué consiste?</h3>
+                      <p className="text-gray-700 mb-4">
+                        Desarrollo completo de proyectos de pisos industriales desde la conceptualización hasta 
+                        la especificación técnica, incluyendo análisis estructural, cálculos de carga y diseño de sistemas.
+                      </p>
+                      
+                      <h3 className="text-lg font-semibold mb-4 text-blue-700">Casos de Uso / Aplicaciones</h3>
+                      <ul className="list-disc list-inside space-y-1 text-gray-700 mb-4">
+                        <li>Nuevas construcciones industriales</li>
+                        <li>Ampliaciones de almacenes existentes</li>
+                        <li>Modernización de instalaciones</li>
+                        <li>Proyectos con requerimientos especiales</li>
+                        <li>Instalaciones con cargas pesadas</li>
+                      </ul>
+                      
+                      <h3 className="text-lg font-semibold mb-4 text-blue-700">Beneficios para tu Operación</h3>
+                      <ul className="list-disc list-inside space-y-1 text-gray-700">
+                        <li>Soluciones personalizadas y optimizadas</li>
+                        <li>Cumplimiento garantizado de especificaciones</li>
+                        <li>Reducción de costos a largo plazo</li>
+                        <li>Máxima durabilidad y resistencia</li>
+                      </ul>
                     </div>
                   </div>
                   <p className="text-gray-700 text-lg leading-relaxed">
@@ -203,24 +217,29 @@ function Servicios() {
                     de concreto para lograr las tolerancias de planicidad requeridas.
                   </p>
                   <div className="bg-white p-5 rounded-lg border border-gray-200 shadow-md mb-6">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
-                      <div>
-                        <h3 className="text-lg font-semibold mb-3 text-blue-700">Proceso de Desbaste</h3>
-                        <ul className="list-disc list-inside space-y-2 text-gray-700">
-                          <li>Mapeo detallado de irregularidades</li>
-                          <li>Desbaste controlado con equipo especializado</li>
-                          <li>Verificación continua de tolerancias</li>
-                          <li>Limpieza y preparación final</li>
-                          <li>Medición de verificación final</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <img 
-                          src="https://images.pexels.com/photos/210137/pexels-photo-210137.jpeg?auto=compress&cs=tinysrgb&w=400" 
-                          alt="Proceso de desbaste" 
-                          className="w-full h-32 object-cover rounded-lg shadow-sm"
-                        />
-                      </div>
+                    <div>
+                      <h3 className="text-lg font-semibold mb-4 text-blue-700">¿En qué consiste?</h3>
+                      <p className="text-gray-700 mb-4">
+                        Proceso de remoción controlada de material mediante equipos especializados de desbaste, 
+                        eliminando irregularidades superficiales para alcanzar las tolerancias de planicidad requeridas.
+                      </p>
+                      
+                      <h3 className="text-lg font-semibold mb-4 text-blue-700">Casos de Uso / Aplicaciones</h3>
+                      <ul className="list-disc list-inside space-y-1 text-gray-700 mb-4">
+                        <li>Pisos existentes con irregularidades</li>
+                        <li>Preparación para sistemas automatizados</li>
+                        <li>Corrección de defectos de construcción</li>
+                        <li>Nivelación de juntas desalineadas</li>
+                        <li>Eliminación de protuberancias</li>
+                      </ul>
+                      
+                      <h3 className="text-lg font-semibold mb-4 text-blue-700">Beneficios para tu Operación</h3>
+                      <ul className="list-disc list-inside space-y-1 text-gray-700">
+                        <li>Solución económica vs. reemplazo total</li>
+                        <li>Mínima interrupción operativa</li>
+                        <li>Resultados inmediatos y verificables</li>
+                        <li>Compatibilidad con sistemas existentes</li>
+                      </ul>
                     </div>
                   </div>
                   <p className="text-gray-700 text-lg leading-relaxed">
@@ -251,24 +270,29 @@ function Servicios() {
                     y lograr las tolerancias de planicidad requeridas.
                   </p>
                   <div className="bg-white p-5 rounded-lg border border-gray-200 shadow-md mb-6">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
-                      <div>
-                        <h3 className="text-lg font-semibold mb-3 text-blue-700">Tipos de Recubrimientos</h3>
-                        <ul className="list-disc list-inside space-y-2 text-gray-700">
-                          <li>Morteros autonivelantes de alta resistencia</li>
-                          <li>Sistemas epoxi de nivelación</li>
-                          <li>Recubrimientos poliuretano cemento</li>
-                          <li>Sistemas híbridos para casos especiales</li>
-                          <li>Recubrimientos con agregados especiales</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <img 
-                          src="https://images.pexels.com/photos/1668928/pexels-photo-1668928.jpeg?auto=compress&cs=tinysrgb&w=400" 
-                          alt="Recubrimientos especializados" 
-                          className="w-full h-32 object-cover rounded-lg shadow-sm"
-                        />
-                      </div>
+                    <div>
+                      <h3 className="text-lg font-semibold mb-4 text-blue-700">¿En qué consiste?</h3>
+                      <p className="text-gray-700 mb-4">
+                        Aplicación de sistemas de recubrimiento autonivelantes de alta tecnología que corrigen 
+                        irregularidades mientras mejoran las propiedades superficiales del piso.
+                      </p>
+                      
+                      <h3 className="text-lg font-semibold mb-4 text-blue-700">Casos de Uso / Aplicaciones</h3>
+                      <ul className="list-disc list-inside space-y-1 text-gray-700 mb-4">
+                        <li>Pisos con depresiones menores</li>
+                        <li>Superficies con desgaste irregular</li>
+                        <li>Mejora de resistencia química</li>
+                        <li>Renovación de pisos antiguos</li>
+                        <li>Preparación para nuevos usos</li>
+                      </ul>
+                      
+                      <h3 className="text-lg font-semibold mb-4 text-blue-700">Beneficios para tu Operación</h3>
+                      <ul className="list-disc list-inside space-y-1 text-gray-700">
+                        <li>Mejora simultánea de planicidad y propiedades</li>
+                        <li>Mayor resistencia al desgaste</li>
+                        <li>Facilidad de limpieza y mantenimiento</li>
+                        <li>Aplicación rápida y eficiente</li>
+                      </ul>
                     </div>
                   </div>
                   <p className="text-gray-700 text-lg leading-relaxed">
@@ -299,24 +323,29 @@ function Servicios() {
                     garantizando su funcionamiento óptimo y prolongando la vida útil del piso.
                   </p>
                   <div className="bg-white p-5 rounded-lg border border-gray-200 shadow-md mb-6">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
-                      <div>
-                        <h3 className="text-lg font-semibold mb-3 text-blue-700">Servicios de Reparación</h3>
-                        <ul className="list-disc list-inside space-y-2 text-gray-700">
-                          <li>Remoción y reemplazo de selladores</li>
-                          <li>Reparación de bordes con resinas epoxi</li>
-                          <li>Instalación de sistemas armados</li>
-                          <li>Sellado con materiales poliuretano</li>
-                          <li>Refuerzo estructural de juntas críticas</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <img 
-                          src="https://images.pexels.com/photos/236705/pexels-photo-236705.jpeg?auto=compress&cs=tinysrgb&w=400" 
-                          alt="Reparación de juntas" 
-                          className="w-full h-32 object-cover rounded-lg shadow-sm"
-                        />
-                      </div>
+                    <div>
+                      <h3 className="text-lg font-semibold mb-4 text-blue-700">¿En qué consiste?</h3>
+                      <p className="text-gray-700 mb-4">
+                        Reparación integral de sistemas de juntas incluyendo remoción de materiales deteriorados, 
+                        preparación de superficies y aplicación de nuevos sistemas de sellado de alta calidad.
+                      </p>
+                      
+                      <h3 className="text-lg font-semibold mb-4 text-blue-700">Casos de Uso / Aplicaciones</h3>
+                      <ul className="list-disc list-inside space-y-1 text-gray-700 mb-4">
+                        <li>Juntas de contracción deterioradas</li>
+                        <li>Sistemas de juntas armadas dañadas</li>
+                        <li>Selladores agrietados o desprendidos</li>
+                        <li>Juntas de construcción defectuosas</li>
+                        <li>Mantenimiento preventivo programado</li>
+                      </ul>
+                      
+                      <h3 className="text-lg font-semibold mb-4 text-blue-700">Beneficios para tu Operación</h3>
+                      <ul className="list-disc list-inside space-y-1 text-gray-700">
+                        <li>Prevención de daños mayores al piso</li>
+                        <li>Reducción de vibraciones y ruido</li>
+                        <li>Mayor vida útil del sistema de piso</li>
+                        <li>Mejora en la seguridad operativa</li>
+                      </ul>
                     </div>
                   </div>
                   <p className="text-gray-700 text-lg leading-relaxed">
