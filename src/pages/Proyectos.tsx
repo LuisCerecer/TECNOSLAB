@@ -72,20 +72,19 @@ function Proyectos() {
             </h2>
             <div className="bg-white p-8 shadow-xl rounded-xl">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-                <div className="flex justify-center">
+                <div className="flex justify-center lg:order-1">
                   <img 
-                    src="https://images.pexels.com/photos/236705/pexels-photo-236705.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                    src="https://images.pexels.com/photos/4481259/pexels-photo-4481259.jpeg?auto=compress&cs=tinysrgb&w=800" 
                     alt="CYS Querétaro" 
-                    className="w-full h-auto object-cover rounded-lg shadow-md"
+                    className="w-full h-auto object-cover rounded-lg shadow-md max-w-md"
                   />
                 </div>
-                <div>
+                <div className="lg:order-2">
                   <p className="text-gray-700 mb-6 text-lg leading-relaxed">
-                    Proyecto integral de instalación de pisos industriales de alta planicidad para CYS en Querétaro, 
-                    diseñado para soportar operaciones logísticas intensivas y sistemas automatizados.
+                    Proyecto integral de instalación de pisos industriales de alta planicidad para CYS en Querétaro, diseñado para soportar operaciones logísticas intensivas y sistemas automatizados.
                   </p>
-                  <div className="bg-green-50 p-5 rounded-lg mb-6">
-                    <h3 className="text-lg font-semibold mb-3 text-green-800">Características del Proyecto</h3>
+                  <div className="bg-blue-50 p-5 rounded-lg mb-6">
+                    <h3 className="text-lg font-semibold mb-3 text-blue-800">Características del Proyecto</h3>
                     <ul className="list-disc list-inside space-y-2 text-gray-700">
                       <li>Instalación de 18,500 m² de piso superplano</li>
                       <li>Especificación TR34 FM2 / ASTM F2678</li>
@@ -96,8 +95,7 @@ function Proyectos() {
                     </ul>
                   </div>
                   <p className="text-gray-700 text-lg leading-relaxed">
-                    La instalación fue completada en tiempo récord manteniendo los más altos estándares de calidad, 
-                    permitiendo a CYS optimizar sus operaciones logísticas desde el primer día.
+                    La instalación fue completada en tiempo récord manteniendo los más altos estándares de calidad, permitiendo a CYS optimizar sus operaciones logísticas desde el primer día.
                   </p>
                 </div>
               </div>
