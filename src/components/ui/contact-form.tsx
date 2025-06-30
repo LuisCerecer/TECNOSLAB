@@ -10,7 +10,7 @@ import { Phone, Mail, CheckCircle, MapPin, Globe } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { submitContactForm, ContactSubmission } from '@/lib/supabase';
 
-const RECAPTCHA_SITE_KEY = '6Lc7UHIrAAAAAM8gcBjNJMejkGO4eDO3TjgT2F2h';
+const RECAPTCHA_SITE_KEY = '6Lf5QnMrAAAAANB9A_nS8vk-VvI_srBhcP4M-9Ox';
 
 interface FormData {
   nombre: string;
