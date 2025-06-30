@@ -80,10 +80,8 @@ const NavMenu: React.FC<NavMenuProps> = ({ navItems }) => {
 
   // Handle main navigation item click to ensure scroll to top
   const handleMainNavClick = () => {
-    // Small delay to ensure navigation completes before scrolling
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 100);
+    // Immediate scroll to top when clicking main nav items
+    window.scrollTo({ top: 0, behavior: 'auto' });
   };
   return (
     <nav 

@@ -12,46 +12,43 @@ function Servicios() {
 
   useEffect(() => {
     if (location.hash) {
-      // Small delay to ensure page has loaded
-      setTimeout(() => {
-        let targetElement: HTMLElement | null = null;
-        
-        switch (location.hash) {
-          case '#trafico-aleatorio':
-            targetElement = traficoAleatorioRef.current;
-            break;
-          case '#trafico-definido':
-            targetElement = traficoDefinidoRef.current;
-            break;
-          case '#diseno-ingenieria':
-            targetElement = disenoIngenieriaRef.current;
-            break;
-          case '#correccion-desbaste':
-            targetElement = correccionDesbasteRef.current;
-            break;
-          case '#correccion-recubrimientos':
-            targetElement = correccionRecubrimientosRef.current;
-            break;
-          case '#reparacion-juntas':
-            targetElement = reparacionJuntasRef.current;
-            break;
-          default:
-            break;
-        }
-        
-        if (targetElement) {
-          // Calculate offset to position title at top (accounting for fixed header)
-          const headerHeight = 144; // pt-36 = 144px
-          const elementTop = targetElement.offsetTop - headerHeight;
-          window.scrollTo({ 
-            top: Math.max(0, elementTop), 
-            behavior: 'smooth' 
-          });
-        }
-      }, 100);
+      let targetElement: HTMLElement | null = null;
+      
+      switch (location.hash) {
+        case '#trafico-aleatorio':
+          targetElement = traficoAleatorioRef.current;
+          break;
+        case '#trafico-definido':
+          targetElement = traficoDefinidoRef.current;
+          break;
+        case '#diseno-ingenieria':
+          targetElement = disenoIngenieriaRef.current;
+          break;
+        case '#correccion-desbaste':
+          targetElement = correccionDesbasteRef.current;
+          break;
+        case '#correccion-recubrimientos':
+          targetElement = correccionRecubrimientosRef.current;
+          break;
+        case '#reparacion-juntas':
+          targetElement = reparacionJuntasRef.current;
+          break;
+        default:
+          break;
+      }
+      
+      if (targetElement) {
+        // Calculate offset to position title at top (accounting for fixed header)
+        const headerHeight = 144; // pt-36 = 144px
+        const elementTop = targetElement.offsetTop - headerHeight;
+        window.scrollTo({ 
+          top: Math.max(0, elementTop), 
+          behavior: 'auto' 
+        });
+      }
     } else {
       // Scroll to top if no hash is present
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: 'auto' });
     }
   }, [location]);
 

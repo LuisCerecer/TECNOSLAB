@@ -8,34 +8,31 @@ function Proyectos() {
 
   useEffect(() => {
     if (location.hash) {
-      // Small delay to ensure page has loaded
-      setTimeout(() => {
-        let targetElement: HTMLElement | null = null;
-        
-        switch (location.hash) {
-          case '#bosch':
-            targetElement = boschRef.current;
-            break;
-          case '#cys':
-            targetElement = cysRef.current;
-            break;
-          default:
-            break;
-        }
-        
-        if (targetElement) {
-          // Calculate offset to position title at top (accounting for fixed header)
-          const headerHeight = 144; // pt-36 = 144px
-          const elementTop = targetElement.offsetTop - headerHeight;
-          window.scrollTo({ 
-            top: Math.max(0, elementTop), 
-            behavior: 'smooth' 
-          });
-        }
-      }, 100);
+      let targetElement: HTMLElement | null = null;
+      
+      switch (location.hash) {
+        case '#bosch':
+          targetElement = boschRef.current;
+          break;
+        case '#cys':
+          targetElement = cysRef.current;
+          break;
+        default:
+          break;
+      }
+      
+      if (targetElement) {
+        // Calculate offset to position title at top (accounting for fixed header)
+        const headerHeight = 144; // pt-36 = 144px
+        const elementTop = targetElement.offsetTop - headerHeight;
+        window.scrollTo({ 
+          top: Math.max(0, elementTop), 
+          behavior: 'auto' 
+        });
+      }
     } else {
       // Scroll to top if no hash is present
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: 'auto' });
     }
   }, [location]);
 
