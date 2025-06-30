@@ -61,8 +61,7 @@ function App() {
       items: [
         { name: 'Historia', hash: '#historia' },
         { name: 'Misión', hash: '#mision' },
-        { name: 'Visión', hash: '#vision' },
-        { name: 'Valores', hash: '#valores' }
+        { name: 'Visión', hash: '#vision' }
       ],
       title: 'Acerca de nosotros',
       featured: {

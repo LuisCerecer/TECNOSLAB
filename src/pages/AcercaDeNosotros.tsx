@@ -6,7 +6,6 @@ function AcercaDeNosotros() {
   const historiaRef = useRef<HTMLDivElement>(null);
   const misionRef = useRef<HTMLDivElement>(null);
   const visionRef = useRef<HTMLDivElement>(null);
-  const valoresRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (location.hash) {
@@ -19,9 +18,6 @@ function AcercaDeNosotros() {
           break;
         case '#vision':
           visionRef.current?.scrollIntoView({ behavior: 'smooth' });
-          break;
-        case '#valores':
-          valoresRef.current?.scrollIntoView({ behavior: 'smooth' });
           break;
         default:
           break;
@@ -66,12 +62,14 @@ function AcercaDeNosotros() {
                     comprometidos con la excelencia.
                   </p>
                 </div>
-                <div>
-                  <img 
-                    src="https://res.cloudinary.com/dy089iwsg/image/upload/v1748985492/Logo_cqr9ul.svg" 
-                    alt="Historia de Tecnoslab" 
-                    className="w-full h-80 object-cover rounded-xl shadow-lg"
-                  />
+                <div className="flex justify-center">
+                  <div className="bg-white p-6 rounded-2xl shadow-lg">
+                    <img 
+                      src="https://res.cloudinary.com/dy089iwsg/image/upload/v1748985492/Logo_cqr9ul.svg" 
+                      alt="Tecnoslab - Pisos Continuos de Alta Planicidad" 
+                      className="w-full max-w-sm h-auto object-contain"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -81,18 +79,16 @@ function AcercaDeNosotros() {
             <h2 className="text-3xl font-bold text-gray-800 mb-8 border-l-4 border-blue-700 pl-4">
               Misión
             </h2>
-            <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-8 shadow-xl rounded-xl">
-              <div className="bg-white p-8 rounded-lg shadow-md">
-                <p className="text-gray-700 text-lg leading-relaxed mb-6">
-                  Proporcionar soluciones innovadoras y de alta calidad en pisos industriales de altas especificaciones, 
-                  garantizando la satisfacción total de nuestros clientes a través de la excelencia técnica y el 
-                  compromiso con los más altos estándares internacionales.
-                </p>
-                <p className="text-gray-700 text-lg leading-relaxed">
-                  Nos especializamos en el desarrollo de pisos que satisfacen los requerimientos de sistemas automatizados 
-                  y tecnologías de vanguardia para la industria logística moderna.
-                </p>
-              </div>
+            <div className="bg-white p-8 shadow-xl rounded-xl">
+              <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                Proporcionar soluciones innovadoras y de alta calidad en pisos industriales de altas especificaciones, 
+                garantizando la satisfacción total de nuestros clientes a través de la excelencia técnica y el 
+                compromiso con los más altos estándares internacionales.
+              </p>
+              <p className="text-gray-700 text-lg leading-relaxed">
+                Nos especializamos en el desarrollo de pisos que satisfacen los requerimientos de sistemas automatizados 
+                y tecnologías de vanguardia para la industria logística moderna.
+              </p>
             </div>
           </div>
 
@@ -100,56 +96,16 @@ function AcercaDeNosotros() {
             <h2 className="text-3xl font-bold text-gray-800 mb-8 border-l-4 border-blue-700 pl-4">
               Visión
             </h2>
-            <div className="bg-gradient-to-br from-green-50 to-green-100 p-8 shadow-xl rounded-xl">
-              <div className="bg-white p-8 rounded-lg shadow-md">
-                <p className="text-gray-700 text-lg leading-relaxed mb-6">
-                  Ser reconocidos como el líder indiscutible en el mercado mexicano de pisos industriales 
-                  de altas especificaciones, estableciendo nuevos estándares de calidad y servicio en la industria.
-                </p>
-                <p className="text-gray-700 text-lg leading-relaxed">
-                  Aspiramos a expandir nuestra presencia a nivel internacional, llevando la excelencia técnica 
-                  y la innovación mexicana a mercados globales, mientras contribuimos al desarrollo de la 
-                  industria logística automatizada.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div ref={valoresRef} id="valores" className="mb-20">
-            <h2 className="text-3xl font-bold text-gray-800 mb-8 border-l-4 border-blue-700 pl-4">
-              Valores
-            </h2>
             <div className="bg-white p-8 shadow-xl rounded-xl">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl shadow-md">
-                  <h4 className="font-bold mb-3 text-xl text-blue-800">Excelencia</h4>
-                  <p className="text-gray-700 text-lg leading-relaxed">
-                    Buscamos la perfección en cada proyecto que realizamos, aplicando los más altos 
-                    estándares de calidad en todos nuestros procesos.
-                  </p>
-                </div>
-                <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl shadow-md">
-                  <h4 className="font-bold mb-3 text-xl text-purple-800">Innovación</h4>
-                  <p className="text-gray-700 text-lg leading-relaxed">
-                    Adoptamos las últimas tecnologías y métodos para mejorar constantemente 
-                    nuestros servicios y mantenernos a la vanguardia.
-                  </p>
-                </div>
-                <div className="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl shadow-md">
-                  <h4 className="font-bold mb-3 text-xl text-green-800">Integridad</h4>
-                  <p className="text-gray-700 text-lg leading-relaxed">
-                    Actuamos con honestidad y transparencia en todas nuestras operaciones, 
-                    construyendo relaciones de confianza duraderas.
-                  </p>
-                </div>
-                <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-xl shadow-md">
-                  <h4 className="font-bold mb-3 text-xl text-orange-800">Compromiso</h4>
-                  <p className="text-gray-700 text-lg leading-relaxed">
-                    Nos dedicamos a superar las expectativas de nuestros clientes, 
-                    ofreciendo soluciones personalizadas y soporte integral.
-                  </p>
-                </div>
-              </div>
+              <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                Ser reconocidos como el líder indiscutible en el mercado mexicano de pisos industriales 
+                de altas especificaciones, estableciendo nuevos estándares de calidad y servicio en la industria.
+              </p>
+              <p className="text-gray-700 text-lg leading-relaxed">
+                Aspiramos a expandir nuestra presencia a nivel internacional, llevando la excelencia técnica 
+                y la innovación mexicana a mercados globales, mientras contribuimos al desarrollo de la 
+                industria logística automatizada.
+              </p>
             </div>
           </div>
         </div>
