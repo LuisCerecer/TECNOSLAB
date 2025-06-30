@@ -41,21 +41,27 @@ function Productos() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 <div className="bg-gray-100 p-6 rounded-lg">
                   <h3 className="text-lg font-semibold mb-3">Características Principales</h3>
-                  <p className="text-gray-700">
-                    Planicidad excepcional para operaciones VNA y sistemas robotizados.
-                  </p>
+                  <ul className="list-disc list-inside space-y-1 text-gray-700">
+                    <li>Alta resistencia al desgaste y a productos químicos.</li>
+                    <li>Aplicación rápida y curado en poco tiempo.</li>
+                    <li>Superficie lisa y nivelada para operaciones exigentes.</li>
+                  </ul>
                 </div>
                 <div className="bg-gray-100 p-6 rounded-lg">
                   <h3 className="text-lg font-semibold mb-3">Aplicaciones</h3>
-                  <p className="text-gray-700">
-                    Centros logísticos, almacenes automatizados y áreas de alta precisión.
-                  </p>
+                  <ul className="list-disc list-inside space-y-1 text-gray-700">
+                    <li>Naves industriales y centros logísticos.</li>
+                    <li>Almacenes automatizados y de alta precisión.</li>
+                    <li>Áreas de tránsito frecuente de maquinaria pesada.</li>
+                  </ul>
                 </div>
                 <div className="bg-gray-100 p-6 rounded-lg">
                   <h3 className="text-lg font-semibold mb-3">Beneficios</h3>
-                  <p className="text-gray-700">
-                    Mayor eficiencia operativa y reducción de costos de mantenimiento.
-                  </p>
+                  <ul className="list-disc list-inside space-y-1 text-gray-700">
+                    <li>Reducción de costos de mantenimiento.</li>
+                    <li>Mayor eficiencia y seguridad operativa.</li>
+                    <li>Prolonga la vida útil del piso industrial.</li>
+                  </ul>
                 </div>
               </div>
               <img 
