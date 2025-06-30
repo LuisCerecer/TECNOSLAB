@@ -58,15 +58,26 @@ function Servicios() {
                     Servicio especializado de medición de planicidad para pisos industriales con patrones de tráfico 
                     aleatorio, cumpliendo con estándares internacionales TR34 y ASTM F2678.
                   </p>
-                  <div className="bg-blue-50 p-5 rounded-lg mb-6">
-                    <h3 className="text-lg font-semibold mb-3 text-blue-800">Características del Servicio</h3>
-                    <ul className="list-disc list-inside space-y-2 text-gray-700">
-                      <li>Medición con equipos láser de alta precisión</li>
-                      <li>Análisis estadístico completo de irregularidades</li>
-                      <li>Certificación según normas TR34 FM1, FM2, FM3</li>
-                      <li>Reporte técnico detallado con mapas de calor</li>
-                      <li>Recomendaciones específicas de corrección</li>
-                    </ul>
+                  <div className="bg-white p-5 rounded-lg border border-gray-200 shadow-md mb-6">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+                      <div>
+                        <h3 className="text-lg font-semibold mb-3 text-blue-700">Características del Servicio</h3>
+                        <ul className="list-disc list-inside space-y-2 text-gray-700">
+                          <li>Medición con equipos láser de alta precisión</li>
+                          <li>Análisis estadístico completo de irregularidades</li>
+                          <li>Certificación según normas TR34 FM1, FM2, FM3</li>
+                          <li>Reporte técnico detallado con mapas de calor</li>
+                          <li>Recomendaciones específicas de corrección</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <img 
+                          src="https://images.pexels.com/photos/2760241/pexels-photo-2760241.jpeg?auto=compress&cs=tinysrgb&w=400" 
+                          alt="Medición láser de precisión" 
+                          className="w-full h-32 object-cover rounded-lg shadow-sm"
+                        />
+                      </div>
+                    </div>
                   </div>
                   <p className="text-gray-700 text-lg leading-relaxed">
                     Ideal para almacenes, centros de distribución y áreas industriales con movimiento 
@@ -95,15 +106,26 @@ function Servicios() {
                     Medición especializada para sistemas automatizados y pasillos VNA (Very Narrow Aisle) 
                     donde el tráfico sigue patrones específicos y predefinidos.
                   </p>
-                  <div className="bg-green-50 p-5 rounded-lg mb-6">
-                    <h3 className="text-lg font-semibold mb-3 text-green-800">Aplicaciones Específicas</h3>
-                    <ul className="list-disc list-inside space-y-2 text-gray-700">
-                      <li>Sistemas automatizados de almacenamiento</li>
-                      <li>Pasillos VNA para estanterías de gran altura</li>
-                      <li>Líneas de producción automatizadas</li>
-                      <li>Sistemas robóticos de picking</li>
-                      <li>AGV (Automated Guided Vehicles) paths</li>
-                    </ul>
+                  <div className="bg-white p-5 rounded-lg border border-gray-200 shadow-md mb-6">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+                      <div>
+                        <h3 className="text-lg font-semibold mb-3 text-blue-700">Aplicaciones Específicas</h3>
+                        <ul className="list-disc list-inside space-y-2 text-gray-700">
+                          <li>Sistemas automatizados de almacenamiento</li>
+                          <li>Pasillos VNA para estanterías de gran altura</li>
+                          <li>Líneas de producción automatizadas</li>
+                          <li>Sistemas robóticos de picking</li>
+                          <li>AGV (Automated Guided Vehicles) paths</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <img 
+                          src="https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=400" 
+                          alt="Sistemas automatizados" 
+                          className="w-full h-32 object-cover rounded-lg shadow-sm"
+                        />
+                      </div>
+                    </div>
                   </div>
                   <p className="text-gray-700 text-lg leading-relaxed">
                     Cumple con las más estrictas tolerancias requeridas por sistemas automatizados, 
@@ -132,15 +154,26 @@ function Servicios() {
                     Desarrollo de soluciones integrales de ingeniería para pisos industriales, desde el análisis 
                     inicial hasta la especificación técnica completa del proyecto.
                   </p>
-                  <div className="bg-purple-50 p-5 rounded-lg mb-6">
-                    <h3 className="text-lg font-semibold mb-3 text-purple-800">Servicios de Ingeniería</h3>
-                    <ul className="list-disc list-inside space-y-2 text-gray-700">
-                      <li>Análisis estructural y cálculo de cargas</li>
-                      <li>Estudio de suelos y cimentaciones</li>
-                      <li>Diseño de sistemas de refuerzo</li>
-                      <li>Especificaciones técnicas detalladas</li>
-                      <li>Planos de construcción y detalles</li>
-                    </ul>
+                  <div className="bg-white p-5 rounded-lg border border-gray-200 shadow-md mb-6">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+                      <div>
+                        <h3 className="text-lg font-semibold mb-3 text-blue-700">Servicios de Ingeniería</h3>
+                        <ul className="list-disc list-inside space-y-2 text-gray-700">
+                          <li>Análisis estructural y cálculo de cargas</li>
+                          <li>Estudio de suelos y cimentaciones</li>
+                          <li>Diseño de sistemas de refuerzo</li>
+                          <li>Especificaciones técnicas detalladas</li>
+                          <li>Planos de construcción y detalles</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <img 
+                          src="https://images.pexels.com/photos/7376/startup-photos.jpg?auto=compress&cs=tinysrgb&w=400" 
+                          alt="Ingeniería y diseño" 
+                          className="w-full h-32 object-cover rounded-lg shadow-sm"
+                        />
+                      </div>
+                    </div>
                   </div>
                   <p className="text-gray-700 text-lg leading-relaxed">
                     Soluciones personalizadas que consideran cargas operativas, condiciones ambientales 
@@ -169,15 +202,26 @@ function Servicios() {
                     Técnica especializada de corrección de irregularidades mediante desbaste controlado 
                     de concreto para lograr las tolerancias de planicidad requeridas.
                   </p>
-                  <div className="bg-orange-50 p-5 rounded-lg mb-6">
-                    <h3 className="text-lg font-semibold mb-3 text-orange-800">Proceso de Desbaste</h3>
-                    <ul className="list-disc list-inside space-y-2 text-gray-700">
-                      <li>Mapeo detallado de irregularidades</li>
-                      <li>Desbaste controlado con equipo especializado</li>
-                      <li>Verificación continua de tolerancias</li>
-                      <li>Limpieza y preparación final</li>
-                      <li>Medición de verificación final</li>
-                    </ul>
+                  <div className="bg-white p-5 rounded-lg border border-gray-200 shadow-md mb-6">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+                      <div>
+                        <h3 className="text-lg font-semibold mb-3 text-blue-700">Proceso de Desbaste</h3>
+                        <ul className="list-disc list-inside space-y-2 text-gray-700">
+                          <li>Mapeo detallado de irregularidades</li>
+                          <li>Desbaste controlado con equipo especializado</li>
+                          <li>Verificación continua de tolerancias</li>
+                          <li>Limpieza y preparación final</li>
+                          <li>Medición de verificación final</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <img 
+                          src="https://images.pexels.com/photos/210137/pexels-photo-210137.jpeg?auto=compress&cs=tinysrgb&w=400" 
+                          alt="Proceso de desbaste" 
+                          className="w-full h-32 object-cover rounded-lg shadow-sm"
+                        />
+                      </div>
+                    </div>
                   </div>
                   <p className="text-gray-700 text-lg leading-relaxed">
                     Ideal para pisos existentes que requieren alcanzar especificaciones de planicidad 
@@ -206,15 +250,26 @@ function Servicios() {
                     Aplicación de recubrimientos especializados para corregir irregularidades superficiales 
                     y lograr las tolerancias de planicidad requeridas.
                   </p>
-                  <div className="bg-indigo-50 p-5 rounded-lg mb-6">
-                    <h3 className="text-lg font-semibold mb-3 text-indigo-800">Tipos de Recubrimientos</h3>
-                    <ul className="list-disc list-inside space-y-2 text-gray-700">
-                      <li>Morteros autonivelantes de alta resistencia</li>
-                      <li>Sistemas epoxi de nivelación</li>
-                      <li>Recubrimientos poliuretano cemento</li>
-                      <li>Sistemas híbridos para casos especiales</li>
-                      <li>Recubrimientos con agregados especiales</li>
-                    </ul>
+                  <div className="bg-white p-5 rounded-lg border border-gray-200 shadow-md mb-6">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+                      <div>
+                        <h3 className="text-lg font-semibold mb-3 text-blue-700">Tipos de Recubrimientos</h3>
+                        <ul className="list-disc list-inside space-y-2 text-gray-700">
+                          <li>Morteros autonivelantes de alta resistencia</li>
+                          <li>Sistemas epoxi de nivelación</li>
+                          <li>Recubrimientos poliuretano cemento</li>
+                          <li>Sistemas híbridos para casos especiales</li>
+                          <li>Recubrimientos con agregados especiales</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <img 
+                          src="https://images.pexels.com/photos/1668928/pexels-photo-1668928.jpeg?auto=compress&cs=tinysrgb&w=400" 
+                          alt="Recubrimientos especializados" 
+                          className="w-full h-32 object-cover rounded-lg shadow-sm"
+                        />
+                      </div>
+                    </div>
                   </div>
                   <p className="text-gray-700 text-lg leading-relaxed">
                     Solución versátil que permite corregir irregularidades mientras se mejoran 
@@ -243,15 +298,26 @@ function Servicios() {
                     Servicio especializado de reparación y mantenimiento de sistemas de juntas en pisos industriales, 
                     garantizando su funcionamiento óptimo y prolongando la vida útil del piso.
                   </p>
-                  <div className="bg-red-50 p-5 rounded-lg mb-6">
-                    <h3 className="text-lg font-semibold mb-3 text-red-800">Servicios de Reparación</h3>
-                    <ul className="list-disc list-inside space-y-2 text-gray-700">
-                      <li>Remoción y reemplazo de selladores</li>
-                      <li>Reparación de bordes con resinas epoxi</li>
-                      <li>Instalación de sistemas armados</li>
-                      <li>Sellado con materiales poliuretano</li>
-                      <li>Refuerzo estructural de juntas críticas</li>
-                    </ul>
+                  <div className="bg-white p-5 rounded-lg border border-gray-200 shadow-md mb-6">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+                      <div>
+                        <h3 className="text-lg font-semibold mb-3 text-blue-700">Servicios de Reparación</h3>
+                        <ul className="list-disc list-inside space-y-2 text-gray-700">
+                          <li>Remoción y reemplazo de selladores</li>
+                          <li>Reparación de bordes con resinas epoxi</li>
+                          <li>Instalación de sistemas armados</li>
+                          <li>Sellado con materiales poliuretano</li>
+                          <li>Refuerzo estructural de juntas críticas</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <img 
+                          src="https://images.pexels.com/photos/236705/pexels-photo-236705.jpeg?auto=compress&cs=tinysrgb&w=400" 
+                          alt="Reparación de juntas" 
+                          className="w-full h-32 object-cover rounded-lg shadow-sm"
+                        />
+                      </div>
+                    </div>
                   </div>
                   <p className="text-gray-700 text-lg leading-relaxed">
                     Atendemos todos los tipos de juntas: contracción, construcción, aislamiento 
