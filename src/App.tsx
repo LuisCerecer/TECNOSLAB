@@ -36,12 +36,26 @@ function App() {
 
   // Handle logo click
   const handleLogoClick = (e: React.MouseEvent) => {
+    // Always scroll to top when clicking logo
+    window.scrollTo({ top: 0, behavior: 'auto' });
+    
     if (location.pathname === '/') {
-      // If already on home page, prevent navigation and scroll to top
+      // If already on home page, prevent navigation
       e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      
-      // Trigger fade-in animation manually
+    }
+  };
+
+  // Handle scroll to top when navigating to home page
+  useEffect(() => {
+    if (location.pathname === '/' && !location.hash) {
+      // Scroll to top when on home page without hash
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+  }, [location.pathname, location.hash]);
+
+  // Trigger fade-in animation when on home page
+  useEffect(() => {
+    if (location.pathname === '/') {
       const fadeElements = document.querySelectorAll('.fade-in');
       fadeElements.forEach((element, index) => {
         element.classList.remove('visible');
@@ -50,7 +64,18 @@ function App() {
         }, 100 * index);
       });
     }
-    // If not on home page, let the Link component handle navigation normally
+  }, [location.pathname]);
+
+  // Handle initial fade-in animation on component mount
+  useEffect(() => {
+    const fadeElements = document.querySelectorAll('.fade-in');
+    fadeElements.forEach((element, index) => {
+      element.classList.remove('visible');
+      setTimeout(() => {
+        element.classList.add('visible');
+      }, 100 * index);
+    });
+  }, [location.pathname]);
   };
 
   // Navigation items data
