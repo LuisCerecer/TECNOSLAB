@@ -31,7 +31,7 @@ function AcercaDeNosotros() {
         <div className="max-w-5xl mx-auto">
           <h1 className="text-4xl font-bold text-gray-800 mb-8 text-center">Acerca de nosotros</h1>
           <p className="text-xl text-gray-700 mb-16 text-center leading-relaxed">
-            En Tecnoslab, nos especializamos en pisos continuos 
+            En TECNOSLAB, nos especializamos en pisos continuos 
             de alta planicidad para aplicaciones industriales exigentes. Nuestra experiencia y tecnología 
             nos posicionan como líderes en el mercado mexicano.
           </p>
@@ -66,7 +66,7 @@ function AcercaDeNosotros() {
                   <div className="bg-white p-6 rounded-2xl shadow-lg">
                     <img 
                       src="https://res.cloudinary.com/dy089iwsg/image/upload/v1748985492/Logo_cqr9ul.svg" 
-                      alt="Tecnoslab - Pisos Continuos de Alta Planicidad" 
+                      alt="TECNOSLAB - Pisos Continuos de Alta Planicidad" 
                       className="w-full max-w-sm h-auto object-contain"
                     />
                   </div>
