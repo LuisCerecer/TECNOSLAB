@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -8,6 +9,8 @@ import { Textarea } from '@/components/ui/textarea';
 import { Phone, Mail, CheckCircle, MapPin, Globe, Calendar, Clock, ChevronLeft, ChevronRight } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { submitContactForm, ContactSubmission } from '@/lib/supabase';
+
+const RECAPTCHA_SITE_KEY = '6Lc7UHIrAAAAAM8gcBjNJMejkGO4eDO3TjgT2F2h';
 
 interface FormData {
   nombre: string;
@@ -35,12 +38,16 @@ const ContactForm: React.FC = () => {
   });
   const [showSuccess, setShowSuccess] = useState(false);
     const [activeTab, setActiveTab] = useState<ActiveTab>('form');
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [newsletterData, setNewsletterData] = useState({
     nombre: '',
     empresa: '',
     email: ''
   });
   const [newsletterSuccess, setNewsletterSuccess] = useState(false);
+  const [newsletterRecaptchaToken, setNewsletterRecaptchaToken] = useState<string | null>(null);
+  const [isNewsletterSubmitting, setIsNewsletterSubmitting] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedTime, setSelectedTime] = useState<string>('');
   const [currentMonth, setCurrentMonth] = useState(new Date());
@@ -51,6 +58,8 @@ const ContactForm: React.FC = () => {
     empresa: '',
     mensaje: ''
   });
+  const [appointmentRecaptchaToken, setAppointmentRecaptchaToken] = useState<string | null>(null);
+  const [isAppointmentSubmitting, setIsAppointmentSubmitting] = useState(false);
 
   const handleInputChange = (field: keyof FormData, value: string) => {
     setFormData(prev => ({
@@ -59,11 +68,21 @@ const ContactForm: React.FC = () => {
     }));
   };
 
-    const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!recaptchaToken) {
+      alert('Por favor, completa la verificación reCAPTCHA');
+      return;
+    }
+    
+    setIsSubmitting(true);
     
     const submitData = async () => {
       try {
+        // Verify reCAPTCHA token on the server side would go here
+        // For now, we'll proceed with the form submission
+        
         const submissionData: ContactSubmission = {
           type: 'general',
           name: formData.nombre,
@@ -76,6 +95,7 @@ const ContactForm: React.FC = () => {
         await submitContactForm(submissionData);
         
         setShowSuccess(true);
+        setRecaptchaToken(null);
         setTimeout(() => {
           setShowSuccess(false);
           setFormData({
@@ -89,14 +109,23 @@ const ContactForm: React.FC = () => {
       } catch (error) {
         console.error('Error submitting form:', error);
         alert('Error al enviar el formulario. Por favor, inténtalo de nuevo.');
+      } finally {
+        setIsSubmitting(false);
       }
     };
 
     submitData();
   };
 
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!newsletterRecaptchaToken) {
+      alert('Por favor, completa la verificación reCAPTCHA');
+      return;
+    }
+    
+    setIsNewsletterSubmitting(true);
     
     const submitNewsletterData = async () => {
       try {
@@ -110,6 +139,7 @@ const ContactForm: React.FC = () => {
         await submitContactForm(submissionData);
         
         setNewsletterSuccess(true);
+        setNewsletterRecaptchaToken(null);
         setTimeout(() => {
           setNewsletterSuccess(false);
           setNewsletterData({
@@ -121,6 +151,8 @@ const ContactForm: React.FC = () => {
       } catch (error) {
         console.error('Error submitting newsletter:', error);
         alert('Error al suscribirse. Por favor, inténtalo de nuevo.');
+      } finally {
+        setIsNewsletterSubmitting(false);
       }
     };
 
@@ -183,6 +215,13 @@ const ContactForm: React.FC = () => {
   const handleAppointmentSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    if (!appointmentRecaptchaToken) {
+      alert('Por favor, completa la verificación reCAPTCHA');
+      return;
+    }
+    
+    setIsAppointmentSubmitting(true);
+    
     try {
       const submissionData: ContactSubmission = {
         type: 'appointment',
@@ -197,6 +236,7 @@ const ContactForm: React.FC = () => {
       await submitContactForm(submissionData);
       
       setCalendarStep('confirmation');
+      setAppointmentRecaptchaToken(null);
       setTimeout(() => {
         setCalendarStep('date');
         setSelectedDate(null);
@@ -206,6 +246,8 @@ const ContactForm: React.FC = () => {
     } catch (error) {
       console.error('Error submitting appointment:', error);
       alert('Error al agendar la videollamada. Por favor, inténtalo de nuevo.');
+    } finally {
+      setIsAppointmentSubmitting(false);
     }
   };
 
@@ -366,12 +408,21 @@ const ContactForm: React.FC = () => {
                     />
                 </div>
 
+                <div className="flex justify-center">
+                  <ReCAPTCHA
+                    sitekey={RECAPTCHA_SITE_KEY}
+                    onChange={(token) => setRecaptchaToken(token)}
+                    onExpired={() => setRecaptchaToken(null)}
+                  />
+                </div>
+
                 <Button
                   type="submit"
-                  className="w-full bg-blue-600 text-white hover:bg-blue-700 h-11 text-lg"
+                  className="w-full bg-blue-600 text-white hover:bg-blue-700 h-11 text-lg disabled:bg-gray-400 disabled:cursor-not-allowed"
                   size="lg"
+                  disabled={!recaptchaToken || isSubmitting}
                 >
-                  Enviar
+                  {isSubmitting ? 'Enviando...' : 'Enviar'}
                 </Button>
               </motion.form>
             )}
@@ -430,12 +481,21 @@ const ContactForm: React.FC = () => {
                     />
                 </div>
 
+                <div className="flex justify-center">
+                  <ReCAPTCHA
+                    sitekey={RECAPTCHA_SITE_KEY}
+                    onChange={(token) => setNewsletterRecaptchaToken(token)}
+                    onExpired={() => setNewsletterRecaptchaToken(null)}
+                  />
+                </div>
+
                 <Button
                   type="submit"
-                  className="w-full bg-blue-600 text-white hover:bg-blue-700 h-11 text-lg"
+                  className="w-full bg-blue-600 text-white hover:bg-blue-700 h-11 text-lg disabled:bg-gray-400 disabled:cursor-not-allowed"
                   size="lg"
+                  disabled={!newsletterRecaptchaToken || isNewsletterSubmitting}
                 >
-                  Suscribirme
+                  {isNewsletterSubmitting ? 'Suscribiendo...' : 'Suscribirme'}
                 </Button>
               </motion.form>
             )}
@@ -695,11 +755,20 @@ const ContactForm: React.FC = () => {
                           />
                         </div>
 
+                        <div className="flex justify-center">
+                          <ReCAPTCHA
+                            sitekey={RECAPTCHA_SITE_KEY}
+                            onChange={(token) => setAppointmentRecaptchaToken(token)}
+                            onExpired={() => setAppointmentRecaptchaToken(null)}
+                          />
+                        </div>
+
                         <Button
                           type="submit"
-                          className="w-full bg-blue-600 text-white hover:bg-blue-700 h-11 text-lg"
+                          className="w-full bg-blue-600 text-white hover:bg-blue-700 h-11 text-lg disabled:bg-gray-400 disabled:cursor-not-allowed"
+                          disabled={!appointmentRecaptchaToken || isAppointmentSubmitting}
                         >
-                          Confirmar Videollamada
+                          {isAppointmentSubmitting ? 'Confirmando...' : 'Confirmar Videollamada'}
                         </Button>
                       </form>
                     </motion.div>
