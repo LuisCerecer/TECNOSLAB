@@ -251,7 +251,7 @@ function App() {
             {[
               {
                 title: "BOSCH Ciudad Juárez",
-                image: "https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=1200",
+                image: "https://res.cloudinary.com/dy089iwsg/image/upload/v1751399679/Bosch_oxxjr4.jpg",
                 section: "bosch"
               },
               {
