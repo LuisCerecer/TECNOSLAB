@@ -104,7 +104,7 @@ function Productos() {
                   {/* TecnoMG Logo */}
                   <div className="group cursor-pointer">
                     <div className="bg-white p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
-                      <div className="h-[304px] w-[384px]">
+                      <div className="h-[304px] w-[432px]">
                         <img 
                           src="https://res.cloudinary.com/dy089iwsg/image/upload/v1751255497/MG_fqrsrb.png" 
                           alt="TecnoMG - Sistema de reparación a base de óxido de magnesio" 
@@ -117,7 +117,7 @@ function Productos() {
                   {/* TecnoCM Logo */}
                   <div className="group cursor-pointer">
                     <div className="bg-white p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
-                      <div className="h-[304px] w-[384px]">
+                      <div className="h-[304px] w-[432px]">
                         <img 
                           src="https://res.cloudinary.com/dy089iwsg/image/upload/v1751399679/TecnoCM_nzotsj.jpg" 
                           alt="TecnoCM - Sistema de reparación a base de cementos de fraguado rápido" 
