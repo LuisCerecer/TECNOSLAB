@@ -189,7 +189,7 @@ function App() {
           {/* Professional Header Section */}
           <div className="text-center mb-13">
             <h2 className="text-[3.6rem] font-bold text-gray-900 mb-6 leading-tight">
-              Representantes Oficiales en México
+              Representantes en México
             </h2>
             <div className="max-w-3xl mx-auto">
               <p className="text-[1.8rem] text-gray-700 mb-5 leading-relaxed">
