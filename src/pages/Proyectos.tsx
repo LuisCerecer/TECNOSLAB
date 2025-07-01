@@ -92,7 +92,7 @@ function Proyectos() {
                   <h3 className="text-lg font-semibold mb-3 text-blue-800">Características del Proyecto</h3>
                   <ul className="list-disc list-inside space-y-2 text-gray-700 mb-6">
                     <li>Instalación de 18,500 m² de piso superplano</li>
-                    <li>Especificación TR34 FM2 / ASTM F2678</li>
+                    <li>Especificación TR34 FM2 / ASTM-E1155</li>
                     <li>Diseño para sistemas de estanterías automatizadas</li>
                     <li>Resistencia de 45 MPa / 6500 PSI</li>
                     <li>Juntas armadas con sellado especializado</li>
