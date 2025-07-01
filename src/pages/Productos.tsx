@@ -97,11 +97,42 @@ function Productos() {
                   </ul>
                 </div>
               </div>
-              <img 
-                src="https://res.cloudinary.com/dy089iwsg/image/upload/v1751255497/MG_fqrsrb.png" 
-                alt="TecnoMG Sistema" 
-                className="w-full h-80 object-cover rounded-lg shadow-md"
-              />
+              
+              {/* Logo Section with same styling as COGRI */}
+              <div className="relative">
+                <div className="flex justify-center items-center flex-wrap gap-12">
+                  {/* TecnoMG Logo */}
+                  <div className="group cursor-pointer">
+                    <div className="bg-white p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+                      <div className="h-[200px] w-[280px]">
+                        <img 
+                          src="https://res.cloudinary.com/dy089iwsg/image/upload/v1751255497/MG_fqrsrb.png" 
+                          alt="TecnoMG - Sistema de reparación a base de óxido de magnesio" 
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* TecnoCM Logo */}
+                  <div className="group cursor-pointer">
+                    <div className="bg-white p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+                      <div className="h-[200px] w-[280px]">
+                        <img 
+                          src="https://res.cloudinary.com/dy089iwsg/image/upload/v1751399679/TecnoCM_nzotsj.jpg" 
+                          alt="TecnoCM - Sistema de reparación a base de cementos de fraguado rápido" 
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bottom accent line */}
+                <div className="mt-8 flex justify-center">
+                  <div className="w-16 h-1 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full"></div>
+                </div>
+              </div>
             </div>
           </div>
 
