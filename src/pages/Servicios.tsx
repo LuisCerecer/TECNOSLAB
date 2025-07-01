@@ -124,7 +124,7 @@ function Servicios() {
                     <ul className="list-disc list-inside space-y-2 text-gray-700 mb-6">
                       <li>Sistemas automatizados de almacenamiento</li>
                       <li>Pasillos VNA para estanterías de gran altura</li>
-                      <li>Líneas de producción automatizadas</li>
+                      <li>Sistemas ASRS</li>
                       <li>Sistemas robóticos de picking</li>
                       <li>Rutas de AGV (Automated Guided Vehicles)</li>
                     </ul>
