@@ -193,7 +193,7 @@ function App() {
             </h2>
             <div className="max-w-3xl mx-auto">
               <p className="text-[1.8rem] text-gray-700 mb-5 leading-relaxed">
-                Somos <span className="font-semibold text-blue-700">representantes exclusivos en México</span> de 
+                Somos <span className="font-semibold text-blue-700">representantes en México</span> de 
                 <span className="font-semibold text-blue-700"> COGRI GESPAP</span>, parte del prestigioso 
                 <span className="font-semibold text-blue-700"> COGRI GROUP</span>.
               </p>
