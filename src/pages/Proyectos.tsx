@@ -58,7 +58,7 @@ function Proyectos() {
                   <h3 className="text-lg font-semibold mb-3 text-blue-800">Especificaciones del Proyecto</h3>
                   <ul className="list-disc list-inside space-y-2 text-gray-700 mb-6">
                     <li>Medición precisa con tecnología láser 3D</li>
-                    <li>Verificación de estándares TR34 y ASTM F2678</li>
+                    <li>Verificación de estándares TR34 y ASTM-E1155</li>
                     <li>Certificación oficial de planicidad</li>
                     <li>Reportes técnicos detallados con mapas de calor</li>
                     <li>Área total medida: 25,000 m²</li>
