@@ -116,7 +116,7 @@ function Servicios() {
                   <div className="mb-6">
                     <h3 className="text-lg font-semibold mb-4 text-blue-700">¿En qué consiste?</h3>
                     <p className="text-gray-700 mb-6 text-lg leading-relaxed">
-                      Medición ultra-precisa en rutas específicas donde operan sistemas automatizados, 
+                     Medición continua de alta precisión con el perfilografo ALL-IN-ONE de CoGri Group, 
                       garantizando tolerancias extremadamente estrictas para el funcionamiento óptimo de robots y AGVs.
                     </p>
                     
