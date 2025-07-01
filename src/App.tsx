@@ -122,7 +122,7 @@ function App() {
       title: 'Servicios',
       featured: {
         title: 'Instalación Profesional',
-        image: 'https://images.pexels.com/photos/210137/pexels-photo-210137.jpeg?auto=compress&cs=tinysrgb&w=600',
+        image: 'https://res.cloudinary.com/dy089iwsg/image/upload/v1751399679/Correcion_por_desvaste_iqrr0o.jpg',
         description: 'Instalación con los más altos estándares'
       }
     },
