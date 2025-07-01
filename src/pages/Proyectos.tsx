@@ -104,7 +104,7 @@ function Proyectos() {
                 </div>
                 <div className="flex justify-center">
                   <img 
-                    src="https://images.pexels.com/photos/4481259/pexels-photo-4481259.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                    src="Proyecto integral de instalación de pisos industriales de alta planicidad para CYS en Querétaro, diseñado para soportar operaciones logísticas intensivas y sistemas automatizados." 
                     alt="CYS Querétaro" 
                     className="w-full h-auto object-cover rounded-lg shadow-md max-w-md"
                   />
