@@ -70,7 +70,7 @@ function Proyectos() {
                 </div>
                 <div className="flex justify-center">
                   <img 
-                    src="https://images.pexels.com/photos/3862132/pexels-photo-3862132.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                    src="https://res.cloudinary.com/dy089iwsg/image/upload/v1751399679/Bosch_oxxjr4.jpg" 
                     alt="BOSCH Ciudad Juárez" 
                     className="w-full h-auto object-cover rounded-lg shadow-md max-w-md"
                   />
