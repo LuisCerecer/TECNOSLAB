@@ -73,7 +73,7 @@ function Servicios() {
                     <h3 className="text-lg font-semibold mb-4 text-blue-700">¿En qué consiste?</h3>
                     <p className="text-gray-700 mb-6 text-lg leading-relaxed">
                       Medición precisa con el equipo F Speed Reader de CoGri Group
-                      para determinar el cumplimiento con estándares internacionales de planicidad TR34 y ASTM F2678.
+                      para determinar el cumplimiento con estándares internacionales de planicidad TR34 y ASTM-E1155.
                     </p>
                     
                     <h3 className="text-lg font-semibold mb-4 text-blue-700">Casos de Uso / Aplicaciones</h3>
