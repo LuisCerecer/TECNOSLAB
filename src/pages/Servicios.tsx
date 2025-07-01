@@ -97,7 +97,7 @@ function Servicios() {
                 </div>
                 <div className="flex justify-center">
                   <img 
-                    src="https://images.pexels.com/photos/2760241/pexels-photo-2760241.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                    src="https://res.cloudinary.com/dy089iwsg/image/upload/v1751399679/Trafico_Aleatoria_xqlvtc.jpg" 
                     alt="Medición de Planicidad - Tráfico Aleatorio" 
                     className="w-full h-auto object-cover rounded-lg shadow-md"
                   />
