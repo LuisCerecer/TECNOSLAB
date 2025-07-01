@@ -104,7 +104,7 @@ function App() {
       title: 'Productos',
       featured: {
         title: 'Pisos Industriales',
-        image: 'https://images.pexels.com/photos/2569842/pexels-photo-2569842.jpeg?auto=compress&cs=tinysrgb&w=600',
+        image: 'https://res.cloudinary.com/dy089iwsg/image/upload/v1751255497/MG_fqrsrb.png',
         description: 'Soluciones de alta durabilidad'
       }
     },
