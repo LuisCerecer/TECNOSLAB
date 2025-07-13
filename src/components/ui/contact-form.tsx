@@ -81,7 +81,7 @@ const ContactForm: React.FC = () => {
     correo: 'martincerecer@tecnoslab.com',
     numero: '+52 33 1726 4826',
     redesSociales: [
-      { name: 'LinkedIn', url: 'https://www.linkedin.com/in/martincerecer/', icon: <Globe className="w-5 h-5" /> },
+      { name: 'LinkedIn', url: 'https://www.linkedin.com/in/martincerecer/', icon: <Globe className="w-5 h-5" /> }
     ]
   };
 
@@ -325,9 +325,9 @@ const ContactForm: React.FC = () => {
                 transition={{ duration: 0.3 }}
                 className="w-full"
               >
-                <!-- Google Calendar Appointment Scheduling begin -->
-                <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3tWWdIDYasZG6CjfmL5ymgubp1Spq-M0n9qLSF0uuGnBGX0cjc0Udgz2OciCAnhlzUuSZcy7cH?gv=true" style="border: 0" width="100%" height="600" frameborder="0"></iframe>
-                <!-- end Google Calendar Appointment Scheduling -->
+                {/* Google Calendar Appointment Scheduling begin */}
+                <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3tWWdIDYasZG6CjfmL5ymgubp1Spq-M0n9qLSF0uuGnBGX0cjc0Udgz2OciCAnhlzUuSZcy7cH?gv=true" style={{ border: 0 }} width="100%" height="600" frameBorder="0"></iframe>
+                {/* end Google Calendar Appointment Scheduling */}
               </motion.div>
             )}
 
