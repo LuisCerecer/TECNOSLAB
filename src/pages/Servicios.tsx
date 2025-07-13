@@ -141,7 +141,7 @@ function Servicios() {
                 </div>
                 <div className="flex justify-center">
                   <img 
-                    src="https://res.cloudinary.com/dy089iwsg/image/upload/v1751399679/Correcion_por_desvaste_iqrr0o.jpg" 
+                    src="https://res.cloudinary.com/dy089iwsg/image/upload/v1752426821/Trafico_definido_phpamz.jpg" 
                     alt="Medición de Planicidad - Tráfico Definido" 
                     className="w-full h-auto object-cover rounded-lg shadow-md"
                   />
