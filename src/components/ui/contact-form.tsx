@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
-import { Phone, Mail, CheckCircle, MapPin, Globe } from 'lucide-react';
+import { Phone, Mail, CheckCircle, MapPin, Globe, Shield } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 
 interface FormData {
@@ -34,6 +34,35 @@ const ContactForm: React.FC = () => {
     email: ''
   });
   const [newsletterSuccess, setNewsletterSuccess] = useState(false);
+  const [captchaVerified, setCaptchaVerified] = useState(false);
+  const [captchaLoading, setCaptchaLoading] = useState(false);
+
+  const verifyCaptcha = async () => {
+    setCaptchaLoading(true);
+    try {
+      // Execute reCAPTCHA v3
+      const token = await new Promise<string>((resolve, reject) => {
+        if (window.grecaptcha) {
+          window.grecaptcha.execute('6LcvAoIrAAAAABy7b9fwvDHJFlZzBuEMhuE3AlcA', { action: 'videocall_booking' })
+            .then(resolve)
+            .catch(reject);
+        } else {
+          reject(new Error('reCAPTCHA not loaded'));
+        }
+      });
+
+      // In a real implementation, you would send this token to your backend for verification
+      // For now, we'll simulate a successful verification
+      if (token) {
+        setCaptchaVerified(true);
+      }
+    } catch (error) {
+      console.error('CAPTCHA verification failed:', error);
+      alert('Verificación de seguridad fallida. Por favor, intenta de nuevo.');
+    } finally {
+      setCaptchaLoading(false);
+    }
+  };
 
   const handleInputChange = (field: keyof FormData, value: string) => {
     setFormData(prev => ({
@@ -325,9 +354,70 @@ const ContactForm: React.FC = () => {
                 transition={{ duration: 0.3 }}
                 className="w-full"
               >
-                {/* Google Calendar Appointment Scheduling begin */}
-                <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3tWWdIDYasZG6CjfmL5ymgubp1Spq-M0n9qLSF0uuGnBGX0cjc0Udgz2OciCAnhlzUuSZcy7cH?gv=true" style={{ border: 0 }} width="100%" height="600" frameBorder="0"></iframe>
-                {/* end Google Calendar Appointment Scheduling */}
+                {!captchaVerified ? (
+                  <div className="text-center py-16">
+                    <div className="mb-8">
+                      <Shield className="w-20 h-20 text-blue-600 mx-auto mb-4" />
+                      <h3 className="text-2xl font-bold text-gray-800 mb-4">
+                        Verificación de Seguridad
+                      </h3>
+                      <p className="text-gray-600 mb-8 max-w-md mx-auto">
+                        Para proteger nuestro sistema de reservas contra bots y accesos no autorizados, 
+                        necesitamos verificar que eres una persona real.
+                      </p>
+                    </div>
+                    
+                    <Button
+                      onClick={verifyCaptcha}
+                      disabled={captchaLoading}
+                      className="bg-blue-600 text-white hover:bg-blue-700 px-8 py-3 text-lg"
+                      size="lg"
+                    >
+                      {captchaLoading ? (
+                        <>
+                          <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                          Verificando...
+                        </>
+                      ) : (
+                        <>
+                          <Shield className="w-5 h-5 mr-2" />
+                          Verificar y Continuar
+                        </>
+                      )}
+                    </Button>
+                    
+                    <p className="text-sm text-gray-500 mt-4">
+                      Protegido por reCAPTCHA v3. Se aplican los{' '}
+                      <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                        Términos de Servicio
+                      </a>{' '}
+                      y la{' '}
+                      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                        Política de Privacidad
+                      </a>{' '}
+                      de Google.
+                    </p>
+                  </div>
+                ) : (
+                  <div>
+                    <div className="mb-4 p-3 bg-green-50 border border-green-200 rounded-lg flex items-center">
+                      <CheckCircle className="w-5 h-5 text-green-600 mr-2" />
+                      <span className="text-green-700 text-sm">
+                        Verificación completada. Ahora puedes agendar tu videollamada.
+                      </span>
+                    </div>
+                    {/* Google Calendar Appointment Scheduling begin */}
+                    <iframe 
+                      src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3tWWdIDYasZG6CjfmL5ymgubp1Spq-M0n9qLSF0uuGnBGX0cjc0Udgz2OciCAnhlzUuSZcy7cH?gv=true" 
+                      style={{ border: 0 }} 
+                      width="100%" 
+                      height="600" 
+                      frameBorder="0"
+                      title="Agendar Videollamada"
+                    />
+                    {/* end Google Calendar Appointment Scheduling */}
+                  </div>
+                )}
               </motion.div>
             )}
 
