@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tecnoslab - Pisos Continuos de Alta Planicidad</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit" async defer></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LcvAoIrAAAAABy7b9fwvDHJFlZzBuEMhuE3AlcA" async defer></script>
     <script>
       // Global reCAPTCHA configuration
       window.recaptchaConfig = {
@@ -18,25 +18,41 @@
       window.invisibleRecaptchaWidget = null;
       window.pageRecaptchaToken = null;
       
-      // Callback when reCAPTCHA API is loaded
-      function onRecaptchaLoad() {
-        // Render invisible reCAPTCHA for page-level protection
-        if (window.grecaptcha && window.grecaptcha.render) {
-          window.invisibleRecaptchaWidget = window.grecaptcha.render('invisible-recaptcha', {
-            sitekey: window.recaptchaConfig.invisibleSiteKey,
-            callback: onInvisibleRecaptchaSuccess,
-            size: 'invisible'
+      // Initialize reCAPTCHA when ready
+      window.addEventListener('load', function() {
+        if (window.grecaptcha) {
+          window.grecaptcha.ready(function() {
+            // Render invisible reCAPTCHA for page-level protection
+            window.invisibleRecaptchaWidget = window.grecaptcha.render('invisible-recaptcha', {
+              sitekey: window.recaptchaConfig.invisibleSiteKey,
+              callback: onInvisibleRecaptchaSuccess,
+              size: 'invisible'
+            });
+            
+            // Execute invisible reCAPTCHA automatically
+            setTimeout(() => {
+              if (window.invisibleRecaptchaWidget !== null) {
+                window.grecaptcha.execute(window.invisibleRecaptchaWidget);
+              }
+            }, 1000);
           });
-          
-          // Execute invisible reCAPTCHA automatically
-          setTimeout(() => {
-            if (window.invisibleRecaptchaWidget !== null) {
-              window.grecaptcha.execute(window.invisibleRecaptchaWidget);
-            }
-          }, 1000);
         }
-      }
+      });
       
+      // Load v2 invisible reCAPTCHA script separately
+      window.addEventListener('DOMContentLoaded', function() {
+        const v2Script = document.createElement('script');
+        v2Script.src = 'https://www.google.com/recaptcha/api.js?onload=onRecaptchaV2Load&render=explicit';
+        v2Script.async = true;
+        v2Script.defer = true;
+        document.head.appendChild(v2Script);
+      });
+      
+      // Callback specifically for v2 invisible reCAPTCHA
+      window.onRecaptchaV2Load = function() {
+        // This will be handled by the main grecaptcha.ready() above
+      };
+          
       // Callback when invisible reCAPTCHA is completed
       function onInvisibleRecaptchaSuccess(token) {
         window.pageRecaptchaToken = token;
@@ -53,22 +69,12 @@
       // Function for form-specific v3 reCAPTCHA
       window.executeV3Recaptcha = function(action) {
         return new Promise((resolve, reject) => {
-          if (window.grecaptcha && window.grecaptcha.execute) {
-            // Load v3 script if not already loaded
-            if (!document.querySelector('script[src*="render=' + window.recaptchaConfig.v3SiteKey + '"]')) {
-              const script = document.createElement('script');
-              script.src = `https://www.google.com/recaptcha/api.js?render=${window.recaptchaConfig.v3SiteKey}`;
-              script.onload = () => {
-                window.grecaptcha.execute(window.recaptchaConfig.v3SiteKey, { action: action })
-                  .then(resolve)
-                  .catch(reject);
-              };
-              document.head.appendChild(script);
-            } else {
+          if (window.grecaptcha) {
+            window.grecaptcha.ready(function() {
               window.grecaptcha.execute(window.recaptchaConfig.v3SiteKey, { action: action })
                 .then(resolve)
                 .catch(reject);
-            }
+            });
           } else {
             reject(new Error('reCAPTCHA not loaded'));
           }
