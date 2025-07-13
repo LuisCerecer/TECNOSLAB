@@ -99,7 +99,7 @@ function Servicios() {
                   <img 
                     src="https://res.cloudinary.com/dy089iwsg/image/upload/v1751399679/Trafico_Aleatoria_xqlvtc.jpg" 
                     alt="Medición de Planicidad - Tráfico Aleatorio" 
-                    className="w-full h-auto object-cover rounded-lg shadow-md"
+                    className="w-full h-80 object-cover rounded-lg shadow-md max-w-md"
                   />
                 </div>
               </div>
