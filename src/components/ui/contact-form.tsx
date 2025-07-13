@@ -325,44 +325,15 @@ const ContactForm: React.FC = () => {
                 transition={{ duration: 0.3 }}
                 className="w-full"
               >
-                <div className="text-center mb-6">
-                  <p className="text-gray-600 text-lg mb-4">
-                   
-                  </p>
-                  <p className="text-gray-500 text-base">
-                    
-                  </p>
-                </div>
-                
-                {/* Cal inline embed code begins */}
-                <div style={{width:"100%",height:"600px",overflow:"scroll"}} id="my-cal-inline-30min"></div>
-                <script type="text/javascript" dangerouslySetInnerHTML={{
-                  __html: `
-                    (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-                    Cal("init", "30min", {origin:"https://app.cal.com"});
-
-                    Cal.ns["30min"]("inline", {
-                      elementOrSelector:"#my-cal-inline-30min",
-                      config: {"layout":"month_view"},
-                      calLink: "testing-luis-c/30min",
-                    });
-
-                    Cal.ns["30min"]("ui", {"cssVarsPerTheme":{"light":{"cal-brand":"#292929"},"dark":{"cal-brand":"#fafafa"}},"hideEventTypeDetails":false,"layout":"month_view"});
-                  `
-                }} />
-                {/* Cal inline embed code ends */}
-                
-                <div className="bg-blue-50 p-4 rounded-lg mt-4">
-                  <div className="text-center text-sm text-gray-600">
-                    <p className="font-medium mb-2"></p>
-                    <ul className="text-left max-w-md mx-auto space-y-1">
-                      <li></li>
-                      <li></li>
-                      <li></li>
-                      <li></li>
-                    </ul>
-                  </div>
-                </div>
+                {/* Google Calendar Appointment Scheduling begin */}
+                <iframe 
+                  src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3tWWdIDYasZG6CjfmL5ymgubp1Spq-M0n9qLSF0uuGnBGX0cjc0Udgz2OciCAnhlzUuSZcy7cH?gv=true" 
+                  style={{border: 0}} 
+                  width="100%" 
+                  height="600" 
+                  frameBorder="0">
+                </iframe>
+                {/* end Google Calendar Appointment Scheduling */}
               </motion.div>
             )}
 
