@@ -57,7 +57,7 @@ export async function submitContactForm(data: ContactSubmission) {
 export async function submitToTecnosbalmx(data: TecnosbalmxSubmission) {
   try {
     const { error } = await supabase
-      .from('TECNOSLABMX')
+      .from('tecnoslab_mx')
       .insert([data])
 
     if (error) {
