@@ -183,6 +183,11 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Hide reCAPTCHA badge */
+.grecaptcha-badge {
+  visibility: hidden !important;
+}
+
 /* Active nav item styles */
 .active-nav-item {
   color: #1d4ed8;
