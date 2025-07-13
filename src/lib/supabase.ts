@@ -57,11 +57,11 @@ export async function submitContactForm(data: ContactSubmission) {
 export async function submitToTecnosbalmx(data: TecnosbalmxSubmission) {
   try {
     const { error } = await supabase
-      .from('TECNOSBALMX')
+      .from('TECNOSLABMX')
       .insert([data])
 
     if (error) {
-      console.error('Error submitting to TECNOSBALMX:', error)
+      console.error('Error submitting to TECNOSLABMX:', error)
       throw error
     }
 
