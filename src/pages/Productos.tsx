@@ -189,7 +189,7 @@ function Productos() {
                 </div>
               </div>
               <img 
-                src="https://res.cloudinary.com/dy089iwsg/image/upload/v1752426078/l_oqwwhm.png" 
+                src="https://res.cloudinary.com/dy089iwsg/image/upload/v1752426095/R_x4vbbr.png" 
                 alt="TecnoCM Sistema" 
                 className="w-full h-80 object-cover rounded-lg shadow-md"
               />
