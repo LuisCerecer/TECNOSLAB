@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Shield, CheckCircle } from 'lucide-react';
-import { submitToTecnoslabmx, type TecnoslabmxSubmission } from '@/lib/supabase';
+import { submitToTecnosbalmx, type TecnosbalmxSubmission } from '@/lib/supabase';
 
 function UneteANuestraLista() {
   const [formData, setFormData] = useState({
@@ -51,8 +51,8 @@ function UneteANuestraLista() {
     
     const submitForm = async () => {
       try {
-        // Prepare data for TECNOSLABMX table
-        const submissionData: TecnoslabmxSubmission = {
+        // Prepare data for TECNOSBALMX table
+        const submissionData: TecnosbalmxSubmission = {
           form_type: 'newsletter',
           nombre: formData.nombre,
           empresa: formData.empresa,
@@ -60,7 +60,7 @@ function UneteANuestraLista() {
         };
 
         // Submit to Supabase
-        await submitToTecnoslabmx(submissionData);
+        await submitToTecnosbalmx(submissionData);
         
         // Show success animation
         setShowSuccess(true);

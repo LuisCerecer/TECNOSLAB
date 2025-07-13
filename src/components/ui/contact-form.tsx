@@ -7,7 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Textarea } from '@/components/ui/textarea';
 import { Phone, Mail, CheckCircle, MapPin, Globe, Shield } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { submitToTecnoslabmx, type TecnoslabmxSubmission } from '@/lib/supabase';
+import { submitToTecnosbalmx, type TecnosbalmxSubmission } from '@/lib/supabase';
 
 interface FormData {
   nombre: string;
@@ -134,8 +134,8 @@ const ContactForm: React.FC = () => {
     e.preventDefault();
     
     try {
-      // Prepare data for TECNOSLABMX table
-      const submissionData: TecnoslabmxSubmission = {
+      // Prepare data for TECNOSBALMX table
+      const submissionData: TecnosbalmxSubmission = {
         form_type: 'general',
         nombre: formData.nombre,
         empresa: formData.empresa,
@@ -145,7 +145,7 @@ const ContactForm: React.FC = () => {
       };
 
       // Submit to Supabase
-      await submitToTecnoslabmx(submissionData);
+      await submitToTecnosbalmx(submissionData);
       
       // Show success message
       setShowSuccess(true);
@@ -173,8 +173,8 @@ const ContactForm: React.FC = () => {
     e.preventDefault();
     
     try {
-      // Prepare data for TECNOSLABMX table
-      const submissionData: TecnoslabmxSubmission = {
+      // Prepare data for TECNOSBALMX table
+      const submissionData: TecnosbalmxSubmission = {
         form_type: 'newsletter',
         nombre: newsletterData.nombre,
         empresa: newsletterData.empresa,
@@ -182,7 +182,7 @@ const ContactForm: React.FC = () => {
       };
 
       // Submit to Supabase
-      await submitToTecnoslabmx(submissionData);
+      await submitToTecnosbalmx(submissionData);
       
       // Show success message
       setNewsletterSuccess(true);

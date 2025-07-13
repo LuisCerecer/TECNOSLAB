@@ -27,7 +27,7 @@ export interface ContactSubmission {
 }
 
 // Types for TECNOSBALMX table
-export interface TecnoslabmxSubmission {
+export interface TecnosbalmxSubmission {
   id?: string
   form_type: 'general' | 'newsletter'
   nombre: string
@@ -54,20 +54,20 @@ export async function submitContactForm(data: ContactSubmission) {
 }
 
 // Function to submit data to TECNOSBALMX table
-export async function submitToTecnoslabmx(data: TecnoslabmxSubmission) {
+export async function submitToTecnosbalmx(data: TecnosbalmxSubmission) {
   try {
     const { error } = await supabase
-      .from('TECNOSLABMX')
+      .from('TECNOSBALMX')
       .insert([data])
 
     if (error) {
-      console.error('Error submitting to TECNOSLABMX:', error)
+      console.error('Error submitting to TECNOSBALMX:', error)
       throw error
     }
 
     return { success: true }
   } catch (error) {
-    console.error('Error in submitToTecnoslabmx:', error)
+    console.error('Error in submitToTecnosbalmx:', error)
     throw error
   }
 }
