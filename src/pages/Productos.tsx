@@ -134,15 +134,11 @@ function Productos() {
                 </div>
               </div>
             </div>
-            <div className="group cursor-pointer">
-              <div className="bg-white p-2 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
-                <img 
-                  src="https://res.cloudinary.com/dy089iwsg/image/upload/v1752426095/R_x4vbbr.png" 
-                  alt="TecnoCM Sistema" 
-                  className="w-full h-80 object-cover rounded-lg"
-                />
-              </div>
-            </div>
+          </div>
+
+          <div ref={tecnoCMRef} id="tecnocm" className="mb-20">
+            <h2 className="text-3xl font-bold text-gray-800 mb-8 border-l-4 border-blue-700 pl-4">
+              TecnoCM
             </h2>
             <div className="bg-white p-8 shadow-xl rounded-xl">
               <p className="text-gray-700 mb-6 text-lg leading-relaxed">
