@@ -236,57 +236,6 @@ function UneteANuestraLista() {
               </div>
             </div>
           </div>
-          
-        </div>
-      </div>
-    </div>
-  );
-}
-
-export default UneteANuestraLista;
-                    />
-                    <span className="ml-2 text-sm text-gray-700">
-                      Acepto recibir comunicaciones de Tecnoslab y la política de privacidad *
-                    </span>
-                  </label>
-                </div>
-                
-                <button
-                  type="submit"
-                  className="bg-blue-700 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-800 transition-colors w-full md:w-auto"
-                >
-                  Suscribirme
-                </button>
-              </form>
-            </div>
-            
-            <div className="mt-8">
-              <p className="text-gray-600">
-                ¿Buscas otra forma de contacto? Visita nuestras otras opciones:
-              </p>
-              <div className="mt-4 flex flex-wrap gap-4">
-                <Link 
-                  to="/contactanos" 
-                  className="inline-block px-6 py-3 bg-gray-100 hover:bg-gray-200 rounded-lg text-gray-700 font-medium transition-colors"
-                >
-                  Formulario General
-                </Link>
-                <Link 
-                  to="/comunicacion-llamada-correo" 
-                  className="inline-block px-6 py-3 bg-gray-100 hover:bg-gray-200 rounded-lg text-gray-700 font-medium transition-colors"
-                >
-                  Agenda una videollamada
-                </Link>
-                <Link 
-                  to="/nuestra-informacion" 
-                  className="inline-block px-6 py-3 bg-gray-100 hover:bg-gray-200 rounded-lg text-gray-700 font-medium transition-colors"
-                >
-                  Nuestra información
-                </Link>
-              </div>
-            </div>
-          </div>
-          
         </div>
       </div>
     </div>
