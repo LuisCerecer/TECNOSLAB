@@ -71,13 +71,13 @@ function Productos() {
                 <div className="bg-gray-100 p-6 rounded-lg">
                   <h3 className="text-lg font-semibold mb-3">Aplicaciones</h3>
                   <ul className="space-y-2.5 text-gray-700 text-lg leading-relaxed">
-                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-green-600 before:font-bold before:text-lg">
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-lg">
                       Naves industriales y centros logísticos
                     </li>
-                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-green-600 before:font-bold before:text-lg">
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-lg">
                       Almacenes automatizados y de alta precisión
                     </li>
-                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-green-600 before:font-bold before:text-lg">
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-lg">
                       Áreas de tránsito frecuente de maquinaria pesada
                     </li>
                   </ul>
@@ -85,13 +85,13 @@ function Productos() {
                 <div className="bg-gray-100 p-6 rounded-lg">
                   <h3 className="text-lg font-semibold mb-3">Beneficios</h3>
                   <ul className="space-y-2.5 text-gray-700 text-lg leading-relaxed">
-                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-orange-600 before:font-bold before:text-lg">
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-lg">
                       Reducción de costos de mantenimiento
                     </li>
-                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-orange-600 before:font-bold before:text-lg">
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-lg">
                       Mayor eficiencia y seguridad operativa
                     </li>
-                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-orange-600 before:font-bold before:text-lg">
+                    <li className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-blue-600 before:font-bold before:text-lg">
                       Prolonga la vida útil del piso industrial
                     </li>
                   </ul>
