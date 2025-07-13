@@ -231,4 +231,6 @@ function Productos() {
                   <div className="w-16 h-1 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full"></div>
                 </div>
               </div>
+  )
+}
 export default Productos;
