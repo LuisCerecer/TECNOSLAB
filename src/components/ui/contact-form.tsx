@@ -36,6 +36,10 @@ const ContactForm: React.FC = () => {
   const [newsletterSuccess, setNewsletterSuccess] = useState(false);
   const [captchaVerified, setCaptchaVerified] = useState(false);
   const [captchaLoading, setCaptchaLoading] = useState(false);
+  const [generalFormCaptchaVerified, setGeneralFormCaptchaVerified] = useState(false);
+  const [generalFormCaptchaLoading, setGeneralFormCaptchaLoading] = useState(false);
+  const [newsletterCaptchaVerified, setNewsletterCaptchaVerified] = useState(false);
+  const [newsletterCaptchaLoading, setNewsletterCaptchaLoading] = useState(false);
 
   const verifyCaptcha = async () => {
     setCaptchaLoading(true);
@@ -61,6 +65,60 @@ const ContactForm: React.FC = () => {
       alert('Verificación de seguridad fallida. Por favor, intenta de nuevo.');
     } finally {
       setCaptchaLoading(false);
+    }
+  };
+
+  const verifyGeneralFormCaptcha = async () => {
+    setGeneralFormCaptchaLoading(true);
+    try {
+      // Execute reCAPTCHA v3
+      const token = await new Promise<string>((resolve, reject) => {
+        if (window.grecaptcha) {
+          window.grecaptcha.execute('6LcvAoIrAAAAABy7b9fwvDHJFlZzBuEMhuE3AlcA', { action: 'general_form_submission' })
+            .then(resolve)
+            .catch(reject);
+        } else {
+          reject(new Error('reCAPTCHA not loaded'));
+        }
+      });
+
+      // In a real implementation, you would send this token to your backend for verification
+      // For now, we'll simulate a successful verification
+      if (token) {
+        setGeneralFormCaptchaVerified(true);
+      }
+    } catch (error) {
+      console.error('CAPTCHA verification failed:', error);
+      alert('Verificación de seguridad fallida. Por favor, intenta de nuevo.');
+    } finally {
+      setGeneralFormCaptchaLoading(false);
+    }
+  };
+
+  const verifyNewsletterCaptcha = async () => {
+    setNewsletterCaptchaLoading(true);
+    try {
+      // Execute reCAPTCHA v3
+      const token = await new Promise<string>((resolve, reject) => {
+        if (window.grecaptcha) {
+          window.grecaptcha.execute('6LcvAoIrAAAAABy7b9fwvDHJFlZzBuEMhuE3AlcA', { action: 'newsletter_signup' })
+            .then(resolve)
+            .catch(reject);
+        } else {
+          reject(new Error('reCAPTCHA not loaded'));
+        }
+      });
+
+      // In a real implementation, you would send this token to your backend for verification
+      // For now, we'll simulate a successful verification
+      if (token) {
+        setNewsletterCaptchaVerified(true);
+      }
+    } catch (error) {
+      console.error('CAPTCHA verification failed:', error);
+      alert('Verificación de seguridad fallida. Por favor, intenta de nuevo.');
+    } finally {
+      setNewsletterCaptchaLoading(false);
     }
   };
 
@@ -161,188 +219,304 @@ const ContactForm: React.FC = () => {
         <CardContent className="p-10">
           <AnimatePresence mode="wait">
             {activeTab === 'form' && (
-              <motion.form
+              <motion.div
                 key="form"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3 }}
-                onSubmit={handleSubmit}
-                className="space-y-6"
-                name="contact-general"
-                method="POST"
-                data-netlify="true"
-                data-netlify-recaptcha="true"
+                className="w-full"
               >
-                <input type="hidden" name="form-name" value="contact-general" />
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="nombre" className="text-base font-medium text-gray-700">
-                      Nombre *
-                    </Label>
-                    <Input
-                      id="nombre"
-                      name="nombre"
-                      type="text"
-                      value={formData.nombre}
-                      onChange={(e) => handleInputChange('nombre', e.target.value)}
-                      className="w-full h-10 text-base"
-                      required
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="empresa" className="text-base font-medium text-gray-700">
-                      Empresa *
-                    </Label>
-                    <Input
-                      id="empresa"
-                      name="empresa"
-                      type="text"
-                      value={formData.empresa}
-                      onChange={(e) => handleInputChange('empresa', e.target.value)}
-                      className="w-full h-10 text-base"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="email" className="text-base font-medium text-gray-700">
-                      Email *
-                    </Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) => handleInputChange('email', e.target.value)}
-                      className="w-full h-10 text-base"
-                      required
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="tipoProyecto" className="text-base font-medium text-gray-700">
-                      Tipo de Proyecto
-                    </Label>
-                    <select
-                      name="tipoProyecto"
-                      value={formData.tipoProyecto}
-                      onChange={(e) => handleInputChange('tipoProyecto', e.target.value)}
-                      className="w-full h-10 text-base px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                {!generalFormCaptchaVerified ? (
+                  <div className="text-center py-16">
+                    <div className="mb-8">
+                      <Shield className="w-20 h-20 text-blue-600 mx-auto mb-4" />
+                      <h3 className="text-2xl font-bold text-gray-800 mb-4">
+                        Verificación de Seguridad
+                      </h3>
+                      <p className="text-gray-600 mb-8 max-w-md mx-auto">
+                        Para proteger nuestro sistema de contacto contra bots y spam, 
+                        necesitamos verificar que eres una persona real.
+                      </p>
+                    </div>
+                    
+                    <Button
+                      onClick={verifyGeneralFormCaptcha}
+                      disabled={generalFormCaptchaLoading}
+                      className="bg-blue-600 text-white hover:bg-blue-700 px-8 py-3 text-lg"
+                      size="lg"
                     >
-                      <option value="">Selecciona un tipo de proyecto</option>
-                      {tiposProyecto.map((tipo) => (
-                        <option key={tipo.value} value={tipo.value}>
-                          {tipo.label}
-                        </option>
-                      ))}
-                    </select>
+                      {generalFormCaptchaLoading ? (
+                        <>
+                          <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                          Verificando...
+                        </>
+                      ) : (
+                        <>
+                          <Shield className="w-5 h-5 mr-2" />
+                          Verificar y Continuar
+                        </>
+                      )}
+                    </Button>
+                    
+                    <p className="text-sm text-gray-500 mt-4">
+                      Protegido por reCAPTCHA v3. Se aplican los{' '}
+                      <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                        Términos de Servicio
+                      </a>{' '}
+                      y la{' '}
+                      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                        Política de Privacidad
+                      </a>{' '}
+                      de Google.
+                    </p>
                   </div>
-                </div>
+                ) : (
+                  <div>
+                    <div className="mb-4 p-3 bg-green-50 border border-green-200 rounded-lg flex items-center">
+                      <CheckCircle className="w-5 h-5 text-green-600 mr-2" />
+                      <span className="text-green-700 text-sm">
+                        Verificación completada. Ahora puedes enviar tu mensaje.
+                      </span>
+                    </div>
+                    <form
+                      onSubmit={handleSubmit}
+                      className="space-y-6"
+                      name="contact-general"
+                      method="POST"
+                      data-netlify="true"
+                      data-netlify-recaptcha="true"
+                    >
+                      <input type="hidden" name="form-name" value="contact-general" />
+                      
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                          <Label htmlFor="nombre" className="text-base font-medium text-gray-700">
+                            Nombre *
+                          </Label>
+                          <Input
+                            id="nombre"
+                            name="nombre"
+                            type="text"
+                            value={formData.nombre}
+                            onChange={(e) => handleInputChange('nombre', e.target.value)}
+                            className="w-full h-10 text-base"
+                            required
+                          />
+                        </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="mensaje" className="text-base font-medium text-gray-700">
-                    Mensaje
-                  </Label>
-                  <Textarea
-                    id="mensaje"
-                    name="mensaje"
-                    value={formData.mensaje}
-                    onChange={(e) => handleInputChange('mensaje', e.target.value)}
-                    className="w-full min-h-[120px] text-base"
-                    placeholder="Escribe tu mensaje aquí..."
-                  />
-                </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="empresa" className="text-base font-medium text-gray-700">
+                            Empresa *
+                          </Label>
+                          <Input
+                            id="empresa"
+                            name="empresa"
+                            type="text"
+                            value={formData.empresa}
+                            onChange={(e) => handleInputChange('empresa', e.target.value)}
+                            className="w-full h-10 text-base"
+                            required
+                          />
+                        </div>
+                      </div>
 
-                <div data-netlify-recaptcha="true"></div>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                          <Label htmlFor="email" className="text-base font-medium text-gray-700">
+                            Email *
+                          </Label>
+                          <Input
+                            id="email"
+                            name="email"
+                            type="email"
+                            value={formData.email}
+                            onChange={(e) => handleInputChange('email', e.target.value)}
+                            className="w-full h-10 text-base"
+                            required
+                          />
+                        </div>
 
-                <Button
-                  type="submit"
-                  className="w-full bg-blue-600 text-white hover:bg-blue-700 h-11 text-lg"
-                  size="lg"
-                >
-                  Enviar
-                </Button>
-              </motion.form>
+                        <div className="space-y-2">
+                          <Label htmlFor="tipoProyecto" className="text-base font-medium text-gray-700">
+                            Tipo de Proyecto
+                          </Label>
+                          <select
+                            name="tipoProyecto"
+                            value={formData.tipoProyecto}
+                            onChange={(e) => handleInputChange('tipoProyecto', e.target.value)}
+                            className="w-full h-10 text-base px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                          >
+                            <option value="">Selecciona un tipo de proyecto</option>
+                            {tiposProyecto.map((tipo) => (
+                              <option key={tipo.value} value={tipo.value}>
+                                {tipo.label}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="mensaje" className="text-base font-medium text-gray-700">
+                          Mensaje
+                        </Label>
+                        <Textarea
+                          id="mensaje"
+                          name="mensaje"
+                          value={formData.mensaje}
+                          onChange={(e) => handleInputChange('mensaje', e.target.value)}
+                          className="w-full min-h-[120px] text-base"
+                          placeholder="Escribe tu mensaje aquí..."
+                        />
+                      </div>
+
+                      <div data-netlify-recaptcha="true"></div>
+
+                      <Button
+                        type="submit"
+                        className="w-full bg-blue-600 text-white hover:bg-blue-700 h-11 text-lg"
+                        size="lg"
+                      >
+                        Enviar
+                      </Button>
+                    </form>
+                  </div>
+                )}
+              </motion.div>
             )}
 
             {activeTab === 'newsletter' && (
-              <motion.form
+              <motion.div
                 key="newsletter"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3 }}
-                onSubmit={handleNewsletterSubmit}
-                className="space-y-6"
-                name="newsletter-signup"
-                method="POST"
-                data-netlify="true"
-                data-netlify-recaptcha="true"
+                className="w-full"
               >
-                <input type="hidden" name="form-name" value="newsletter-signup" />
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="newsletter-nombre" className="text-base font-medium text-gray-700">
-                      Nombre *
-                    </Label>
-                    <Input
-                      id="newsletter-nombre"
-                      name="nombre"
-                      type="text"
-                      value={newsletterData.nombre}
-                      onChange={(e) => setNewsletterData(prev => ({ ...prev, nombre: e.target.value }))}
-                      className="w-full h-10 text-base"
-                      required
-                    />
+                {!newsletterCaptchaVerified ? (
+                  <div className="text-center py-16">
+                    <div className="mb-8">
+                      <Shield className="w-20 h-20 text-blue-600 mx-auto mb-4" />
+                      <h3 className="text-2xl font-bold text-gray-800 mb-4">
+                        Verificación de Seguridad
+                      </h3>
+                      <p className="text-gray-600 mb-8 max-w-md mx-auto">
+                        Para proteger nuestro sistema de suscripción contra bots y spam, 
+                        necesitamos verificar que eres una persona real.
+                      </p>
+                    </div>
+                    
+                    <Button
+                      onClick={verifyNewsletterCaptcha}
+                      disabled={newsletterCaptchaLoading}
+                      className="bg-blue-600 text-white hover:bg-blue-700 px-8 py-3 text-lg"
+                      size="lg"
+                    >
+                      {newsletterCaptchaLoading ? (
+                        <>
+                          <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                          Verificando...
+                        </>
+                      ) : (
+                        <>
+                          <Shield className="w-5 h-5 mr-2" />
+                          Verificar y Continuar
+                        </>
+                      )}
+                    </Button>
+                    
+                    <p className="text-sm text-gray-500 mt-4">
+                      Protegido por reCAPTCHA v3. Se aplican los{' '}
+                      <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                        Términos de Servicio
+                      </a>{' '}
+                      y la{' '}
+                      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                        Política de Privacidad
+                      </a>{' '}
+                      de Google.
+                    </p>
                   </div>
+                ) : (
+                  <div>
+                    <div className="mb-4 p-3 bg-green-50 border border-green-200 rounded-lg flex items-center">
+                      <CheckCircle className="w-5 h-5 text-green-600 mr-2" />
+                      <span className="text-green-700 text-sm">
+                        Verificación completada. Ahora puedes suscribirte a nuestra lista.
+                      </span>
+                    </div>
+                    <form
+                      onSubmit={handleNewsletterSubmit}
+                      className="space-y-6"
+                      name="newsletter-signup"
+                      method="POST"
+                      data-netlify="true"
+                      data-netlify-recaptcha="true"
+                    >
+                      <input type="hidden" name="form-name" value="newsletter-signup" />
+                      
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                          <Label htmlFor="newsletter-nombre" className="text-base font-medium text-gray-700">
+                            Nombre *
+                          </Label>
+                          <Input
+                            id="newsletter-nombre"
+                            name="nombre"
+                            type="text"
+                            value={newsletterData.nombre}
+                            onChange={(e) => setNewsletterData(prev => ({ ...prev, nombre: e.target.value }))}
+                            className="w-full h-10 text-base"
+                            required
+                          />
+                        </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="newsletter-empresa" className="text-base font-medium text-gray-700">
-                      Empresa *
-                    </Label>
-                    <Input
-                      id="newsletter-empresa"
-                      name="empresa"
-                      type="text"
-                      value={newsletterData.empresa}
-                      onChange={(e) => setNewsletterData(prev => ({ ...prev, empresa: e.target.value }))}
-                      className="w-full h-10 text-base"
-                      required
-                    />
+                        <div className="space-y-2">
+                          <Label htmlFor="newsletter-empresa" className="text-base font-medium text-gray-700">
+                            Empresa *
+                          </Label>
+                          <Input
+                            id="newsletter-empresa"
+                            name="empresa"
+                            type="text"
+                            value={newsletterData.empresa}
+                            onChange={(e) => setNewsletterData(prev => ({ ...prev, empresa: e.target.value }))}
+                            className="w-full h-10 text-base"
+                            required
+                          />
+                        </div>
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="newsletter-email" className="text-base font-medium text-gray-700">
+                          Email *
+                        </Label>
+                        <Input
+                          id="newsletter-email"
+                          name="email"
+                          type="email"
+                          value={newsletterData.email}
+                          onChange={(e) => setNewsletterData(prev => ({ ...prev, email: e.target.value }))}
+                          className="w-full h-10 text-base"
+                          required
+                        />
+                      </div>
+
+                      <div data-netlify-recaptcha="true"></div>
+
+                      <Button
+                        type="submit"
+                        className="w-full bg-blue-600 text-white hover:bg-blue-700 h-11 text-lg"
+                        size="lg"
+                      >
+                        Suscribirme
+                      </Button>
+                    </form>
                   </div>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="newsletter-email" className="text-base font-medium text-gray-700">
-                    Email *
-                  </Label>
-                  <Input
-                    id="newsletter-email"
-                    name="email"
-                    type="email"
-                    value={newsletterData.email}
-                    onChange={(e) => setNewsletterData(prev => ({ ...prev, email: e.target.value }))}
-                    className="w-full h-10 text-base"
-                    required
-                  />
-                </div>
-
-                <div data-netlify-recaptcha="true"></div>
-
-                <Button
-                  type="submit"
-                  className="w-full bg-blue-600 text-white hover:bg-blue-700 h-11 text-lg"
-                  size="lg"
-                >
-                  Suscribirme
-                </Button>
-              </motion.form>
+                )}
+              </motion.div>
             )}
 
             {activeTab === 'videoCall' && (
