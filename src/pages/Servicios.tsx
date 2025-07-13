@@ -229,7 +229,7 @@ function Servicios() {
                 </div>
                 <div className="flex justify-center">
                   <img 
-                    src="https://images.pexels.com/photos/210137/pexels-photo-210137.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                    src="https://res.cloudinary.com/dy089iwsg/image/upload/v1751399679/Correcion_por_desvaste_iqrr0o.jpg" 
                     alt="Corrección de Planicidad por Desbaste" 
                     className="w-full h-auto object-cover rounded-lg shadow-md"
                   />
