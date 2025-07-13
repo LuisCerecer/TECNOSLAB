@@ -134,36 +134,11 @@ function Productos() {
                 </div>
               </div>
             </div>
-            
-            {/* Image Section with same styling as TecnoMG */}
-            <div className="relative">
-              <div className="flex justify-center items-center flex-wrap gap-12">
-                {/* Left Image */}
-                <div className="group cursor-pointer">
-                  <div className="bg-white p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
-                    <div className="h-[304px] w-[384px]">
-                      <img 
-                        src="https://res.cloudinary.com/dy089iwsg/image/upload/v1752426078/l_oqwwhm.png" 
-                        alt="TecnoCM - Proceso de aplicación" 
-                        className="w-full h-full object-contain"
-                      />
-                    </div>
-                  </div>
-                </div>
+          </div>
 
-                {/* Right Image */}
-                <div className="group cursor-pointer">
-                  <div className="bg-white p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
-                    <div className="h-[304px] w-[384px]">
-                      <img 
-                        src="https://res.cloudinary.com/dy089iwsg/image/upload/v1752426095/R_x4vbbr.png" 
-                        alt="TecnoCM - Resultado final" 
-                        className="w-full h-full object-contain"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
+          <div ref={tecnoCMRef} id="tecnocm" className="mb-20">
+            <h2 className="text-3xl font-bold text-gray-800 mb-8 border-l-4 border-blue-700 pl-4">
+              TecnoCM
             </h2>
             <div className="bg-white p-8 shadow-xl rounded-xl">
               <p className="text-gray-700 mb-6 text-lg leading-relaxed">
@@ -226,9 +201,4 @@ function Productos() {
   );
 }
 
-              {/* Bottom accent line */}
-              <div className="mt-8 flex justify-center">
-                <div className="w-16 h-1 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full"></div>
-              </div>
-            </div>
 export default Productos;
