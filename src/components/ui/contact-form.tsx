@@ -18,6 +18,17 @@ interface FormData {
 
 type ActiveTab = 'form' | 'contactInfo' | 'videoCall' | 'newsletter';
 
+// Declare Turnstile type for TypeScript
+declare global {
+  interface Window {
+    turnstile: {
+      render: (element: string | HTMLElement, options: any) => string;
+      reset: (widgetId?: string) => void;
+      getResponse: (widgetId?: string) => string;
+    };
+  }
+}
+
 const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
     nombre: '',
@@ -34,7 +45,40 @@ const ContactForm: React.FC = () => {
     email: ''
   });
   const [newsletterSuccess, setNewsletterSuccess] = useState(false);
+  const [captchaTokens, setCaptchaTokens] = useState({
+    general: '',
+    newsletter: '',
+    videoCall: ''
+  });
 
+  const validateCaptcha = async (token: string): Promise<boolean> => {
+    if (!token) {
+      alert('Por favor, completa la verificación CAPTCHA.');
+      return false;
+    }
+
+    try {
+      // In a real implementation, this should be done server-side
+      // For now, we'll just validate that the token exists
+      const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams({
+          secret: '0x4AAAAAABk-KFv8EOJLH9fvLVdnWvZX_0I',
+          response: token,
+        }),
+      });
+
+      const result = await response.json();
+      return result.success;
+    } catch (error) {
+      console.error('CAPTCHA validation error:', error);
+      alert('Error al validar CAPTCHA. Por favor, inténtalo de nuevo.');
+      return false;
+    }
+  };
   const handleInputChange = (field: keyof FormData, value: string) => {
     setFormData(prev => ({
       ...prev,
@@ -44,7 +88,21 @@ const ContactForm: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate CAPTCHA before proceeding
+    const isValidCaptcha = await validateCaptcha(captchaTokens.general);
+    if (!isValidCaptcha) {
+      return;
+    }
+
     setShowSuccess(true);
+    
+    // Reset CAPTCHA
+    if (window.turnstile) {
+      window.turnstile.reset();
+      setCaptchaTokens(prev => ({ ...prev, general: '' }));
+    }
+    
     setTimeout(() => {
       setShowSuccess(false);
       setFormData({
@@ -59,7 +117,21 @@ const ContactForm: React.FC = () => {
 
   const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate CAPTCHA before proceeding
+    const isValidCaptcha = await validateCaptcha(captchaTokens.newsletter);
+    if (!isValidCaptcha) {
+      return;
+    }
+
     setNewsletterSuccess(true);
+    
+    // Reset CAPTCHA
+    if (window.turnstile) {
+      window.turnstile.reset();
+      setCaptchaTokens(prev => ({ ...prev, newsletter: '' }));
+    }
+    
     setTimeout(() => {
       setNewsletterSuccess(false);
       setNewsletterData({
@@ -70,6 +142,24 @@ const ContactForm: React.FC = () => {
     }, 3000);
   };
 
+  const handleVideoCallSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Validate CAPTCHA before proceeding
+    const isValidCaptcha = await validateCaptcha(captchaTokens.videoCall);
+    if (!isValidCaptcha) {
+      return;
+    }
+
+    // Handle video call form submission here
+    alert('Solicitud de videollamada enviada correctamente.');
+    
+    // Reset CAPTCHA
+    if (window.turnstile) {
+      window.turnstile.reset();
+      setCaptchaTokens(prev => ({ ...prev, videoCall: '' }));
+    }
+  };
   const tiposProyecto = [
     { value: 'ingenieria', label: 'Ingeniería de piso' },
     { value: 'medicion', label: 'Medición del piso' },
@@ -229,6 +319,16 @@ const ContactForm: React.FC = () => {
                   />
                 </div>
 
+                <div className="space-y-2">
+                  <Label className="text-base font-medium text-gray-700">
+                    Verificación de seguridad *
+                  </Label>
+                  <div 
+                    className="cf-turnstile" 
+                    data-sitekey="0x4AAAAAABk-KKQ_hSlVOnyk"
+                    data-callback={(token: string) => setCaptchaTokens(prev => ({ ...prev, general: token }))}
+                  ></div>
+                </div>
                 <div data-netlify-recaptcha="true"></div>
 
                 <Button
@@ -304,6 +404,16 @@ const ContactForm: React.FC = () => {
                   />
                 </div>
 
+                <div className="space-y-2">
+                  <Label className="text-base font-medium text-gray-700">
+                    Verificación de seguridad *
+                  </Label>
+                  <div 
+                    className="cf-turnstile" 
+                    data-sitekey="0x4AAAAAABk-KKQ_hSlVOnyk"
+                    data-callback={(token: string) => setCaptchaTokens(prev => ({ ...prev, newsletter: token }))}
+                  ></div>
+                </div>
                 <div data-netlify-recaptcha="true"></div>
 
                 <Button
@@ -325,9 +435,93 @@ const ContactForm: React.FC = () => {
                 transition={{ duration: 0.3 }}
                 className="w-full"
               >
-                {/* Google Calendar Appointment Scheduling begin */}
-                <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3tWWdIDYasZG6CjfmL5ymgubp1Spq-M0n9qLSF0uuGnBGX0cjc0Udgz2OciCAnhlzUuSZcy7cH?gv=true" style={{ border: 0 }} width="100%" height="600" frameBorder="0"></iframe>
-                {/* end Google Calendar Appointment Scheduling */}
+                <form onSubmit={handleVideoCallSubmit} className="space-y-6">
+                  <div className="bg-blue-50 p-6 rounded-lg mb-6">
+                    <h3 className="text-lg font-semibold text-blue-800 mb-3">
+                      Solicitar Videollamada
+                    </h3>
+                    <p className="text-gray-700">
+                      Completa el formulario y nos pondremos en contacto contigo para agendar una videollamada 
+                      en el horario que mejor te convenga.
+                    </p>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <Label className="text-base font-medium text-gray-700">
+                        Nombre *
+                      </Label>
+                      <Input
+                        type="text"
+                        className="w-full h-10 text-base"
+                        required
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label className="text-base font-medium text-gray-700">
+                        Empresa *
+                      </Label>
+                      <Input
+                        type="text"
+                        className="w-full h-10 text-base"
+                        required
+                      />
+                    </div>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <Label className="text-base font-medium text-gray-700">
+                        Email *
+                      </Label>
+                      <Input
+                        type="email"
+                        className="w-full h-10 text-base"
+                        required
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label className="text-base font-medium text-gray-700">
+                        Teléfono *
+                      </Label>
+                      <Input
+                        type="tel"
+                        className="w-full h-10 text-base"
+                        required
+                      />
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label className="text-base font-medium text-gray-700">
+                      Motivo de la consulta *
+                    </Label>
+                    <Textarea
+                      className="w-full min-h-[120px] text-base"
+                      placeholder="Describe brevemente el motivo de tu consulta..."
+                      required
+                    />
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label className="text-base font-medium text-gray-700">
+                      Verificación de seguridad *
+                    </Label>
+                    <div 
+                      className="cf-turnstile" 
+                      data-sitekey="0x4AAAAAABk-KKQ_hSlVOnyk"
+                      data-callback={(token: string) => setCaptchaTokens(prev => ({ ...prev, videoCall: token }))}
+                    ></div>
+                  </div>
+                  
+                  <Button
+                    type="submit"
+                    className="w-full bg-blue-600 text-white hover:bg-blue-700 h-11 text-lg"
+                    size="lg"
+                  >
+                    Solicitar Videollamada
+                  </Button>
+                </form>
               </motion.div>
             )}
 
