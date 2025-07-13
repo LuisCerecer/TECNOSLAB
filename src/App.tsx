@@ -345,7 +345,7 @@ function App() {
             <div className="flex justify-center space-x-6 text-sm">
               <Link 
                 to="/terminos-y-condiciones" 
-                className="text-gray-300 hover:text-white underline transition-colors"
+                className="text-pink-500 hover:text-pink-300 underline transition-colors"
               >
                 Términos y Condiciones
               </Link>
