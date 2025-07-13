@@ -188,11 +188,36 @@ function Productos() {
                   </ul>
                 </div>
               </div>
-              <img 
-                src="https://res.cloudinary.com/dy089iwsg/image/upload/v1751255686/CM_uxmuqt.png" 
-                alt="TecnoCM Sistema" 
-                className="w-full h-80 object-cover rounded-lg shadow-md"
-              />
+              
+              {/* Images Section with same styling as TecnoMG */}
+              <div className="relative">
+                <div className="flex justify-center items-center flex-wrap gap-12">
+                  {/* Left Image */}
+                  <div className="group cursor-pointer">
+                    <div className="bg-white p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+                      <div className="h-[304px] w-[384px]">
+                        <img 
+                          src="https://res.cloudinary.com/dy089iwsg/image/upload/v1752425025/L_pjm9yr.jpg" 
+                          alt="TecnoCM - Aplicación Sistema" 
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right Image */}
+                  <div className="group cursor-pointer">
+                    <div className="bg-white p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+                      <div className="h-[304px] w-[384px]">
+                        <img 
+                          src="https://res.cloudinary.com/dy089iwsg/image/upload/v1752425025/R_vf2ae8.jpg" 
+                          alt="TecnoCM - Resultado Final" 
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
             </div>
           </div>
         </div>
@@ -201,4 +226,9 @@ function Productos() {
   );
 }
 
+                {/* Bottom accent line */}
+                <div className="mt-8 flex justify-center">
+                  <div className="w-16 h-1 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full"></div>
+                </div>
+              </div>
 export default Productos;
