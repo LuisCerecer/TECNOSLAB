@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Shield, CheckCircle } from 'lucide-react';
+import { submitToTecnosbalmx, type TecnosbalmxSubmission } from '@/lib/supabase';
 
 function UneteANuestraLista() {
   const [formData, setFormData] = useState({
@@ -47,21 +48,41 @@ function UneteANuestraLista() {
   
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the data to your backend
-    console.log('Form submitted:', formData);
     
-    // Show success animation
-    setShowSuccess(true);
-    
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setFormData({
-        nombre: '',
-        empresa: '',
-        email: '',
-      });
-      setShowSuccess(false);
-    }, 3000);
+    const submitForm = async () => {
+      try {
+        // Prepare data for TECNOSBALMX table
+        const submissionData: TecnosbalmxSubmission = {
+          form_type: 'newsletter',
+          nombre: formData.nombre,
+          empresa: formData.empresa,
+          email: formData.email
+        };
+
+        // Submit to Supabase
+        await submitToTecnosbalmx(submissionData);
+        
+        // Show success animation
+        setShowSuccess(true);
+        
+        // Reset form after 3 seconds
+        setTimeout(() => {
+          setFormData({
+            nombre: '',
+            empresa: '',
+            email: '',
+          });
+          setShowSuccess(false);
+          setCaptchaVerified(false);
+        }, 3000);
+        
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        alert('Error al suscribirse. Por favor, intenta de nuevo.');
+      }
+    };
+
+    submitForm();
   };
 
   return (

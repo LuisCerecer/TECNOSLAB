@@ -7,6 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Textarea } from '@/components/ui/textarea';
 import { Phone, Mail, CheckCircle, MapPin, Globe, Shield } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { submitToTecnosbalmx, type TecnosbalmxSubmission } from '@/lib/supabase';
 
 interface FormData {
   nombre: string;
@@ -131,30 +132,76 @@ const ContactForm: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setShowSuccess(true);
-    setTimeout(() => {
-      setShowSuccess(false);
-      setFormData({
-        nombre: '',
-        empresa: '',
-        email: '',
-        tipoProyecto: '',
-        mensaje: ''
-      });
-    }, 3000);
+    
+    try {
+      // Prepare data for TECNOSBALMX table
+      const submissionData: TecnosbalmxSubmission = {
+        form_type: 'general',
+        nombre: formData.nombre,
+        empresa: formData.empresa,
+        email: formData.email,
+        tipo_proyecto: formData.tipoProyecto || null,
+        mensaje: formData.mensaje || null
+      };
+
+      // Submit to Supabase
+      await submitToTecnosbalmx(submissionData);
+      
+      // Show success message
+      setShowSuccess(true);
+      
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        setShowSuccess(false);
+        setFormData({
+          nombre: '',
+          empresa: '',
+          email: '',
+          tipoProyecto: '',
+          mensaje: ''
+        });
+        setGeneralFormCaptchaVerified(false);
+      }, 3000);
+      
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Error al enviar el formulario. Por favor, intenta de nuevo.');
+    }
   };
 
   const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setNewsletterSuccess(true);
-    setTimeout(() => {
-      setNewsletterSuccess(false);
-      setNewsletterData({
-        nombre: '',
-        empresa: '',
-        email: ''
-      });
-    }, 3000);
+    
+    try {
+      // Prepare data for TECNOSBALMX table
+      const submissionData: TecnosbalmxSubmission = {
+        form_type: 'newsletter',
+        nombre: newsletterData.nombre,
+        empresa: newsletterData.empresa,
+        email: newsletterData.email
+      };
+
+      // Submit to Supabase
+      await submitToTecnosbalmx(submissionData);
+      
+      // Show success message
+      setNewsletterSuccess(true);
+      
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        setNewsletterSuccess(false);
+        setNewsletterData({
+          nombre: '',
+          empresa: '',
+          email: ''
+        });
+        setNewsletterCaptchaVerified(false);
+      }, 3000);
+      
+    } catch (error) {
+      console.error('Error submitting newsletter:', error);
+      alert('Error al suscribirse. Por favor, intenta de nuevo.');
+    }
   };
 
   const tiposProyecto = [

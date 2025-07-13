@@ -26,6 +26,19 @@ export interface ContactSubmission {
   updated_at?: string
 }
 
+// Types for TECNOSBALMX table
+export interface TecnosbalmxSubmission {
+  id?: string
+  form_type: 'general' | 'newsletter'
+  nombre: string
+  empresa: string
+  email: string
+  tipo_proyecto?: string
+  mensaje?: string
+  created_at?: string
+  updated_at?: string
+}
+
 // Function to submit contact form data
 export async function submitContactForm(data: ContactSubmission) {
   const { error } = await supabase
@@ -38,4 +51,23 @@ export async function submitContactForm(data: ContactSubmission) {
   }
 
   return { success: true }
+}
+
+// Function to submit data to TECNOSBALMX table
+export async function submitToTecnosbalmx(data: TecnosbalmxSubmission) {
+  try {
+    const { error } = await supabase
+      .from('TECNOSBALMX')
+      .insert([data])
+
+    if (error) {
+      console.error('Error submitting to TECNOSBALMX:', error)
+      throw error
+    }
+
+    return { success: true }
+  } catch (error) {
+    console.error('Error in submitToTecnosbalmx:', error)
+    throw error
+  }
 }
