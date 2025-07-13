@@ -17,19 +17,9 @@ function UneteANuestraLista() {
   const verifyCaptcha = async () => {
     setCaptchaLoading(true);
     try {
-      // Execute reCAPTCHA v3
-      const token = await new Promise<string>((resolve, reject) => {
-        if (window.grecaptcha) {
-          window.grecaptcha.execute('6LcvAoIrAAAAABy7b9fwvDHJFlZzBuEMhuE3AlcA', { action: 'newsletter_signup_page' })
-            .then(resolve)
-            .catch(reject);
-        } else {
-          reject(new Error('reCAPTCHA not loaded'));
-        }
-      });
+      // Execute reCAPTCHA v3 using global function
+      const token = await window.executeV3Recaptcha('newsletter_signup_page');
 
-      // In a real implementation, you would send this token to your backend for verification
-      // For now, we'll simulate a successful verification
       if (token) {
         setCaptchaVerified(true);
       }

@@ -6,9 +6,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tecnoslab - Pisos Continuos de Alta Planicidad</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://www.google.com/recaptcha/api.js?render=6LcvAoIrAAAAABy7b9fwvDHJFlZzBuEMhuE3AlcA" async defer></script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit" async defer></script>
+    <script>
+      // Global reCAPTCHA configuration
+      window.recaptchaConfig = {
+        invisibleSiteKey: '6LenCIIrAAAAAF7BGVCLnIZlcIQBfJu83sTvMGRR',
+        v3SiteKey: '6LcvAoIrAAAAABy7b9fwvDHJFlZzBuEMhuE3AlcA'
+      };
+      
+      // Global variables
+      window.invisibleRecaptchaWidget = null;
+      window.pageRecaptchaToken = null;
+      
+      // Callback when reCAPTCHA API is loaded
+      function onRecaptchaLoad() {
+        // Render invisible reCAPTCHA for page-level protection
+        if (window.grecaptcha && window.grecaptcha.render) {
+          window.invisibleRecaptchaWidget = window.grecaptcha.render('invisible-recaptcha', {
+            sitekey: window.recaptchaConfig.invisibleSiteKey,
+            callback: onInvisibleRecaptchaSuccess,
+            size: 'invisible'
+          });
+          
+          // Execute invisible reCAPTCHA automatically
+          setTimeout(() => {
+            if (window.invisibleRecaptchaWidget !== null) {
+              window.grecaptcha.execute(window.invisibleRecaptchaWidget);
+            }
+          }, 1000);
+        }
+      }
+      
+      // Callback when invisible reCAPTCHA is completed
+      function onInvisibleRecaptchaSuccess(token) {
+        window.pageRecaptchaToken = token;
+        console.log('Page-level reCAPTCHA completed successfully');
+        
+        // Optional: Send token to your backend for verification
+        // fetch('/verify-recaptcha', {
+        //   method: 'POST',
+        //   headers: { 'Content-Type': 'application/json' },
+        //   body: JSON.stringify({ token: token })
+        // });
+      }
+      
+      // Function for form-specific v3 reCAPTCHA
+      window.executeV3Recaptcha = function(action) {
+        return new Promise((resolve, reject) => {
+          if (window.grecaptcha && window.grecaptcha.execute) {
+            // Load v3 script if not already loaded
+            if (!document.querySelector('script[src*="render=' + window.recaptchaConfig.v3SiteKey + '"]')) {
+              const script = document.createElement('script');
+              script.src = `https://www.google.com/recaptcha/api.js?render=${window.recaptchaConfig.v3SiteKey}`;
+              script.onload = () => {
+                window.grecaptcha.execute(window.recaptchaConfig.v3SiteKey, { action: action })
+                  .then(resolve)
+                  .catch(reject);
+              };
+              document.head.appendChild(script);
+            } else {
+              window.grecaptcha.execute(window.recaptchaConfig.v3SiteKey, { action: action })
+                .then(resolve)
+                .catch(reject);
+            }
+          } else {
+            reject(new Error('reCAPTCHA not loaded'));
+          }
+        });
+      };
+    </script>
   </head>
   <body>
+    <div id="invisible-recaptcha"></div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
