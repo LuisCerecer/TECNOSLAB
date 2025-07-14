@@ -39,6 +39,11 @@ function UneteANuestraLista() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
+    if (!captchaVerified) {
+      alert('Por favor completa la verificación de seguridad primero.');
+      return;
+    }
+    
     const submitForm = async () => {
       try {
         // Prepare data for TECNOSBALMX table
@@ -49,6 +54,8 @@ function UneteANuestraLista() {
           email: formData.email
         };
 
+        console.log('Submitting newsletter page data:', submissionData);
+        
         // Submit to Supabase
         await submitToTecnosbalmx(submissionData);
         
@@ -68,7 +75,7 @@ function UneteANuestraLista() {
         
       } catch (error) {
         console.error('Error submitting form:', error);
-        alert('Error al suscribirse. Por favor, intenta de nuevo.');
+        alert(`Error al suscribirse: ${error instanceof Error ? error.message : 'Error desconocido'}. Por favor, intenta de nuevo.`);
       }
     };
 

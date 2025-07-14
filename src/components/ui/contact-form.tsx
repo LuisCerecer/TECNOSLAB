@@ -103,6 +103,11 @@ const ContactForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    if (!generalFormCaptchaVerified) {
+      alert('Por favor completa la verificación de seguridad primero.');
+      return;
+    }
+    
     try {
       // Prepare data for TECNOSBALMX table
       const submissionData: TecnosbalmxSubmission = {
@@ -110,10 +115,12 @@ const ContactForm: React.FC = () => {
         nombre: formData.nombre,
         empresa: formData.empresa,
         email: formData.email,
-        tipo_proyecto: formData.tipoProyecto || null,
-        mensaje: formData.mensaje || null
+        tipo_proyecto: formData.tipoProyecto || undefined,
+        mensaje: formData.mensaje || undefined
       };
 
+      console.log('Submitting general form data:', submissionData);
+      
       // Submit to Supabase
       await submitToTecnosbalmx(submissionData);
       
@@ -135,12 +142,17 @@ const ContactForm: React.FC = () => {
       
     } catch (error) {
       console.error('Error submitting form:', error);
-      alert('Error al enviar el formulario. Por favor, intenta de nuevo.');
+      alert(`Error al enviar el formulario: ${error instanceof Error ? error.message : 'Error desconocido'}. Por favor, intenta de nuevo.`);
     }
   };
 
   const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!newsletterCaptchaVerified) {
+      alert('Por favor completa la verificación de seguridad primero.');
+      return;
+    }
     
     try {
       // Prepare data for TECNOSBALMX table
@@ -151,6 +163,8 @@ const ContactForm: React.FC = () => {
         email: newsletterData.email
       };
 
+      console.log('Submitting newsletter data:', submissionData);
+      
       // Submit to Supabase
       await submitToTecnosbalmx(submissionData);
       
@@ -170,7 +184,7 @@ const ContactForm: React.FC = () => {
       
     } catch (error) {
       console.error('Error submitting newsletter:', error);
-      alert('Error al suscribirse. Por favor, intenta de nuevo.');
+      alert(`Error al suscribirse: ${error instanceof Error ? error.message : 'Error desconocido'}. Por favor, intenta de nuevo.`);
     }
   };
 

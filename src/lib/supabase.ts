@@ -56,15 +56,19 @@ export async function submitContactForm(data: ContactSubmission) {
 // Function to submit data to TECNOSBALMX table
 export async function submitToTecnosbalmx(data: TecnosbalmxSubmission) {
   try {
+    console.log('Submitting data to TECNOSLABMX:', data);
+    
     const { error } = await supabase
       .from('TECNOSLABMX')
       .insert([data])
 
     if (error) {
       console.error('Error submitting to TECNOSLABMX:', error)
+      console.error('Error details:', error.message, error.details, error.hint)
       throw error
     }
 
+    console.log('Successfully submitted to TECNOSLABMX');
     return { success: true }
   } catch (error) {
     console.error('Error in submitToTecnosbalmx:', error)
