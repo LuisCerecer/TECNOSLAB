@@ -10,61 +10,8 @@
     <script>
       // Global reCAPTCHA configuration
       window.recaptchaConfig = {
-        invisibleSiteKey: '6LenCIIrAAAAAF7BGVCLnIZlcIQBfJu83sTvMGRR',
         v3SiteKey: '6LcvAoIrAAAAABy7b9fwvDHJFlZzBuEMhuE3AlcA'
       };
-      
-      // Global variables
-      window.invisibleRecaptchaWidget = null;
-      window.pageRecaptchaToken = null;
-      
-      // Initialize reCAPTCHA when ready
-      window.addEventListener('load', function() {
-        if (window.grecaptcha) {
-          window.grecaptcha.ready(function() {
-            // Render invisible reCAPTCHA for page-level protection
-            window.invisibleRecaptchaWidget = window.grecaptcha.render('invisible-recaptcha', {
-              sitekey: window.recaptchaConfig.invisibleSiteKey,
-              callback: onInvisibleRecaptchaSuccess,
-              size: 'invisible'
-            });
-            
-            // Execute invisible reCAPTCHA automatically
-            setTimeout(() => {
-              if (window.invisibleRecaptchaWidget !== null) {
-                window.grecaptcha.execute(window.invisibleRecaptchaWidget);
-              }
-            }, 1000);
-          });
-        }
-      });
-      
-      // Load v2 invisible reCAPTCHA script separately
-      window.addEventListener('DOMContentLoaded', function() {
-        const v2Script = document.createElement('script');
-        v2Script.src = 'https://www.google.com/recaptcha/api.js?onload=onRecaptchaV2Load&render=explicit';
-        v2Script.async = true;
-        v2Script.defer = true;
-        document.head.appendChild(v2Script);
-      });
-      
-      // Callback specifically for v2 invisible reCAPTCHA
-      window.onRecaptchaV2Load = function() {
-        // This will be handled by the main grecaptcha.ready() above
-      };
-          
-      // Callback when invisible reCAPTCHA is completed
-      function onInvisibleRecaptchaSuccess(token) {
-        window.pageRecaptchaToken = token;
-        console.log('Page-level reCAPTCHA completed successfully');
-        
-        // Optional: Send token to your backend for verification
-        // fetch('/verify-recaptcha', {
-        //   method: 'POST',
-        //   headers: { 'Content-Type': 'application/json' },
-        //   body: JSON.stringify({ token: token })
-        // });
-      }
       
       // Function for form-specific v3 reCAPTCHA
       window.executeV3Recaptcha = function(action) {
@@ -83,7 +30,6 @@
     </script>
   </head>
   <body>
-    <div id="invisible-recaptcha"></div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
