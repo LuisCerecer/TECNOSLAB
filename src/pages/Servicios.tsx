@@ -185,7 +185,7 @@ function Servicios() {
                 </div>
                 <div className="flex justify-center">
                   <img 
-                    src="https://images.pexels.com/photos/7376/startup-photos.jpg?auto=compress&cs=tinysrgb&w=800" 
+                    src="https://res.cloudinary.com/dy089iwsg/image/upload/v1752716406/Inge_ak87fs.jpg" 
                     alt="Diseño e Ingeniería de Pisos Industriales" 
                     className="w-full h-auto object-cover rounded-lg shadow-md"
                   />
