@@ -77,6 +77,13 @@ function Servicios() {
                     
                     <h3 className="text-lg font-semibold mb-4 text-blue-700">Casos de Uso / Aplicaciones</h3>
                     <ul className="list-disc list-inside space-y-2 text-gray-700 mb-6">
+                      <li>Cumplimiento de los siguientes estándares:
+                        <ul className="list-disc list-inside space-y-1 ml-6 mt-2">
+                          <li>TR34 Free Movement</li>
+                          <li>ASTM-E1155</li>
+                          <li>DIN18802</li>
+                        </ul>
+                      </li>
                       <li>Almacenes con tráfico multidireccional</li>
                       <li>Centros de distribución</li>
                       <li>Áreas industriales con montacargas convencionales</li>
