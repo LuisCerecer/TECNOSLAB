@@ -79,7 +79,7 @@ function Servicios() {
                     <ul className="list-disc list-inside space-y-2 text-gray-700 mb-6">
                       <li>Cumplimiento de los siguientes estándares:
                         <ul className="list-disc list-inside space-y-1 ml-6 mt-2">
-                          <li>TR34 Free Movement</li>
+                          <li>TR34-Free Movement</li>
                           <li>ASTM-E1155</li>
                           <li>DIN18802</li>
                         </ul>
@@ -127,6 +127,15 @@ function Servicios() {
                     
                     <h3 className="text-lg font-semibold mb-4 text-blue-700">Casos de Uso / Aplicaciones</h3>
                     <ul className="list-disc list-inside space-y-2 text-gray-700 mb-6">
+                      <li>Cumplimiento de los siguientes estándares:
+                        <ul className="list-disc list-inside space-y-1 ml-6 mt-2">
+                          <li>•	TR34-Defined Movement</li>
+                          <li>•	F-min</li>
+                          <li>•	DIN15185</li>
+                          <li>•	EN15620</li>
+                          <li>•	VDMA29486</li>
+                          <li>•	•	UNI11146:2005</li>
+                        </ul>
                       <li>Sistemas automatizados de almacenamiento</li>
                       <li>Pasillos VNA para estanterías de gran altura</li>
                       <li>Sistemas ASRS</li>
