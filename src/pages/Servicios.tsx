@@ -136,6 +136,7 @@ function Servicios() {
                           <li>VDMA29486</li>
                           <li>UNI11146:2005</li>
                         </ul>
+                      </li>
                       <li>Sistemas automatizados de almacenamiento</li>
                       <li>Pasillos VNA para estanterías de gran altura</li>
                       <li>Sistemas ASRS</li>
