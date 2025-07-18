@@ -129,12 +129,12 @@ function Servicios() {
                     <ul className="list-disc list-inside space-y-2 text-gray-700 mb-6">
                       <li>Cumplimiento de los siguientes estándares:
                         <ul className="list-disc list-inside space-y-1 ml-6 mt-2">
-                          <li>•	TR34-Defined Movement</li>
-                          <li>•	F-min</li>
-                          <li>•	DIN15185</li>
-                          <li>•	EN15620</li>
-                          <li>•	VDMA29486</li>
-                          <li>•	•	UNI11146:2005</li>
+                          <li>TR34-Defined Movement</li>
+                          <li>F-min</li>
+                          <li>DIN15185</li>
+                          <li>EN15620</li>
+                          <li>VDMA29486</li>
+                          <li>UNI11146:2005</li>
                         </ul>
                       <li>Sistemas automatizados de almacenamiento</li>
                       <li>Pasillos VNA para estanterías de gran altura</li>
