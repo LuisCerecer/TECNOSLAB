@@ -17,7 +17,7 @@ function Proyectos() {
         case '#cys':
           targetElement = cysRef.current;
           break;
-        default:
+        default: 
           break;
       }
       
@@ -53,19 +53,19 @@ function Proyectos() {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                 <div>
                   <p className="text-gray-700 mb-6 text-lg leading-relaxed">
-                    Proyecto de medición y certificación de planicidad para las instalaciones de BOSCH en Ciudad Juárez, utilizando tecnología de última generación para garantizar el cumplimiento de los estándares más exigentes.
+                    Proyecto integral que incluyó la ingeniería y supervisión de una losa para soportar un sistema AutoStore® así como la medición y certificación de planicidad para las instalaciones de BOSCH en Ciudad Juárez. 
+Se realizó la corrección de planicidad para cumplir con la norma de planicidad de AutoStore AS-50997 y emitir el certificado de cumplimiento
                   </p>
                   <h3 className="text-lg font-semibold mb-3 text-blue-800">Especificaciones del Proyecto</h3>
                   <ul className="list-disc list-inside space-y-2 text-gray-700 mb-6">
-                    <li>Medición precisa con tecnología láser 3D</li>
-                    <li>Verificación de estándares TR34 y ASTM-E1155</li>
-                    <li>Certificación oficial de planicidad</li>
-                    <li>Reportes técnicos detallados con mapas de calor</li>
-                    <li>Área total medida: 25,000 m²</li>
-                    <li>Tolerancia alcanzada: TR34 FM1</li>
+                    <li>Area total de la losa 1,300 m2</li>
+                    <li>Solución técnica considerando dos secciones de 650 m2 cada una con una combinación de refuerzos de varilla y fibras metálicas</li>
+                    <li>Losa con espesor de 20 cm requiriendo un concreto con f’C 350</li>
+                    <li>Medición de planicidad con el perfilógrafo ALL-IN-ONE de FACE CONSULTANTS para determinar el cumplimiento de la norma de planicidad</li>
+                    <li>•	Corrección por desbaste mecánico de los puntos fuera de especificación</li>
                   </ul>
                   <p className="text-gray-700 text-lg leading-relaxed">
-                    El proyecto incluyó la medición completa de las áreas de producción y almacenamiento, garantizando las condiciones óptimas para los sistemas automatizados de BOSCH.
+                    El proyecto incluyó la medición y corrección de un área dentro de una nave existente en la cual se instalaría un puente de comunicación con el área nueva. En el área existente se instalaron los puertos de carga y descarga de materiales por lo que fue necesario la corrección de planicidad solamente sobre las huellas de las columnas del puente. 
                   </p>
                 </div>
                 <div className="flex justify-center">
@@ -87,19 +87,21 @@ function Proyectos() {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                 <div>
                   <p className="text-gray-700 mb-6 text-lg leading-relaxed">
-                    Proyecto integral de instalación de pisos industriales de alta planicidad para CYS en Querétaro, diseñado para soportar operaciones logísticas intensivas y sistemas automatizados.
+                    Proyecto medición y corrección de pasillos VNA para la operación de un montacargas de 4 ruedas con racks con altura de 11.20 cm especificándose el cumplimiento de un FMIN70
                   </p>
                   <h3 className="text-lg font-semibold mb-3 text-blue-800">Características del Proyecto</h3>
                   <ul className="list-disc list-inside space-y-2 text-gray-700 mb-6">
-                    <li>Instalación de 18,500 m² de piso superplano</li>
-                    <li>Especificación TR34 FM2 / ASTM-E1155</li>
-                    <li>Diseño para sistemas de estanterías automatizadas</li>
-                    <li>Resistencia de 45 MPa / 6500 PSI</li>
-                    <li>Juntas armadas con sellado especializado</li>
-                    <li>Acabado endurecido con agregados minerales</li>
+                    <li>Losa de concreto construida con un sistema de piso convencional con juntas de control a cada 4 metros.</li>
+                    <li>9 pasillos totales con una longitud de 30 metros cada uno</li>
+                    <li>Considerando las dimensiones del montacargas y el FMIN70 se cumplieron las siguientes tolerancias:</li>
+                      <ul className="list-disc list-inside space-y-1 ml-6 mt-2">
+                          <li>Elevación transversal: 2.47 mm</li>
+                          <li>Elevación longitudinal: 3.10 mm</li>
+                          <li>Tasa de cambio: 1.4 mm @ 30 cm</li>
+                        </ul>
                   </ul>
                   <p className="text-gray-700 text-lg leading-relaxed">
-                    La instalación fue completada en tiempo récord manteniendo los más altos estándares de calidad, permitiendo a CYS optimizar sus operaciones logísticas desde el primer día.
+El proceso de medición y corrección se realizó en un tiempo récord de 10 días. Se utilizó el perfilógrafo ALL-IN-ONE de FACE CONSULTANTS configurado en un arreglo para montacargas de 4 ruedas.
                   </p>
                 </div>
                 <div className="flex justify-center">
