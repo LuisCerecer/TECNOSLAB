@@ -1,360 +1,123 @@
-import React, { useEffect } from 'react';
-import { Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Linkedin } from 'lucide-react';
+import React, { useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 
-// Import pages
-import AcercaDeNosotros from './pages/AcercaDeNosotros';
-import Productos from './pages/Productos';
-import Servicios from './pages/Servicios';
-import Proyectos from './pages/Proyectos';
-import FAQ from './pages/FAQ';
-import Contactanos from './pages/Contactanos';
-import UneteANuestraLista from './pages/UneteANuestraLista';
-import ComunicacionPorLlamadaOCorreo from './pages/ComunicacionPorLlamadaOCorreo';
-import NuestraInformacion from './pages/NuestraInformacion';
-import TerminosYCondiciones from './pages/TerminosYCondiciones';
-
-// Import components
-import NavMenu from './components/NavMenu';
-
-function App() {
+function Proyectos() {
   const location = useLocation();
-  const navigate = useNavigate();
+  const boschRef = useRef<HTMLDivElement>(null);
+  const cysRef = useRef<HTMLDivElement>(null);
 
-  // Fade-in animation for elements as they load
   useEffect(() => {
-    const fadeElements = document.querySelectorAll('.fade-in');
-    fadeElements.forEach((element, index) => {
-      // Remove visible class first to reset animation
-      element.classList.remove('visible');
-      setTimeout(() => {
-        element.classList.add('visible');
-      }, 100 * index);
-    });
-  }, [location.pathname]);
-
-  // Handle logo click
-  const handleLogoClick = (e: React.MouseEvent) => {
-    // Always scroll to top when clicking logo
-    window.scrollTo({ top: 0, behavior: 'auto' });
-    
-    if (location.pathname === '/') {
-      // If already on home page, prevent navigation
-      e.preventDefault();
-    }
-  };
-
-  // Handle scroll to top when navigating to home page
-  useEffect(() => {
-    if (location.pathname === '/' && !location.hash) {
-      // Scroll to top when on home page without hash
+    if (location.hash) {
+      let targetElement: HTMLElement | null = null;
+      
+      switch (location.hash) {
+        case '#bosch':
+          targetElement = boschRef.current;
+          break;
+        case '#cys':
+          targetElement = cysRef.current;
+          break;
+        default:
+          break;
+      }
+      
+      if (targetElement) {
+        // Calculate offset to position title at top (accounting for fixed header)
+        const headerHeight = 144; // pt-36 = 144px
+        const elementTop = targetElement.offsetTop - headerHeight;
+        window.scrollTo({ 
+          top: Math.max(0, elementTop), 
+          behavior: 'auto' 
+        });
+      }
+    } else {
+      // Scroll to top if no hash is present
       window.scrollTo({ top: 0, behavior: 'auto' });
     }
-  }, [location.pathname, location.hash]);
-
-  // Trigger fade-in animation when on home page
-  useEffect(() => {
-    if (location.pathname === '/') {
-      const fadeElements = document.querySelectorAll('.fade-in');
-      fadeElements.forEach((element, index) => {
-        element.classList.remove('visible');
-        setTimeout(() => {
-          element.classList.add('visible');
-        }, 100 * index);
-      });
-    }
-  }, [location.pathname]);
-
-  // Handle initial fade-in animation on component mount
-  useEffect(() => {
-    const fadeElements = document.querySelectorAll('.fade-in');
-    fadeElements.forEach((element, index) => {
-      element.classList.remove('visible');
-      setTimeout(() => {
-        element.classList.add('visible');
-      }, 100 * index);
-    });
-  }, [location.pathname]);
-
-  // Navigation items data
-  const navItems = [
-    {
-      name: 'Acerca de nosotros',
-      path: '/acerca-de-nosotros',
-      items: [
-        { name: 'Historia', hash: '#historia' },
-        { name: 'Misión', hash: '#mision' },
-        { name: 'Visión', hash: '#vision' }
-      ],
-      title: 'Acerca de nosotros',
-      featured: {
-        title: 'Nuestra Misión',
-        image: 'https://res.cloudinary.com/dy089iwsg/image/upload/v1748985492/Logo_cqr9ul.svg',
-        description: 'Construyendo el futuro con calidad'
-      }
-    },
-    {
-      name: 'Productos',
-      path: '/productos',
-      items: [
-        { name: 'TecnoMG', hash: '#tecnomg' },
-        { name: 'TecnoCM', hash: '#tecnocm' }
-      ],
-      title: 'Productos',
-      featured: {
-        title: 'Pisos Industriales',
-        image: 'https://res.cloudinary.com/dy089iwsg/image/upload/v1751255497/MG_fqrsrb.png',
-        description: 'Soluciones de alta durabilidad'
-      }
-    },
-    {
-      name: 'Servicios',
-      path: '/servicios',
-      items: [
-        { name: 'Medición de Planicidad - Tráfico Aleatorio', hash: '#trafico-aleatorio' },
-        { name: 'Medición de Planicidad - Tráfico Definido', hash: '#trafico-definido' },
-        { name: 'Diseño e Ingeniería de Pisos Industriales', hash: '#diseno-ingenieria' },
-        { name: 'Corrección de Planicidad por Desbaste', hash: '#correccion-desbaste' },
-        { name: 'Corrección de Planicidad por Recubrimientos', hash: '#correccion-recubrimientos' },
-        { name: 'Reparación de Juntas', hash: '#reparacion-juntas' }
-      ],
-      title: 'Servicios',
-      featured: {
-        title: 'Instalación Profesional',
-        image: 'https://res.cloudinary.com/dy089iwsg/image/upload/v1751399679/Correcion_por_desvaste_iqrr0o.jpg',
-        description: 'Instalación con los más altos estándares'
-      }
-    },
-    {
-      name: 'Proyectos',
-      path: '/proyectos',
-      items: [
-        { name: 'BOSCH Ciudad Juárez', hash: '#bosch' },
-        { name: 'CYS Querétaro', hash: '#cys' }
-      ],
-      title: 'Proyectos',
-      featured: {
-        title: 'BOSCH Ciudad Juárez',
-        image: 'https://res.cloudinary.com/dy089iwsg/image/upload/v1751399679/CYS_ianrni.jpg',
-        description: 'Proyectos ejecutados con precisión'
-      }
-    }
-  ];
-
-  // Contact dropdown data
-  // Render the Home content
-  const HomePage = () => (
-    <>
-      {/* Hero Section */}
-      <section className="relative pt-36 h-[75vh] flex items-center">
-        <div className="absolute inset-0 z-0">
-          <img 
-            src="https://res.cloudinary.com/dy089iwsg/image/upload/v1749174888/Inicial_zwmyya.png" 
-            alt="Industrial Flooring" 
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gray-900 opacity-60"></div>
-        </div>
-        
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-xl bg-white bg-opacity-90 p-10 fade-in">
-            <h1 className="text-4xl font-bold text-gray-900 mb-5">
-              Pisos Industriales de Alta Calidad y Precisión
-            </h1>
-            <p className="text-[1.4rem] text-gray-700 mb-6">
-              Soluciones de pisos continuos con la más alta tecnología y estándares internacionales para la industria en México.
-            </p>
-            <Link to="/contactanos" className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-6 text-base transition-all duration-300 transform hover:scale-105 inline-block">
-              Contáctanos
-            </Link>
-          </div>
-        </div>
-        
-        {/* LinkedIn Icon */}
-        <a 
-          href="https://linkedin.com/in/martincerecer/" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="absolute bottom-4 right-4 bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full shadow-lg transition-all duration-300 transform hover:scale-110 z-20"
-          title="Visitar perfil de LinkedIn"
-        >
-          <Linkedin size={22} />
-        </a>
-      </section>
-
-      {/* Partnerships Block */}
-      <section className="bg-white py-16 fade-in">
-        <div className="container mx-auto px-6">
-          {/* Professional Header Section */}
-          <div className="text-center mb-13">
-            <h2 className="text-[3.6rem] font-bold text-gray-900 mb-6 leading-tight">
-              Representantes en México
-            </h2>
-            <div className="max-w-3xl mx-auto">
-              <p className="text-[1.8rem] text-gray-700 mb-5 leading-relaxed">
-                Somos <span className="font-semibold text-blue-700">representantes en México</span> de 
-                <span className="font-semibold text-blue-700"> COGRI GESPAP</span>, parte del prestigioso 
-                <span className="font-semibold text-blue-700"> COGRI GROUP</span>.
-              </p>
-              <p className="text-[1.5rem] text-gray-600 leading-relaxed">
-                Líderes mundiales en <span className="font-medium">diseño, ingeniería, medición de planicidad y certificación</span> 
-                de pisos industriales para <span className="font-medium">sistemas robóticos y pasillos VNA</span>.
-              </p>
-            </div>
-          </div>
-
-          {/* Logo Section with LinkedIn */}
-          <div className="relative">
-            <div className="flex justify-center items-center flex-wrap gap-17">
-              {/* COGRI GROUP Logo */}
-              <div className="group cursor-pointer">
-                <div className="bg-white p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
-                  <div className="h-[240px] w-[320px]">
-                    <img 
-                      src="https://res.cloudinary.com/dy089iwsg/image/upload/v1749175470/COGRI_Gr_f8od78.png" 
-                      alt="CoGri Group - Líderes mundiales en pisos industriales" 
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* COGRI GESPAP Logo */}
-              <div className="group cursor-pointer">
-                <div className="bg-white p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
-                  <div className="h-[240px] w-[320px]">
-                    <img 
-                      src="https://res.cloudinary.com/dy089iwsg/image/upload/v1749176708/COGRI_Gespapa_GPT_isngfw.png" 
-                      alt="COGRI GESPAP - Tecnología avanzada en pisos industriales" 
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Bottom accent line */}
-            <div className="mt-13 flex justify-center">
-              <div className="w-19 h-1 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Projects */}
-      <section className="py-16 fade-in">
-        <div className="container mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-13 text-gray-800">Proyectos Destacados</h2>
-          
-          <div className="grid grid-cols-2 gap-6">
-            {[
-              {
-                title: "BOSCH Ciudad Juárez",
-                image: "https://res.cloudinary.com/dy089iwsg/image/upload/v1751399679/Bosch_oxxjr4.jpg",
-                section: "bosch"
-              },
-              {
-                title: "CYS Querétaro",
-                image: "https://res.cloudinary.com/dy089iwsg/image/upload/v1751399679/CYS_ianrni.jpg",
-                section: "cys"
-              }
-            ].map((project, index) => (
-              <motion.div 
-                key={index} 
-                className="project-card overflow-hidden shadow-lg cursor-pointer transform transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] h-[320px] relative"
-                onClick={() => {
-                  navigate(`/proyectos#${project.section}`);
-                }}
-                whileHover={{ 
-                  scale: 1.02,
-                  boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
-                }}
-                whileTap={{ scale: 0.98 }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <img 
-                  src={project.image} 
-                  alt={project.title} 
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-                />
-                <div className="absolute bottom-0 left-0 right-0 bg-gray-900 bg-opacity-80 text-white p-5">
-                  <h3 className="text-xl font-bold">{project.title}</h3>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-    </>
-  );
+  }, [location]);
 
   return (
-    <div className="min-h-screen bg-gray-50 font-sans">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 bg-white shadow-md z-[100]">
-        <div className="container mx-auto px-6 py-1 flex justify-between items-center">
-          <Link to="/" className="h-16" onClick={handleLogoClick}>
-            <img 
-              src="/Tecnosbal logo.png" 
-              alt="TECNOSLAB" 
-              className="h-full object-contain" 
-            />
-          </Link>
-          
-          <NavMenu navItems={navItems} />
-        </div>
-      </header>
+    <div className="pt-36 min-h-screen bg-gray-50">
+      <div className="container mx-auto px-6">
+        <div className="max-w-5xl mx-auto">
+          <h1 className="text-4xl font-bold text-gray-800 mb-8 text-center">Proyectos</h1>
+          <p className="text-xl text-gray-700 mb-16 text-center leading-relaxed">
+            Descubre nuestras especializaciones a través de los proyectos más destacados que hemos realizado para clientes de diversos sectores. Cada proyecto demuestra nuestro compromiso con la excelencia y la precisión.
+          </p>
 
-      {/* Main Content */}
-      <main>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/acerca-de-nosotros" element={<AcercaDeNosotros />} />
-          <Route path="/productos" element={<Productos />} />
-          <Route path="/servicios" element={<Servicios />} />
-          <Route path="/proyectos" element={<Proyectos />} />
-          <Route path="/faq" element={<FAQ />} />
-          <Route path="/contactanos" element={<Contactanos />} />
-          <Route path="/unete-a-nuestra-lista" element={<UneteANuestraLista />} />
-          <Route path="/comunicacion-llamada-correo" element={<ComunicacionPorLlamadaOCorreo />} />
-          <Route path="/nuestra-informacion" element={<NuestraInformacion />} />
-          <Route path="/terminos-y-condiciones" element={<TerminosYCondiciones />} />
-        </Routes>
-      </main>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-10 fade-in">
-        <div className="container mx-auto px-6">
-          <div className="flex justify-between items-center mb-6">
-            <div className="h-16">
-              <img 
-                src="/Tecnosbal logo.png" 
-                alt="TECNOSLAB" 
-                className="h-full object-contain"
-              />
-            </div>
-            <div className="text-right">
-              <p>© {new Date().getFullYear()} TECNOSLAB</p>
-              <p>Pisos Continuos de Alta Planicidad</p>
+          <div ref={boschRef} id="bosch" className="mb-20">
+            <h2 className="text-3xl font-bold text-gray-800 mb-8 border-l-4 border-blue-700 pl-4">
+              BOSCH Ciudad Juárez
+            </h2>
+            <div className="bg-white p-8 shadow-xl rounded-xl">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div>
+                  <p className="text-gray-700 mb-6 text-lg leading-relaxed">
+                    Proyecto integral que incluyó la ingeniería y supervisión de una losa para soportar un sistema AutoStore® así como la medición y certificación de planicidad para las instalaciones de BOSCH en Ciudad Juárez. 
+Se realizó la corrección de planicidad para cumplir con la norma de planicidad de AutoStore AS-50997 y emitir el certificado de cumplimiento
+                  </p>
+                  <h3 className="text-lg font-semibold mb-3 text-blue-800">Especificaciones del Proyecto</h3>
+                  <ul className="list-disc list-inside space-y-2 text-gray-700 mb-6">
+                    <li>Area total de la losa 1,300 m2</li>
+                    <li>Solución técnica considerando dos secciones de 650 m2 cada una con una combinación de refuerzos de varilla y fibras metálicas</li>
+                    <li>Losa con espesor de 20 cm requiriendo un concreto con f’C 350</li>
+                    <li>Medición de planicidad con el perfilógrafo ALL-IN-ONE de FACE CONSULTANTS para determinar el cumplimiento de la norma de planicidad</li>
+                    <li>•	Corrección por desbaste mecánico de los puntos fuera de especificación</li>
+                  </ul>
+                  <p className="text-gray-700 text-lg leading-relaxed">
+                    El proyecto incluyó la medición y corrección de un área dentro de una nave existente en la cual se instalaría un puente de comunicación con el área nueva. En el área existente se instalaron los puertos de carga y descarga de materiales por lo que fue necesario la corrección de planicidad solamente sobre las huellas de las columnas del puente. 
+                  </p>
+                </div>
+                <div className="flex justify-center">
+                  <img 
+                    src="https://res.cloudinary.com/dy089iwsg/image/upload/v1751399679/Bosch_oxxjr4.jpg" 
+                    alt="BOSCH Ciudad Juárez" 
+                    className="w-full h-auto object-cover rounded-lg shadow-md max-w-md"
+                  />
+                </div>
+              </div>
             </div>
           </div>
-          <div className="border-t border-gray-700 pt-5">
-            <div className="flex justify-center space-x-6 text-sm">
-              <Link 
-                to="/terminos-y-condiciones" 
-                className="text-white hover:text-gray-300 underline transition-colors"
-              >
-                Términos y Condiciones
-              </Link>
+
+          <div ref={cysRef} id="cys" className="mb-20">
+            <h2 className="text-3xl font-bold text-gray-800 mb-8 border-l-4 border-blue-700 pl-4">
+              CYS Querétaro
+            </h2>
+            <div className="bg-white p-8 shadow-xl rounded-xl">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div>
+                  <p className="text-gray-700 mb-6 text-lg leading-relaxed">
+                    Proyecto medición y corrección de pasillos VNA para la operación de un montacargas de 4 ruedas con racks con altura de 11.20 cm especificándose el cumplimiento de un FMIN70
+                  </p>
+                  <h3 className="text-lg font-semibold mb-3 text-blue-800">Características del Proyecto</h3>
+                  <ul className="list-disc list-inside space-y-2 text-gray-700 mb-6">
+                    <li>Losa de concreto construida con un sistema de piso convencional con juntas de control a cada 4 metros.</li>
+                    <li>9 pasillos totales con una longitud de 30 metros cada uno</li>
+                    <li>Considerando las dimensiones del montacargas y el FMIN70 se cumplieron las siguientes tolerancias:</li>
+                      <ul className="list-disc list-inside space-y-1 ml-6 mt-2">
+                          <li>Elevación transversal: 2.47 mm</li>
+                          <li>Elevación longitudinal: 3.10 mm</li>
+                          <li>Tasa de cambio: 1.4 mm @ 30 cm</li>
+                        </ul>
+                  </ul>
+                  <p className="text-gray-700 text-lg leading-relaxed">
+El proceso de medición y corrección se realizó en un tiempo récord de 10 días. Se utilizó el perfilógrafo ALL-IN-ONE de FACE CONSULTANTS configurado en un arreglo para montacargas de 4 ruedas.
+                  </p>
+                </div>
+                <div className="flex justify-center">
+                  <img 
+                    src="https://res.cloudinary.com/dy089iwsg/image/upload/v1751399679/CYS_ianrni.jpg" 
+                    alt="CYS Querétaro" 
+                    className="w-full h-auto object-cover rounded-lg shadow-md max-w-md"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </footer>
+      </div>
     </div>
   );
 }
 
-export default App;
+export default Proyectos;
