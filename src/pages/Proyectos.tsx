@@ -62,7 +62,7 @@ Se realizó la corrección de planicidad para cumplir con la norma de planicidad
                     <li>Solución técnica considerando dos secciones de 650 m2 cada una con una combinación de refuerzos de varilla y fibras metálicas</li>
                     <li>Losa con espesor de 20 cm requiriendo un concreto con f’C 350</li>
                     <li>Medición de planicidad con el perfilógrafo ALL-IN-ONE de FACE CONSULTANTS para determinar el cumplimiento de la norma de planicidad</li>
-                    <li>•	Corrección por desbaste mecánico de los puntos fuera de especificación</li>
+                    <li>Corrección por desbaste mecánico de los puntos fuera de especificación</li>
                   </ul>
                   <p className="text-gray-700 text-lg leading-relaxed">
                     El proyecto incluyó la medición y corrección de un área dentro de una nave existente en la cual se instalaría un puente de comunicación con el área nueva. En el área existente se instalaron los puertos de carga y descarga de materiales por lo que fue necesario la corrección de planicidad solamente sobre las huellas de las columnas del puente. 
