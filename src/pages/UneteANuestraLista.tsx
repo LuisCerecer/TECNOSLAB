@@ -237,7 +237,7 @@ function UneteANuestraLista() {
                   to="/contactanos" 
                   className="inline-block px-6 py-3 bg-gray-100 hover:bg-gray-200 rounded-lg text-gray-700 font-medium transition-colors"
                 >
-                  Formulario General
+                  Pregunta por correo
                 </Link>
                 <Link 
                   to="/comunicacion-llamada-correo" 
