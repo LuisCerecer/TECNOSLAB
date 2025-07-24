@@ -110,7 +110,7 @@ function NuestraInformacion() {
                 to="/contactanos" 
                 className="inline-block px-6 py-3 bg-blue-100 hover:bg-blue-200 rounded-lg text-blue-800 font-medium transition-colors"
               >
-                Formulario General
+               Pregunta por correo
               </Link>
               <Link 
                 to="/comunicacion-llamada-correo" 
