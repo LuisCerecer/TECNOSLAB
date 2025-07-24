@@ -213,7 +213,7 @@ const ContactForm: React.FC = () => {
           className={`flex-1 min-w-[144px] py-3 text-base ${activeTab === 'form' ? 'bg-blue-600 text-white' : 'text-gray-700 border-gray-300 hover:bg-blue-600 hover:text-white'}`}
           onClick={() => setActiveTab('form')}
         >
-          Formulario general
+          Pregunta por correo
         </Button>
         <Button
           variant={activeTab === 'newsletter' ? 'default' : 'outline'}
