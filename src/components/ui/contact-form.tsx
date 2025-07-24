@@ -241,7 +241,7 @@ const ContactForm: React.FC = () => {
       <Card className="w-full max-w-4xl mx-auto relative bg-white border-blue-200 shadow-xl">
         <CardHeader>
           <CardTitle className="text-2xl font-bold text-center text-gray-800 py-3">
-            {activeTab === 'form' && 'Formulario general'}
+            {activeTab === 'form' && 'Pregunta por correo'}
             {activeTab === 'newsletter' && 'Únete a nuestra lista'}
             {activeTab === 'contactInfo' && 'Nuestra Información de Contacto'}
             {activeTab === 'videoCall' && 'Agenda tu Videollamada'}
