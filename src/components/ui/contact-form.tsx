@@ -238,7 +238,7 @@ const ContactForm: React.FC = () => {
         </Button>
       </div>
 
-      <Card className="w-full max-w-4xl mx-auto relative bg-white border-blue-200 shadow-xl">
+      <Card className="w-full max-w-6xl mx-auto relative bg-white border-blue-200 shadow-xl">
         <CardHeader>
           <CardTitle className="text-2xl font-bold text-center text-gray-800 py-3">
             {activeTab === 'form' && 'Pregunta por correo'}
